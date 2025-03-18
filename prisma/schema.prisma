@@ -1,0 +1,215 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+generator nestgraphql {
+  provider = "node node_modules/prisma-nestjs-graphql"
+  output   = "../src/common/@generated"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model area {
+  area_name     String          @id @db.VarChar(30)
+  discount_code discount_code[]
+}
+
+model book {
+  id                  String                @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  book_title          String                @db.VarChar(50)
+  pushlied_at         Int
+  author              String                @db.VarChar(30)
+  isbn                String                @unique(map: "unique_isbn") @db.VarChar(15)
+  page_number         Int?
+  discount_id         Int?
+  views               Int
+  created_at          DateTime?             @default(now()) @db.Timestamp(6)
+  discount_code       discount_code?        @relation(fields: [discount_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  category_book       category_book[]
+  comment             comment[]
+  favourite           favourite[]
+  language_book       language_book[]
+  license             license[]
+  reading_history     reading_history[]
+  review              review[]
+  shopping_cart       shopping_cart[]
+  transaction_history transaction_history[]
+}
+
+model category {
+  name                                           String          @id @db.VarChar(20)
+  category_book_category_book_categoryTocategory category_book[] @relation("category_book_categoryTocategory")
+}
+
+model category_book {
+  category                                  String   @db.VarChar(20)
+  book_id                                   String   @db.Uuid
+  book                                      book     @relation(fields: [book_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  category_category_book_categoryTocategory category @relation("category_book_categoryTocategory", fields: [category], references: [name], onDelete: NoAction, onUpdate: NoAction)
+
+  @@id([category, book_id])
+}
+
+model comment {
+  book_id String  @db.Uuid
+  user_id String  @db.Uuid
+  content String?
+  book    book    @relation(fields: [book_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  user    user    @relation(fields: [user_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@id([book_id, user_id])
+}
+
+model discount_code {
+  id                     Int      @id @default(autoincrement())
+  discount_code_name     String?  @db.VarChar(20)
+  discount_value         Decimal? @db.Decimal(5, 2)
+  discount_value_percent Int?
+  area_name              String?  @db.VarChar(30)
+  book                   book[]
+  area                   area?    @relation(fields: [area_name], references: [area_name], onDelete: NoAction, onUpdate: NoAction)
+}
+
+model favourite {
+  book_id String @db.Uuid
+  user_id String @db.Uuid
+  book    book   @relation(fields: [book_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  user    user   @relation(fields: [user_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@id([book_id, user_id])
+}
+
+model language {
+  id            Int             @id @default(autoincrement())
+  language_name String          @db.VarChar(50)
+  language_code String          @unique(map: "unique_language_code") @db.VarChar(5)
+  language_book language_book[]
+}
+
+model language_book {
+  language_id Int
+  book_id     String   @db.Uuid
+  book        book     @relation(fields: [book_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  language    language @relation(fields: [language_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@id([language_id, book_id])
+}
+
+model license {
+  id                String              @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  license_name      String?             @db.VarChar(20)
+  book_id           String?             @db.Uuid
+  license_type_id   String?             @db.Uuid
+  book              book?               @relation(fields: [book_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  license_type      license_type?       @relation(fields: [license_type_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  license_ownership license_ownership[]
+}
+
+model license_ownership {
+  id              Int      @id @default(autoincrement())
+  user_id         String   @db.Uuid
+  license_id      String   @db.Uuid
+  download_count  Int?
+  expiration_date DateTime @db.Timestamp(6)
+  license         license  @relation(fields: [license_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  user            user     @relation(fields: [user_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+}
+
+model license_type {
+  id                String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  license_type_name String
+  download_count    Int
+  price             Decimal   @db.Decimal(10, 2)
+  status            Boolean
+  expiration_date   DateTime? @db.Date
+  license           license[]
+}
+
+model news {
+  id           Int       @id @default(autoincrement())
+  title        String    @db.VarChar(50)
+  content      String
+  publish_date DateTime? @db.Timestamp(6)
+  user_id      String    @db.Uuid
+  user         user      @relation(fields: [user_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+}
+
+model permission {
+  role_id Int
+  url     String @db.VarChar(50)
+  role    role   @relation(fields: [role_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@id([role_id, url])
+}
+
+model review {
+  book_id String @db.Uuid
+  user_id String @db.Uuid
+  rating  Int
+  book    book   @relation(fields: [book_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  user    user   @relation(fields: [user_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@id([user_id, book_id])
+}
+
+model role {
+  id                   Int          @id @default(autoincrement())
+  role_name            String       @db.VarChar(15)
+  permission           permission[]
+  user_user_roleTorole user[]       @relation("user_roleTorole")
+}
+
+model shopping_cart {
+  book_id String @db.Uuid
+  user_id String @db.Uuid
+  book    book   @relation(fields: [book_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  user    user   @relation(fields: [user_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@id([book_id, user_id])
+}
+
+model transaction_history {
+  book_id      String    @db.Uuid
+  user_id      String    @db.Uuid
+  payment_date DateTime? @db.Timestamp(6)
+  book         book      @relation(fields: [book_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  user         user      @relation(fields: [user_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@id([user_id, book_id])
+}
+
+model user {
+  id                   String                @id(map: "users_pkey") @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  user_name            String                @db.VarChar(50)
+  password             String                @db.VarChar(255)
+  email                String                @unique(map: "user_unique") @db.VarChar(50)
+  avatar               String?
+  code                 String                @db.VarChar(8)
+  expired_code         DateTime              @db.Timestamp(6)
+  account_status       Boolean
+  role                 Int
+  comment              comment[]
+  favourite            favourite[]
+  license_ownership    license_ownership[]
+  news                 news[]
+  reading_history      reading_history[]
+  review               review[]
+  shopping_cart        shopping_cart[]
+  transaction_history  transaction_history[]
+  role_user_roleTorole role                  @relation("user_roleTorole", fields: [role], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_role")
+}
+
+model reading_history {
+  user_id   String    @db.Uuid
+  book_id   String    @db.Uuid
+  state     String?   @db.VarChar(20)
+  page      Int?
+  update_at DateTime? @default(now()) @db.Timestamptz(6)
+  book      book      @relation(fields: [book_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  user      user      @relation(fields: [user_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@id([user_id, book_id])
+}

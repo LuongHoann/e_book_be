@@ -1,0 +1,163 @@
+{
+  "area": {
+    "createSuccess": "Area created successfully!",
+    "createFailed": "Failed to create area!",
+    "updateSuccess": "Area updated successfully!",
+    "updateFailed": "Failed to update area!",
+    "deleteSuccess": "Area deleted successfully!",
+    "deleteFailed": "Failed to delete area!",
+    "notFound": "Area not found!",
+    "alreadyExists": "Area with this name already exists!"
+  },
+  "discountCode": {
+    "createSuccess": "Discount code created successfully!",
+    "createFailed": "Failed to create discount code!",
+    "updateSuccess": "Discount code updated successfully!",
+    "updateFailed": "Failed to update discount code!",
+    "deleteSuccess": "Discount code deleted successfully!",
+    "deleteFailed": "Failed to delete discount code!",
+    "notFound": "Discount code not found!",
+    "invalidValue": "Invalid discount value!",
+    "invalidPercent": "Invalid discount percentage!"
+  },
+  "book": {
+    "createSuccess": "Book created successfully!",
+    "createFailed": "Failed to create book!",
+    "updateSuccess": "Book updated successfully!",
+    "updateFailed": "Failed to update book!",
+    "deleteSuccess": "Book deleted successfully!",
+    "deleteFailed": "Failed to delete book!",
+    "notFound": "Book not found!",
+    "isbnExists": "Book with this ISBN already exists!"
+  },
+  "category": {
+    "createSuccess": "Book category created successfully!",
+    "createFailed": "Failed to create book category!",
+    "updateSuccess": "Book category updated successfully!",
+    "updateFailed": "Failed to update book category!",
+    "deleteSuccess": "Book category deleted successfully!",
+    "deleteFailed": "Failed to delete book category!",
+    "notFound": "Book category not found!",
+    "alreadyExists": "Category with this name already exists!"
+  },
+  "language": {
+    "createSuccess": "Language created successfully!",
+    "createFailed": "Failed to create language!",
+    "updateSuccess": "Language updated successfully!",
+    "updateFailed": "Failed to update language!",
+    "deleteSuccess": "Language deleted successfully!",
+    "deleteFailed": "Failed to delete language!",
+    "notFound": "Language not found!",
+    "alreadyExists": "Language with this code already exists!"
+  },
+  "languageBook": {
+    "createSuccess": "Language book created successfully!",
+    "createFailed": "Failed to create language book!",
+    "deleteSuccess": "Language book deleted successfully!",
+    "deleteFailed": "Failed to delete language book!",
+    "notFound": "Language book not found!"
+  },
+  "categoryBook": {
+    "createSuccess": "Category book created successfully!",
+    "createFailed": "Failed to create category book!",
+    "deleteSuccess": "Category book deleted successfully!",
+    "deleteFailed": "Failed to delete category book!",
+    "notFound": "Category book not found!"
+  },
+  "user": {
+    "createSuccess": "User created successfully!",
+    "createFailed": "Failed to create user!",
+    "updateSuccess": "User updated successfully!",
+    "updateFailed": "Failed to update user!",
+    "deleteSuccess": "User deleted successfully!",
+    "deleteFailed": "Failed to delete user!",
+    "notFound": "User not found!",
+    "emailExists": "User with this email already exists!",
+    "usernameExists": "User with this username already exists!",
+    "invalidPassword": "Invalid password!",
+    "unauthorized": "Unauthorized!"
+  },
+  "favourite": {
+    "addSuccess": "Book added to favorites!",
+    "addFailed": "Failed to add book to favorites!",
+    "removeSuccess": "Book removed from favorites!",
+    "removeFailed": "Failed to remove book from favorites!",
+    "notFound": "Favorite not found!"
+  },
+  "review": {
+    "createSuccess": "Review created successfully!",
+    "createFailed": "Failed to create review!",
+    "updateSuccess": "Review updated successfully!",
+    "updateFailed": "Failed to update review!",
+    "deleteSuccess": "Review deleted successfully!",
+    "deleteFailed": "Failed to delete review!",
+    "notFound": "Review not found!"
+  },
+  "comment": {
+    "createSuccess": "Comment created successfully!",
+    "createFailed": "Failed to create comment!",
+    "updateSuccess": "Comment updated successfully!",
+    "updateFailed": "Failed to update comment!",
+    "deleteSuccess": "Comment deleted successfully!",
+    "deleteFailed": "Failed to delete comment!",
+    "notFound": "Comment not found!"
+  },
+  "role": {
+    "createSuccess": "Role created successfully!",
+    "createFailed": "Failed to create role!",
+    "updateSuccess": "Role updated successfully!",
+    "updateFailed": "Failed to update role!",
+    "deleteSuccess": "Role deleted successfully!",
+    "deleteFailed": "Failed to delete role!",
+    "notFound": "Role not found!"
+  },
+  "auth": {
+    "login": {
+      "success": "Login successful!",
+      "failed": "Invalid username or password!",
+      "unverified": "Account not verified! Please check your email to verify your account!",
+      "blocked": "Your account is currently blocked! Please contact support!",
+      "inactive": "Your account is inactive! Please contact support!",
+      "error": "An error occurred during login! Please try again later!"
+    },
+    "logout": {
+      "success": "Logout successful!",
+      "failed": "Failed to logout!",
+      "error": "An error occurred during logout!"
+    },
+    "register": {
+      "success": "Registration successful! Please check your email to verify your account!",
+      "failed": "Failed to register! Please try again later!",
+      "emailExists": "A user with this email already exists!",
+      "usernameExists": "A user with this username already exists!",
+      "invalidInput": "Invalid registration input!"
+    },
+    "verify": {
+      "success": "Account verified successfully! You can now login!",
+      "failed": "Failed to verify account! Invalid verification link!",
+      "expired": "Verification link has expired! Please request a new one!"
+    },
+    "forgotPassword": {
+      "success": "A password reset link has been sent to your email address!",
+      "failed": "Failed to send password reset email! Please try again later!",
+      "notFound": "User with this email not found!"
+    },
+    "resetPassword": {
+      "success": "Password reset successfully!",
+      "failed": "Failed to reset password! Invalid reset link or password!",
+      "invalidPassword": "Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, and one number!"
+    },
+    "changePassword": {
+      "success": "Password changed successfully!",
+      "failed": "Failed to change password! Incorrect old password!",
+      "invalidPassword": "Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, and one number!"
+    }
+  },
+  "general": {
+    "success": "区域创建成功!",
+    "failed": "Failed!",
+    "unauthorized": "Unauthorized!",
+    "notFound": "Not Found!",
+    "invalidInput": "Invalid input!"
+  }
+}

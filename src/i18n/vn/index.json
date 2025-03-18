@@ -1,0 +1,90 @@
+{
+    "area": {
+        "createSuccess": "Tạo khu vực thành công!",
+        "createFailed": "Tạo khu vực thất bại!",
+        "updateSuccess": "Cập nhật khu vực thành công!",
+        "updateFailed": "Cập nhật khu vực thất bại!",
+        "deleteSuccess": "Xóa khu vực thành công!",
+        "deleteFailed": "Xóa khu vực thất bại!",
+        "notFound": "Không tìm thấy khu vực!",
+        "alreadyExists": "Khu vực với tên này đã tồn tại!"
+    },
+    "discountCode": {
+        "createSuccess": "Tạo mã giảm giá thành công!",
+        "createFailed": "Tạo mã giảm giá thất bại!",
+        "updateSuccess": "Cập nhật mã giảm giá thành công!",
+        "updateFailed": "Cập nhật mã giảm giá thất bại!",
+        "deleteSuccess": "Xóa mã giảm giá thành công!",
+        "deleteFailed": "Xóa mã giảm giá thất bại!",
+        "notFound": "Không tìm thấy mã giảm giá!",
+        "invalidValue": "Giá trị giảm giá không hợp lệ!",
+        "invalidPercent": "Phần trăm giảm giá không hợp lệ!"
+    },
+    "book": {
+        "createSuccess": "Tạo sách thành công!",
+        "createFailed": "Tạo sách thất bại!",
+        "updateSuccess": "Cập nhật sách thành công!",
+        "updateFailed": "Cập nhật sách thất bại!",
+        "deleteSuccess": "Xóa sách thành công!",
+        "deleteFailed": "Xóa sách thất bại!",
+        "notFound": "Không tìm thấy sách!",
+        "isbnExists": "Sách với ISBN này đã tồn tại!"
+    },
+    "user": {
+        "createSuccess": "Tạo người dùng thành công!",
+        "createFailed": "Tạo người dùng thất bại!",
+        "updateSuccess": "Cập nhật người dùng thành công!",
+        "updateFailed": "Cập nhật người dùng thất bại!",
+        "deleteSuccess": "Xóa người dùng thành công!",
+        "deleteFailed": "Xóa người dùng thất bại!",
+        "notFound": "Không tìm thấy người dùng!",
+        "emailExists": "Người dùng với email này đã tồn tại!",
+        "usernameExists": "Người dùng với tên đăng nhập này đã tồn tại!",
+        "invalidPassword": "Mật khẩu không hợp lệ!",
+        "unauthorized": "Không được phép!"
+    },
+    "auth": {
+        "login": {
+            "success": "Đăng nhập thành công!",
+            "failed": "Tên đăng nhập hoặc mật khẩu không đúng!",
+            "unverified": "Tài khoản chưa được xác minh. Vui lòng kiểm tra email của bạn!",
+            "blocked": "Tài khoản của bạn đã bị khóa. Vui lòng liên hệ hỗ trợ!",
+            "inactive": "Tài khoản của bạn không hoạt động. Vui lòng liên hệ hỗ trợ!",
+            "error": "Đã xảy ra lỗi khi đăng nhập. Vui lòng thử lại sau!"
+        },
+        "register": {
+            "success": "Đăng ký thành công. Vui lòng kiểm tra email để xác minh tài khoản!",
+            "failed": "Đăng ký thất bại. Vui lòng thử lại sau!",
+            "emailExists": "Người dùng với email này đã tồn tại!",
+            "usernameExists": "Người dùng với tên đăng nhập này đã tồn tại!",
+            "invalidInput": "Thông tin đăng ký không hợp lệ!"
+        },
+        "verify": {
+            "success": "Xác minh tài khoản thành công! Bạn có thể đăng nhập ngay bây giờ!",
+            "failed": "Xác minh tài khoản thất bại! Liên kết xác minh không hợp lệ!",
+            "expired": "Liên kết xác minh đã hết hạn! Vui lòng yêu cầu một liên kết mới!"
+        },
+        "forgotPassword": {
+            "success": "Liên kết đặt lại mật khẩu đã được gửi đến địa chỉ email của bạn!",
+            "failed": "Gửi email đặt lại mật khẩu thất bại! Vui lòng thử lại sau!",
+            "notFound": "Không tìm thấy người dùng với email này!"
+        },
+        "resetPassword": {
+            "success": "Đặt lại mật khẩu thành công!",
+            "failed": "Đặt lại mật khẩu thất bại! Liên kết đặt lại không hợp lệ hoặc mật khẩu không hợp lệ!",
+            "invalidPassword": "Mật khẩu phải dài ít nhất 8 ký tự và chứa ít nhất một chữ in hoa, một chữ in thường và một số!"
+        },
+        "changePassword": {
+            "success": "Thay đổi mật khẩu thành công!",
+            "failed": "Thay đổi mật khẩu thất bại! Mật khẩu cũ không chính xác!",
+            "invalidPassword": "Mật khẩu phải dài ít nhất 8 ký tự và chứa ít nhất một chữ in hoa, một chữ in thường và một số!"
+        }
+    },
+    "general": {
+        "success": "Thành công!",
+        "failed": "Thất bại!",
+        "unauthorized": "Không được phép!",
+        "notFound": "Không tìm thấy!",
+        "invalidInput": "Dữ liệu không hợp lệ!"
+    }
+}

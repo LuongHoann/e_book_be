@@ -1,0 +1,399 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type res {
+  StatusCode: Float
+  MessageCode: String
+  Data: JSON
+  FailedItems: JSON
+}
+
+"""
+The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).
+"""
+scalar JSON
+
+type DiscountCode {
+  id: Int!
+  discount_code_name: String!
+  discount_value: Float!
+  discount_value_percent: Int!
+  area_name: String!
+  area: area!
+}
+
+type area {
+  area_name: String!
+  discountCodes: [DiscountCode]
+}
+
+type Category {
+  name: ID!
+}
+
+type CategoryBook {
+  category: String!
+  book_id: ID
+  book: Book!
+  categoryDetails: Category!
+}
+
+type Comment {
+  book_id: ID!
+  user_id: ID!
+  context: String!
+}
+
+type Favourite {
+  book_id: ID!
+  user_id: ID!
+}
+
+type Language {
+  id: ID!
+  language_name: String!
+  language_code: String!
+}
+
+type LicenseType {
+  id: ID!
+  license_name_type: String!
+  download_count: Int!
+  status: String!
+  expiration_date: String!
+}
+
+type License {
+  license_name: ID!
+  bood_id: Book!
+  license_type_id: LicenseType!
+}
+
+type LicenseOwnership {
+  id: ID!
+  user_id: ID!
+  license_id: ID!
+  download_count: Int!
+  expiration_date: Int!
+}
+
+type News {
+  id: ID!
+  title: String!
+  content: String!
+  publish_date: String!
+  user: User!
+}
+
+type ShoppingCart {
+  user_id: ID!
+  book_id: ID!
+  book: Book!
+  user: User!
+}
+
+type TransactionHistory {
+  bood_id: ID!
+  user_id: ID!
+  book: Book!
+  payment_date: String!
+  user: User!
+}
+
+type User {
+  id: ID!
+  user_name: String!
+  password: String!
+  email: String!
+  avatar: String
+  code: String!
+  expired_code: DateTime!
+  account_status: Boolean!
+  role: Int!
+  comment: [Comment]
+  favourite: [Favourite]
+  license_ownership: [LicenseOwnership]
+  news: [News]
+  review: [Review]
+  shopping_cart: [ShoppingCart]
+  transaction_history: [TransactionHistory]
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type Review {
+  bood_id: ID!
+  user_id: ID!
+  rating: Int!
+  book: Book!
+  user: User!
+}
+
+type Book {
+  id: ID!
+  book_title: String!
+  pushlied_at: Int!
+  author: String!
+  isbn: String
+  page_number: Int
+  discount_id: Int
+  views: Int
+  language_book: [Language]
+  category_book: [CategoryBook]
+  comment: [Comment]
+  favourite: [Favourite]
+  license: [License]
+  review: [Review]
+  shopping_cart: [ShoppingCart]
+  transaction_history: [TransactionHistory]
+}
+
+type Permission {
+  id: Int!
+  role_name: String!
+}
+
+type Query {
+  findAllAreas: res!
+  findAllBooks: res!
+  findBook(id: String!): res!
+  discountCodes: res!
+  languages: res!
+  licenseTypes: res!
+  news: res!
+  newsDetail(id: Int!): res!
+  roles: res!
+  shoppingCartOfUser(user_id: String!): res!
+  transactionHistory: [TransactionHistory!]!
+  users: res!
+  user(id: String!): res!
+}
+
+type Mutation {
+  createArea(createAreaInput: CreateAreaInput!): res!
+  updateArea(updateAreaInput: UpdateAreaInput!): res!
+  removeArea(where: String!): res!
+  createBook(createBookInput: CreateBookInput!): res!
+  updateBook(updateBookInput: UpdateBookInput!): res!
+  removeBook(id: String!): res!
+  createComment(createCommentInput: CreateCommentInput!): res!
+  updateComment(updateCommentInput: UpdateCommentInput!): res!
+  removeComment(deleteCommentInput: DeleteCommentInput!): res!
+  createDiscountCode(createDiscountCodeInput: CreateDiscountCodeInput!): res!
+  updateDiscountCode(updateDiscountCodeInput: UpdateDiscountCodeInput!): res!
+  removeDiscountCode(id: Int!): res!
+  createLanguage(createLanguageInput: CreateLanguageInput!): res!
+  updateLanguage(updateLanguageInput: UpdateLanguageInput!): res!
+  removeLanguage(id: Int!): res!
+  createLicenseOwnership(createLicenseOwnershipInput: CreateLicenseOwnershipInput!): res!
+  updateLicenseOwnership(updateLicenseOwnershipInput: UpdateLicenseOwnershipInput!): res!
+  removeLicenseOwnership(id: Int!): res!
+  createLicenseType(createLicenseTypeInput: CreateLicenseTypeInput!): res!
+  updateLicenseType(updateLicenseTypeInput: UpdateLicenseTypeInput!): res!
+  removeLicenseType(id: Int!): res!
+  createNews(createNewsInput: CreateNewsInput!): res!
+  updateNews(updateNewsInput: UpdateNewsInput!): res!
+  removeNews(id: Int!): res!
+  createPermission(CreateMultiplePermissionInput: CreateMultiplePermissionInput!): Permission!
+  replacePermission(createMultiplePermissionInput: CreateMultiplePermissionInput!): res!
+  createReview(createReviewInput: CreateReviewInput!): res!
+  updateReview(updateReviewInput: UpdateReviewInput!): res!
+  removeReview(deleteReviewInput: DeleteReviewInput!): res!
+  createRole(createRoleInput: CreateRoleInput!): res!
+  updateRole(updateRoleInput: UpdateRoleInput!): res!
+  removeRole(id: Int!): res!
+  createShoppingCart(createShoppingCartInput: CreateShoppingCartInput!): res!
+  removeShoppingCart(deleteShoppingCartInput: DeleteShoppingCartInput!): res!
+  removeAllShoppingCart(user_id: String!): res!
+  createTransactionHistory(createTransactionHistoryInput: CreateTransactionHistoryInput!): TransactionHistory!
+  createUser(createUserInput: CreateUserInput!): res!
+  updateUser(updateUserInput: UpdateUserInput!): res!
+  removeUser(id: String!): res!
+}
+
+input CreateAreaInput {
+  area_name: String!
+}
+
+input UpdateAreaInput {
+  area_name: String!
+}
+
+input CreateBookInput {
+  book_title: String!
+  pushlied_at: Int!
+  author: String!
+  isbn: String
+  page_number: Int
+  discount_id: Int
+  views: Int = 0
+}
+
+input UpdateBookInput {
+  id: ID!
+}
+
+input CreateCommentInput {
+  book_id: ID!
+  user_id: ID!
+  context: String!
+}
+
+input UpdateCommentInput {
+  book_id: ID!
+  user_id: ID!
+  context: String!
+}
+
+input DeleteCommentInput {
+  book_id: ID!
+  user_id: ID!
+  context: String
+}
+
+input CreateDiscountCodeInput {
+  discount_code_name: String!
+  discount_value: Float!
+  discount_value_percent: Int!
+  area_name: String!
+}
+
+input UpdateDiscountCodeInput {
+  discount_code_name: String
+  discount_value: Float
+  discount_value_percent: Int
+  area_name: String
+  id: Int!
+}
+
+input CreateLanguageInput {
+  language_name: String!
+  language_code: String!
+}
+
+input UpdateLanguageInput {
+  language_name: String
+  language_code: String
+  id: Int!
+}
+
+input CreateLicenseOwnershipInput {
+  user_id: ID!
+  license_id: ID!
+  download_count: Int!
+  expiration_date: String!
+}
+
+input UpdateLicenseOwnershipInput {
+  user_id: ID
+  license_id: ID
+  download_count: Int
+  expiration_date: String
+  id: ID!
+}
+
+input CreateLicenseTypeInput {
+  license_type_name: String
+  download_count: Int!
+  price: Float!
+  status: Boolean!
+  expiration_date: String!
+}
+
+input UpdateLicenseTypeInput {
+  license_type_name: String
+  download_count: Int
+  price: Float
+  status: Boolean
+  expiration_date: String
+  id: ID!
+}
+
+input CreateNewsInput {
+  title: String!
+  content: String!
+  user_id: String!
+}
+
+input UpdateNewsInput {
+  title: String
+  content: String
+  user_id: String
+  id: Int!
+}
+
+input CreateMultiplePermissionInput {
+  role_id: Int!
+  urls: [String!]!
+}
+
+input CreateReviewInput {
+  book_id: ID!
+  user_id: ID!
+  rating: Int!
+}
+
+input UpdateReviewInput {
+  book_id: ID
+  user_id: ID!
+  rating: Int
+  bood_id: ID!
+}
+
+input DeleteReviewInput {
+  book_id: ID!
+  user_id: ID!
+}
+
+input CreateRoleInput {
+  role_name: String!
+  user_id: ID!
+}
+
+input UpdateRoleInput {
+  role_name: String
+  user_id: ID
+  id: Int!
+}
+
+input CreateShoppingCartInput {
+  user_id: ID!
+  book_id: ID!
+}
+
+input DeleteShoppingCartInput {
+  user_id: ID!
+  book_id: ID!
+}
+
+input CreateTransactionHistoryInput {
+  book_id: ID!
+  user_id: ID!
+}
+
+input CreateUserInput {
+  user_name: String!
+  password: String!
+  email: String!
+  avatar: String
+  code: String!
+  expired_code: String!
+  account_status: Boolean!
+  role: Int! = 4
+}
+
+input UpdateUserInput {
+  user_name: String
+  password: String
+  email: String
+  avatar: String
+  code: String
+  expired_code: String
+  account_status: Boolean
+  role: Int = 4
+  id: ID!
+}

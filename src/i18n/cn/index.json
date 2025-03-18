@@ -1,0 +1,163 @@
+{
+  "area": {
+    "createSuccess": "区域创建成功!",
+    "createFailed": "创建区域失败!",
+    "updateSuccess": "区域更新成功!",
+    "updateFailed": "更新区域失败!",
+    "deleteSuccess": "区域删除成功!",
+    "deleteFailed": "删除区域失败!",
+    "notFound": "找不到区域!",
+    "alreadyExists": "已存在同名区域!"
+  },
+  "discountCode": {
+    "createSuccess": "折扣码创建成功!",
+    "createFailed": "创建折扣码失败!",
+    "updateSuccess": "折扣码更新成功!",
+    "updateFailed": "更新折扣码失败!",
+    "deleteSuccess": "折扣码删除成功!",
+    "deleteFailed": "删除折扣码失败!",
+    "notFound": "找不到折扣码!",
+    "invalidValue": "无效的折扣值!",
+    "invalidPercent": "无效的折扣百分比!"
+  },
+  "book": {
+    "createSuccess": "书籍创建成功!",
+    "createFailed": "创建书籍失败!",
+    "updateSuccess": "书籍更新成功!",
+    "updateFailed": "更新书籍失败!",
+    "deleteSuccess": "书籍删除成功!",
+    "deleteFailed": "删除书籍失败!",
+    "notFound": "找不到书籍!",
+    "isbnExists": "已存在此ISBN的书籍!"
+  },
+  "bookCategory": {
+    "createSuccess": "书籍分类创建成功!",
+    "createFailed": "创建书籍分类失败!",
+    "updateSuccess": "书籍分类更新成功!",
+    "updateFailed": "更新书籍分类失败!",
+    "deleteSuccess": "书籍分类删除成功!",
+    "deleteFailed": "删除书籍分类失败!",
+    "notFound": "找不到书籍分类!",
+    "alreadyExists": "已存在同名书籍分类!"
+  },
+  "language": {
+    "createSuccess": "语言创建成功!",
+    "createFailed": "创建语言失败!",
+    "updateSuccess": "语言更新成功!",
+    "updateFailed": "更新语言失败!",
+    "deleteSuccess": "语言删除成功!",
+    "deleteFailed": "删除语言失败!",
+    "notFound": "找不到语言!",
+    "alreadyExists": "已存在同名语言!"
+  },
+  "languageBook": {
+    "createSuccess": "书籍语言创建成功!",
+    "createFailed": "创建书籍语言失败!",
+    "deleteSuccess": "书籍语言删除成功!",
+    "deleteFailed": "删除书籍语言失败!",
+    "notFound": "找不到书籍语言!"
+  },
+  "categoryBook": {
+    "createSuccess": "书籍类别创建成功!",
+    "createFailed": "创建书籍类别失败!",
+    "deleteSuccess": "书籍类别删除成功!",
+    "deleteFailed": "删除书籍类别失败!",
+    "notFound": "找不到书籍类别!"
+  },
+  "user": {
+    "createSuccess": "用户创建成功!",
+    "createFailed": "创建用户失败!",
+    "updateSuccess": "用户更新成功!",
+    "updateFailed": "更新用户失败!",
+    "deleteSuccess": "用户删除成功!",
+    "deleteFailed": "删除用户失败!",
+    "notFound": "找不到用户!",
+    "emailExists": "已存在此电子邮件的用户!",
+    "usernameExists": "已存在此用户名的用户!",
+    "invalidPassword": "密码无效!",
+    "unauthorized": "未授权!"
+  },
+  "favourite": {
+    "addSuccess": "成功添加到收藏夹!",
+    "addFailed": "添加到收藏夹失败!",
+    "removeSuccess": "成功从收藏夹移除!",
+    "removeFailed": "从收藏夹移除失败!",
+    "notFound": "找不到收藏夹!"
+  },
+  "review": {
+    "createSuccess": "评价创建成功!",
+    "createFailed": "创建评价失败!",
+    "updateSuccess": "评价更新成功!",
+    "updateFailed": "更新评价失败!",
+    "deleteSuccess": "评价删除成功!",
+    "deleteFailed": "删除评价失败!",
+    "notFound": "找不到评价!"
+  },
+  "comment": {
+    "createSuccess": "评论创建成功!",
+    "createFailed": "创建评论失败!",
+    "updateSuccess": "评论更新成功!",
+    "updateFailed": "更新评论失败!",
+    "deleteSuccess": "评论删除成功!",
+    "deleteFailed": "删除评论失败!",
+    "notFound": "找不到评论!"
+  },
+  "role": {
+    "createSuccess": "角色创建成功!",
+    "createFailed": "创建角色失败!",
+    "updateSuccess": "角色更新成功!",
+    "updateFailed": "更新角色失败!",
+    "deleteSuccess": "角色删除成功!",
+    "deleteFailed": "删除角色失败!",
+    "notFound": "找不到角色!"
+  },
+  "auth": {
+    "login": {
+      "success": "登录成功!",
+      "failed": "用户名或密码无效!",
+      "unverified": "帐户未验证!请检查您的电子邮件以验证您的帐户!",
+      "blocked": "您的帐户当前被阻止!请联系支持人员!",
+      "inactive": "您的帐户处于非活动状态!请联系支持人员!",
+      "error": "登录时发生错误!请稍后重试!"
+    },
+    "logout": {
+      "success": "登出成功!",
+      "failed": "登出失败!",
+      "error": "登出时发生错误!"
+    },
+    "register": {
+      "success": "注册成功!请检查您的电子邮件以验证您的帐户!",
+      "failed": "注册失败!请稍后重试!",
+      "emailExists": "已存在此电子邮件的用户!",
+      "usernameExists": "已存在此用户名的用户!",
+      "invalidInput": "无效注册输入!"
+    },
+    "verify": {
+      "success": "帐户验证成功!您现在可以登录!",
+      "failed": "验证帐户失败!无效的验证链接!",
+      "expired": "验证链接已过期!请请求新的链接!"
+    },
+    "forgotPassword": {
+      "success": "密码重置链接已发送到您的电子邮件地址!",
+      "failed": "发送密码重置电子邮件失败!请稍后重试!",
+      "notFound": "找不到具有此电子邮件的用户!"
+    },
+    "resetPassword": {
+      "success": "密码重置成功!",
+      "failed": "重置密码失败!无效的重置链接或密码!",
+      "invalidPassword": "密码必须至少包含 8 个字符，并且包含至少一个大写字母、一个小写字母和一个数字!"
+    },
+    "changePassword": {
+      "success": "密码更改成功!",
+      "failed": "更改密码失败!旧密码不正确!",
+      "invalidPassword": "密码必须至少包含 8 个字符，并且包含至少一个大写字母、一个小写字母和一个数字!"
+    }
+  },
+  "general": {
+    "success": "成功!",
+    "failed": "失败!",
+    "unauthorized": "未授权!",
+    "notFound": "找不到!",
+    "invalidInput": "无效输入!"
+  }
+}
