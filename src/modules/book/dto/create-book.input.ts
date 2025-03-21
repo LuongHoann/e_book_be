@@ -6,6 +6,7 @@ import {
   IsInt,
   Min,
   IsOptional,
+  IsUrl,
 } from 'class-validator';
 
 @InputType()
@@ -30,10 +31,10 @@ export class CreateBookInput {
   @IsString()
   isbn: string;
 
-  @Field(() => Int, { nullable: true }) // Page number can be optional
+  @Field(() => Int, { nullable: false })
   @IsInt()
-  @Min(0) // Page number can't be negative
-  page_number: number | null;
+  @Min(0) 
+  page_number: number;
 
   @Field(() => Int, { nullable: true })
   @IsOptional()
@@ -46,4 +47,12 @@ export class CreateBookInput {
   @Min(0)
   views: number;
 
+  @Field(()=> String, {nullable: false})
+  @IsUrl()
+  book_content_url: string;
+
+  
+  @Field(()=>String , {nullable: true})
+  @IsUrl()
+  book_banner_url: string;
 }

@@ -33,5 +33,11 @@ export class BookCountAggregate {
     created_at!: number;
 
     @Field(() => Int, {nullable:false})
+    book_content_url!: number;
+
+    @Field(() => Int, {nullable:false})
+    book_banner_url!: number;
+
+    @Field(() => Int, {nullable:false})
     _all!: number;
 }

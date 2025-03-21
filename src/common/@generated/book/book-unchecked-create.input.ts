@@ -30,8 +30,8 @@ export class bookUncheckedCreateInput {
     @Field(() => String, {nullable:false})
     isbn!: string;
 
-    @Field(() => Int, {nullable:true})
-    page_number?: number;
+    @Field(() => Int, {nullable:false})
+    page_number!: number;
 
     @Field(() => Int, {nullable:true})
     discount_id?: number;
@@ -41,6 +41,12 @@ export class bookUncheckedCreateInput {
 
     @Field(() => Date, {nullable:true})
     created_at?: Date | string;
+
+    @Field(() => String, {nullable:false})
+    book_content_url!: string;
+
+    @Field(() => String, {nullable:true})
+    book_banner_url?: string;
 
     @Field(() => category_bookUncheckedCreateNestedManyWithoutBookInput, {nullable:true})
     category_book?: category_bookUncheckedCreateNestedManyWithoutBookInput;

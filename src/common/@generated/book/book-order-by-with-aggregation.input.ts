@@ -26,8 +26,8 @@ export class bookOrderByWithAggregationInput {
     @Field(() => SortOrder, {nullable:true})
     isbn?: `${SortOrder}`;
 
-    @Field(() => SortOrderInput, {nullable:true})
-    page_number?: SortOrderInput;
+    @Field(() => SortOrder, {nullable:true})
+    page_number?: `${SortOrder}`;
 
     @Field(() => SortOrderInput, {nullable:true})
     discount_id?: SortOrderInput;
@@ -37,6 +37,12 @@ export class bookOrderByWithAggregationInput {
 
     @Field(() => SortOrderInput, {nullable:true})
     created_at?: SortOrderInput;
+
+    @Field(() => SortOrder, {nullable:true})
+    book_content_url?: `${SortOrder}`;
+
+    @Field(() => SortOrderInput, {nullable:true})
+    book_banner_url?: SortOrderInput;
 
     @Field(() => bookCountOrderByAggregateInput, {nullable:true})
     _count?: bookCountOrderByAggregateInput;

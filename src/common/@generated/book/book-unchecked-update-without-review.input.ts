@@ -4,6 +4,7 @@ import { StringFieldUpdateOperationsInput } from '../prisma/string-field-update-
 import { IntFieldUpdateOperationsInput } from '../prisma/int-field-update-operations.input';
 import { NullableIntFieldUpdateOperationsInput } from '../prisma/nullable-int-field-update-operations.input';
 import { NullableDateTimeFieldUpdateOperationsInput } from '../prisma/nullable-date-time-field-update-operations.input';
+import { NullableStringFieldUpdateOperationsInput } from '../prisma/nullable-string-field-update-operations.input';
 import { category_bookUncheckedUpdateManyWithoutBookNestedInput } from '../category-book/category-book-unchecked-update-many-without-book-nested.input';
 import { commentUncheckedUpdateManyWithoutBookNestedInput } from '../comment/comment-unchecked-update-many-without-book-nested.input';
 import { favouriteUncheckedUpdateManyWithoutBookNestedInput } from '../favourite/favourite-unchecked-update-many-without-book-nested.input';
@@ -32,8 +33,8 @@ export class bookUncheckedUpdateWithoutReviewInput {
     @Field(() => StringFieldUpdateOperationsInput, {nullable:true})
     isbn?: StringFieldUpdateOperationsInput;
 
-    @Field(() => NullableIntFieldUpdateOperationsInput, {nullable:true})
-    page_number?: NullableIntFieldUpdateOperationsInput;
+    @Field(() => IntFieldUpdateOperationsInput, {nullable:true})
+    page_number?: IntFieldUpdateOperationsInput;
 
     @Field(() => NullableIntFieldUpdateOperationsInput, {nullable:true})
     discount_id?: NullableIntFieldUpdateOperationsInput;
@@ -43,6 +44,12 @@ export class bookUncheckedUpdateWithoutReviewInput {
 
     @Field(() => NullableDateTimeFieldUpdateOperationsInput, {nullable:true})
     created_at?: NullableDateTimeFieldUpdateOperationsInput;
+
+    @Field(() => StringFieldUpdateOperationsInput, {nullable:true})
+    book_content_url?: StringFieldUpdateOperationsInput;
+
+    @Field(() => NullableStringFieldUpdateOperationsInput, {nullable:true})
+    book_banner_url?: NullableStringFieldUpdateOperationsInput;
 
     @Field(() => category_bookUncheckedUpdateManyWithoutBookNestedInput, {nullable:true})
     category_book?: category_bookUncheckedUpdateManyWithoutBookNestedInput;

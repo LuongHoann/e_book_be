@@ -30,14 +30,20 @@ export class bookCreateWithoutCategory_bookInput {
     @Field(() => String, {nullable:false})
     isbn!: string;
 
-    @Field(() => Int, {nullable:true})
-    page_number?: number;
+    @Field(() => Int, {nullable:false})
+    page_number!: number;
 
     @Field(() => Int, {nullable:false})
     views!: number;
 
     @Field(() => Date, {nullable:true})
     created_at?: Date | string;
+
+    @Field(() => String, {nullable:false})
+    book_content_url!: string;
+
+    @Field(() => String, {nullable:true})
+    book_banner_url?: string;
 
     @Field(() => discount_codeCreateNestedOneWithoutBookInput, {nullable:true})
     @Type(() => discount_codeCreateNestedOneWithoutBookInput)

@@ -23,23 +23,24 @@ import { GraphQLModule } from '@nestjs/graphql';
 import {
   AcceptLanguageResolver,
   GraphQLWebsocketResolver,
-  HeaderResolver,
-  I18nJsonLoader,
   I18nModule,
   QueryResolver,
 } from 'nestjs-i18n';
 import * as path from 'path';
 import { LanguageMiddleware } from './middleware/language/language.middleware';
 import { AuthModule } from './auth/auth.module';
-import { FirebaseModule } from './firebase/firebase.module';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { MailerModule } from '@nestjs-modules/mailer';
 import { EjsAdapter } from '@nestjs-modules/mailer/dist/adapters/ejs.adapter';
 import { ReadingHistoryModule } from './modules/reading_history/reading_history.module';
+import { DmsModule } from './aws s3/dms/dms.module';
+import { JwtModule } from '@nestjs/jwt';
+import { APP_GUARD } from '@nestjs/core';
+import { JwtAuthGuard } from './auth/passport/jwt-auth.guard';
 
 @Module({
   imports: [
-    ConfigModule.forRoot(),
+    ConfigModule.forRoot({isGlobal: true}),
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
       playground: true,
@@ -68,8 +69,8 @@ import { ReadingHistoryModule } from './modules/reading_history/reading_history.
       useFactory: (configService:ConfigService) => ({
         transport: {
           host: "smtp.gmail.com",
-          port: 587,
-          secure: false,
+          port: 465,
+          secure: true,
           tls:{
             ciphers: "SSLv3"
           },
@@ -80,17 +81,27 @@ import { ReadingHistoryModule } from './modules/reading_history/reading_history.
 
         },
         defaults: {
-          from: '"nest-modules" <modules@nestjs.com>',
+          from: '"No Reply" <no-reply@localhost>',
         },
         template: {
-          dir: __dirname + '/templates',
+          dir: path.join(process.cwd() + "/src/common/templates"),
           adapter: new EjsAdapter(),
-          options: {
-            strict: true,
-          },
+          // options: {
+          //   strict: true,
+          // },
         },
       }),
       inject: [ConfigService]
+    }),
+    JwtModule.registerAsync({
+      imports: [ConfigModule],
+      inject: [ConfigService],
+      useFactory: async (configService:ConfigService)=> ({
+        secretOrPrivateKey: configService.get<string>("JWT_SECRET"),
+        signOptions: { 
+          expiresIn: configService.get<string>("JWT_ACCESS_TOKEN_EXPIRES")
+        }
+      }),
     }),
     AreaModule,
     BookModule,
@@ -109,8 +120,14 @@ import { ReadingHistoryModule } from './modules/reading_history/reading_history.
     UsersModule,
     ReadingHistoryModule,
     AuthModule,
-    FirebaseModule
+    DmsModule
   ],
+  providers: [
+    {
+      provide: APP_GUARD,
+      useClass: JwtAuthGuard
+    }
+  ]
 })
 export class AppModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {

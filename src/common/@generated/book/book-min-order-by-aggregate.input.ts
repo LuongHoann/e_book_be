@@ -31,4 +31,10 @@ export class bookMinOrderByAggregateInput {
 
     @Field(() => SortOrder, {nullable:true})
     created_at?: `${SortOrder}`;
+
+    @Field(() => SortOrder, {nullable:true})
+    book_content_url?: `${SortOrder}`;
+
+    @Field(() => SortOrder, {nullable:true})
+    book_banner_url?: `${SortOrder}`;
 }

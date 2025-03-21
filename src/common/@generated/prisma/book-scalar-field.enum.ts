@@ -9,7 +9,9 @@ export enum BookScalarFieldEnum {
     page_number = "page_number",
     discount_id = "discount_id",
     views = "views",
-    created_at = "created_at"
+    created_at = "created_at",
+    book_content_url = "book_content_url",
+    book_banner_url = "book_banner_url"
 }
 
 

@@ -31,4 +31,10 @@ export class BookMaxAggregate {
 
     @Field(() => Date, {nullable:true})
     created_at?: Date | string;
+
+    @Field(() => String, {nullable:true})
+    book_content_url?: string;
+
+    @Field(() => String, {nullable:true})
+    book_banner_url?: string;
 }

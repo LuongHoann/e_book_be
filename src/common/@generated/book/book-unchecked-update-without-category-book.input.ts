@@ -4,6 +4,7 @@ import { StringFieldUpdateOperationsInput } from '../prisma/string-field-update-
 import { IntFieldUpdateOperationsInput } from '../prisma/int-field-update-operations.input';
 import { NullableIntFieldUpdateOperationsInput } from '../prisma/nullable-int-field-update-operations.input';
 import { NullableDateTimeFieldUpdateOperationsInput } from '../prisma/nullable-date-time-field-update-operations.input';
+import { NullableStringFieldUpdateOperationsInput } from '../prisma/nullable-string-field-update-operations.input';
 import { commentUncheckedUpdateManyWithoutBookNestedInput } from '../comment/comment-unchecked-update-many-without-book-nested.input';
 import { favouriteUncheckedUpdateManyWithoutBookNestedInput } from '../favourite/favourite-unchecked-update-many-without-book-nested.input';
 import { language_bookUncheckedUpdateManyWithoutBookNestedInput } from '../language-book/language-book-unchecked-update-many-without-book-nested.input';
@@ -32,8 +33,8 @@ export class bookUncheckedUpdateWithoutCategory_bookInput {
     @Field(() => StringFieldUpdateOperationsInput, {nullable:true})
     isbn?: StringFieldUpdateOperationsInput;
 
-    @Field(() => NullableIntFieldUpdateOperationsInput, {nullable:true})
-    page_number?: NullableIntFieldUpdateOperationsInput;
+    @Field(() => IntFieldUpdateOperationsInput, {nullable:true})
+    page_number?: IntFieldUpdateOperationsInput;
 
     @Field(() => NullableIntFieldUpdateOperationsInput, {nullable:true})
     discount_id?: NullableIntFieldUpdateOperationsInput;
@@ -43,6 +44,12 @@ export class bookUncheckedUpdateWithoutCategory_bookInput {
 
     @Field(() => NullableDateTimeFieldUpdateOperationsInput, {nullable:true})
     created_at?: NullableDateTimeFieldUpdateOperationsInput;
+
+    @Field(() => StringFieldUpdateOperationsInput, {nullable:true})
+    book_content_url?: StringFieldUpdateOperationsInput;
+
+    @Field(() => NullableStringFieldUpdateOperationsInput, {nullable:true})
+    book_banner_url?: NullableStringFieldUpdateOperationsInput;
 
     @Field(() => commentUncheckedUpdateManyWithoutBookNestedInput, {nullable:true})
     comment?: commentUncheckedUpdateManyWithoutBookNestedInput;

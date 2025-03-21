@@ -1,6 +1,8 @@
 import { PrismaService } from "@/provider/prisma/prisma.service";
 import { User } from "./entities/user.entity";
+import { Injectable } from "@nestjs/common";
 
+@Injectable()
 export class UserValidator{ 
     constructor(private prisma: PrismaService){}
 

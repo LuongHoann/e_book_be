@@ -32,8 +32,8 @@ export class book {
     @Field(() => String, {nullable:false})
     isbn!: string;
 
-    @Field(() => Int, {nullable:true})
-    page_number!: number | null;
+    @Field(() => Int, {nullable:false})
+    page_number!: number;
 
     @Field(() => Int, {nullable:true})
     discount_id!: number | null;
@@ -43,6 +43,12 @@ export class book {
 
     @Field(() => Date, {nullable:true})
     created_at!: Date | null;
+
+    @Field(() => String, {nullable:false})
+    book_content_url!: string;
+
+    @Field(() => String, {nullable:true})
+    book_banner_url!: string | null;
 
     @Field(() => discount_code, {nullable:true})
     discount_code?: discount_code | null;

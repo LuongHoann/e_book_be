@@ -5,6 +5,7 @@ import { StringWithAggregatesFilter } from '../prisma/string-with-aggregates-fil
 import { IntWithAggregatesFilter } from '../prisma/int-with-aggregates-filter.input';
 import { IntNullableWithAggregatesFilter } from '../prisma/int-nullable-with-aggregates-filter.input';
 import { DateTimeNullableWithAggregatesFilter } from '../prisma/date-time-nullable-with-aggregates-filter.input';
+import { StringNullableWithAggregatesFilter } from '../prisma/string-nullable-with-aggregates-filter.input';
 
 @InputType()
 export class bookScalarWhereWithAggregatesInput {
@@ -33,8 +34,8 @@ export class bookScalarWhereWithAggregatesInput {
     @Field(() => StringWithAggregatesFilter, {nullable:true})
     isbn?: StringWithAggregatesFilter;
 
-    @Field(() => IntNullableWithAggregatesFilter, {nullable:true})
-    page_number?: IntNullableWithAggregatesFilter;
+    @Field(() => IntWithAggregatesFilter, {nullable:true})
+    page_number?: IntWithAggregatesFilter;
 
     @Field(() => IntNullableWithAggregatesFilter, {nullable:true})
     discount_id?: IntNullableWithAggregatesFilter;
@@ -44,4 +45,10 @@ export class bookScalarWhereWithAggregatesInput {
 
     @Field(() => DateTimeNullableWithAggregatesFilter, {nullable:true})
     created_at?: DateTimeNullableWithAggregatesFilter;
+
+    @Field(() => StringWithAggregatesFilter, {nullable:true})
+    book_content_url?: StringWithAggregatesFilter;
+
+    @Field(() => StringNullableWithAggregatesFilter, {nullable:true})
+    book_banner_url?: StringNullableWithAggregatesFilter;
 }
