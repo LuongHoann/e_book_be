@@ -386,8 +386,8 @@ input CreateUserInput {
   password: String!
   email: String!
   avatar: String
-  code: String!
-  expired_code: String!
+  code: String
+  expired_code: String
   account_status: Boolean!
   role: Int! = 4
 }

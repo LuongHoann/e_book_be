@@ -21,9 +21,14 @@ export class AuthController {
   }
 
   @Public()
-  @Get("mail")
-  async sendMail(){ 
-      this.usersService.sendMail()
-      return "ok"
+  @Post("register")
+  signUp(){ 
+    return 
   }
+  // @Public()
+  // @Get("mail")
+  // async sendMail(){ 
+  //     this.usersService.sendMail()
+  //     return "ok"
+  // }
 }

@@ -1,13 +1,15 @@
-import { HttpStatus, Injectable } from '@nestjs/common';
+import { BadRequestException, HttpStatus, Injectable, InternalServerErrorException } from '@nestjs/common';
 import { CreateUserInput } from './dto/create-user.input';
 import { UpdateUserInput } from './dto/update-user.input';
-import { I18nService } from 'nestjs-i18n';
+import { I18nContext, I18nService } from 'nestjs-i18n';
 import { PrismaService } from '@/provider/prisma/prisma.service';
 import { UserValidator } from './users.validators';
 import { buildResponse } from '@/utils/customResponse';
-import { User } from './entities/user.entity';
-import { hashPassword } from '@/utils/helpers';
+import { generateUserCode, hashPassword } from '@/utils/helpers';
 import { MailerService } from '@nestjs-modules/mailer';
+import dayjs from 'dayjs';
+
+
 
 @Injectable()
 export class UsersService {
@@ -18,35 +20,12 @@ export class UsersService {
     private mailerService: MailerService
   ) {}
   async create(createUserInput: CreateUserInput) {
-    const isEmailExist = await this.validator.isEmailExist(
-      createUserInput.email,
-    );
-    const hashedPassword = await hashPassword(createUserInput.password);
-    if (hashedPassword) {
-      createUserInput.password = hashedPassword;
+    try{ 
+      await this.prisma.user.create({ data: createUserInput })
+      return buildResponse(this.i18n,"index.user.createSuccess",HttpStatus.CREATED)
+    }catch(err){ 
+      throw new InternalServerErrorException("index.user.createFailed")
     }
-    console.table(createUserInput);
-    if (!isEmailExist) {
-      try {
-        await this.prisma.user.create({ data: createUserInput });
-        return buildResponse(
-          this.i18n,
-          'index.user.createSuccess',
-          HttpStatus.CREATED,
-        );
-      } catch (error) {
-        return buildResponse(
-          this.i18n,
-          'index.user.createFailed',
-          HttpStatus.INTERNAL_SERVER_ERROR,
-        );
-      }
-    }
-    return buildResponse(
-      this.i18n,
-      'index.general.failed',
-      HttpStatus.INTERNAL_SERVER_ERROR,
-    );
   }
 
   async findAll() {
@@ -127,36 +106,45 @@ export class UsersService {
     return data;
   }
 
-  // sendMail() {
-  //   try {
-  //      this.mailerService.sendMail({
-  //       to: 'kimochiasalon3@gmail.com',
-  //       subject: 'Register Code for New User',
-  //       template: "register",
-  //       context: { 
-  //         name: "hoan",
-  //         activationCode: 123123
-  //       }
-  //     });
-  //   } catch (error) {
-  //     console.error('SendMail Error:', error);
-  //   }
-  // }
+
+  async hanldeLogin(createUserInput: CreateUserInput){ 
+    const isEmailExist = await this.validator.isEmailExist(createUserInput.email)
+    if(isEmailExist){ 
+      throw new BadRequestException("index.user.createFailed")
+    }
+    const hashedPassword = await hashPassword(createUserInput.password)
+    const activeCode = generateUserCode();
+    console.log("code",activeCode)
+    const timeExpired = dayjs().add(1, 'days').toDate()
+    createUserInput = {  ...createUserInput , password: hashedPassword , code : activeCode , expired_code: timeExpired }
+    return await this.create(createUserInput)
+    
+  }
+
+  sendMail(username: string , email: string ) {
+      this.mailerService.sendMail({
+       to: email,
+       subject: 'Register Code for New User',
+       template: "register",
+       context: { 
+         name: username,
+         activationCode: generateUserCode()
+       }
+     });
+  }
 
 
-  sendMail() {
-    try {
+  resendMail(username: string , email: string ) {
        this.mailerService.sendMail({
-        to: 'kimochiasalon3@gmail.com',
+        to: email,
         subject: 'Forgot Password Code for User',
         template: "forgot",
         context: { 
-          name: "hoan",
-          resetCode: 123123
+          name: username,
+          resetCode: generateUserCode()
         }
       });
-    } catch (error) {
-      console.error('SendMail Error:', error);
     }
-  }
+
+
 }

@@ -4,11 +4,9 @@ import { AuthService } from './auth.service';
 import { UsersModule } from '@/modules/user/users.module';
 import { PassportModule } from '@nestjs/passport';
 import { LocalStrategy } from './passport/local.strategy';
-import { JwtModule, JwtService } from '@nestjs/jwt';
+import { JwtModule } from '@nestjs/jwt';
 import { ConfigService } from '@nestjs/config';
 import { JwtStrategy } from './passport/jwt.strategy';
-import { UsersService } from '@/modules/user/users.service';
-import { PrismaService } from '@/provider/prisma/prisma.service';
 
 @Module({
   imports:[UsersModule ,

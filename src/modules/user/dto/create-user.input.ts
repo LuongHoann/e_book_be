@@ -16,10 +16,10 @@ export class CreateUserInput {
   @Field(()=>String , {nullable: true})
   avatar: string
 
-  @Field(()=>String , { nullable: false })
+  @Field(()=>String , { nullable: true })
   code: string
 
-  @Field(()=>String , { nullable: false})
+  @Field(()=>String , { nullable: true})
   expired_code: Date
 
   @Field(()=> Boolean , { nullable: false})

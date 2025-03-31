@@ -49,14 +49,14 @@ export class DmsController {
     }
 
     @Public()
-    @Get(':key')
-    async getFileUrl(@Param('key') key: string) {
-        return this.dmsService.getFileUrl(key);
+    @Get(':type/:key')
+    async getFileUrl(@Param('key') key: string , @Param('type') type: "pdf-books" | "banners") {
+        return this.dmsService.getCloudFrontUrl(key , type);
     }
 
     @Get('/signed-url/:key')
-    async getSingedUrl(@Param('key') key: string) {
-        return this.dmsService.getPresignedSignedUrl(key);
+    async getSingedUrl(@Param('key') key: string,  @Param('type') type: "pdf-books" | "banners") {
+        return this.dmsService.getSignedCloudFrontUrl(key , type);
     }
 
     @Delete(':key')

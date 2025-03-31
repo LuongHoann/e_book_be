@@ -1,16 +1,13 @@
-import { ConfigService } from '@nestjs/config';
 import { JwtService } from '@nestjs/jwt';
 import { UsersService } from '@/modules/user/users.service';
-import { Injectable, UnauthorizedException } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { comparePassword } from '@/utils/helpers';
-import { MailerService } from '@nestjs-modules/mailer';
 
 @Injectable()
 export class AuthService {
   constructor(
     private usersService: UsersService,
     private jwtService: JwtService,
-    private mailerService: MailerService,
   ) {}
 
 
@@ -21,7 +18,7 @@ export class AuthService {
     const isValidPassword = await comparePassword(pass, user.password);
     if (!isValidPassword) return null;
 
-    const { password, ...rest } = user; // tránh leak password ra ngoài
+    const { password, ...rest } = user; 
     return rest;
   }
 

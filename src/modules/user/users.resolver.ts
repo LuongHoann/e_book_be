@@ -13,7 +13,7 @@ export class UsersResolver {
   @Public()
   @Mutation(() => ResponseAPI<User>)
   createUser(@Args('createUserInput') createUserInput: CreateUserInput) {
-    return this.usersService.create(createUserInput);
+    return this.usersService.hanldeLogin(createUserInput);
   }
 
   @Query(() => ResponseAPI<User>, { name: 'users' })

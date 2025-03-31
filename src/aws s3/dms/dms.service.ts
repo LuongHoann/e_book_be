@@ -1,107 +1,103 @@
+import { Type } from 'class-transformer';
 import { Injectable, InternalServerErrorException } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import {
     S3Client,
     PutObjectCommand,
     DeleteObjectCommand,
-    GetObjectCommand,
 } from '@aws-sdk/client-s3';
 import { v4 as uuidv4 } from 'uuid';
-import { getSignedUrl } from '@aws-sdk/s3-request-presigner';
 import slugify from 'slugify';
+import * as fs from 'fs';
+import { getSignedUrl } from 'aws-cloudfront-sign';
 
 @Injectable()
 export class DmsService {
     private client: S3Client;
-    private bucketName = this.configService.get('S3_BUCKET_NAME');
+    private bucketName?: string;
+    private cloudfrontDomain?: string;
+    private keyPairId?: string;
+    private privateKey: string;
 
     constructor(private readonly configService: ConfigService) {
-        const s3_region = this.configService.get('S3_REGION');
+        const s3Region = this.configService.get('S3_REGION');
+        this.bucketName = this.configService.get('S3_BUCKET_NAME');
+        this.cloudfrontDomain = this.configService.get('CLOUDFRONT_DOMAIN'); 
+        this.keyPairId = this.configService.get('CLOUDFRONT_KEY_PAIR_ID');
+        // const privateKeyPath = this.configService.get('CLOUDFRONT_PRIVATE_KEY_PATH');
 
-        if (!s3_region) {
-            throw new Error('S3_REGION not found in environment variables');
+        if (!s3Region || !this.bucketName || !this.cloudfrontDomain || !this.keyPairId  /*|| !privateKeyPath */ ) {
+            throw new Error('Missing AWS S3 or CloudFront config');
         }
 
+        this.privateKey = /* fs.readFileSync(privateKeyPath, 'utf8') */ this.configService.get<string>('CLOUDFRONT_PRIVATE_KEY') || "";
         this.client = new S3Client({
-            region: s3_region,
+            region: s3Region,
             credentials: {
                 accessKeyId: this.configService.get('S3_ACCESS_KEY') || '',
                 secretAccessKey: this.configService.get('S3_SECRET_ACCESS_KEY') || '',
             },
-            forcePathStyle: true,
         });
     }
-
 
     async uploadSingleFile({
         file,
         isPublic = true,
-      }: {
+    }: {
         file: Express.Multer.File;
         isPublic: boolean;
-      }) {
+    }) {
         try {
-          const key = `${uuidv4()}`;
-          const command = new PutObjectCommand({
-            Bucket: this.bucketName,
-            Key: key,
-            Body: file.buffer,
-            ContentType: file.mimetype,
-            ACL: isPublic ? 'public-read' : 'private',
-     
-            Metadata: {
-                originalName: slugify(file.originalname, { lower: true, strict: true }),            },
-          });
-          
-          const uploadResult = await this.client.send(command);
-     
-      
-          return {
-            url: isPublic
-              ? (await this.getFileUrl(key)).url
-              : (await this.getPresignedSignedUrl(key)).url,
-            key,
-            isPublic,
-          };
-        } catch (error) {
-          throw new InternalServerErrorException(error);
-        }
-      }
-     
-      async getFileUrl(key: string) {
-        return { url: `https://${this.bucketName}.s3.amazonaws.com/${key}` };
-      }
-     
-     
-     async getPresignedSignedUrl(key: string) {
-        try {
-          const command = new GetObjectCommand({
-            Bucket: this.bucketName,
-            Key: key,
-          });
-     
-          const url = await getSignedUrl(this.client, command, {
-            expiresIn: 60 * 60 * 24, // 24 hours
-          });
-     
-          return { url };
-        } catch (error) {
-          throw new InternalServerErrorException(error);
-        }
-      }
+            const key = `uploads/${uuidv4()}-${slugify(file.originalname, { lower: true, strict: true })}`;
+            const command = new PutObjectCommand({
+                Bucket: this.bucketName,
+                Key: key,
+                Body: file.buffer,
+                ContentType: file.mimetype,
+                ACL: isPublic ? 'public-read' : 'private',
+            });
 
-      async deleteFile(key: string) {
-        try {
-          const command = new DeleteObjectCommand({
-            Bucket: this.bucketName,
-            Key: key,
-          });
-     
-          await this.client.send(command);
-     
-          return { message: 'File deleted successfully' };
+            await this.client.send(command);
+
+            return {
+              data: "ok"
+                // data: isPublic ? this.getCloudFrontUrl(key) : this.getSignedCloudFrontUrl(key),
+                // key,
+                // isPublic,
+            };
         } catch (error) {
-          throw new InternalServerErrorException(error);
+            throw new InternalServerErrorException(error);
         }
-      }
+    }
+
+    getCloudFrontUrl(key: string , type : string) {
+        return `${this.cloudfrontDomain}/${type}/${key}`;
+    }
+
+    getSignedCloudFrontUrl(key: string, type: any,expiresInSeconds = 60 * 60 * 24) {
+        const expires = Math.floor(Date.now() / 1000) + expiresInSeconds;
+        if(!this.keyPairId){ 
+          throw new InternalServerErrorException()
+        }
+        return getSignedUrl(`${this.cloudfrontDomain}/${type}/${key}`, {
+            keypairId: this.keyPairId,
+            privateKeyString: this.privateKey,
+            expireTime: expires,
+        });
+    }
+
+    async deleteFile(key: string) {
+        try {
+            const command = new DeleteObjectCommand({
+                Bucket: this.bucketName,
+                Key: key,
+            });
+
+            await this.client.send(command);
+
+            return { message: 'File deleted successfully' };
+        } catch (error) {
+            throw new InternalServerErrorException(error);
+        }
+    }
 }

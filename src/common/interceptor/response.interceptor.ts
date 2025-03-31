@@ -3,74 +3,68 @@ import {
   NestInterceptor,
   ExecutionContext,
   CallHandler,
-  HttpException,
-  HttpStatus,
 } from '@nestjs/common';
-import { Observable, throwError } from 'rxjs';
-import { catchError, map } from 'rxjs/operators';
- 
- type Response<T> = {
-  status: boolean;
-  statusCode: number;
-  path: string;
-  message?: string;
-  data: T;
-  timestamp: string;
-  meta?: PaginationMeta;
-}
+import { GqlExecutionContext } from '@nestjs/graphql';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { I18nService } from 'nestjs-i18n';
+import { translate } from '@/utils/translate';
 
 interface PaginationMeta {
   total: number;
   startCursor?: string;
   endCursor?: string;
 }
- 
+
+interface ResponseFormat<T> {
+  status?: boolean;
+  statusCode?: number;
+  path?: string;
+  message?: string;
+  data: T;
+  timestamp?: string;
+  meta?: PaginationMeta;
+}
+
 @Injectable()
-export class ResponseInterceptor<T> implements NestInterceptor<T, Response<T>> {
- 
-  intercept(
-    context: ExecutionContext,
-    next: CallHandler,
-  ): Observable<Response<T>> {
+export class ResponseInterceptor<T> implements NestInterceptor<T, ResponseFormat<T>> {
+
+  constructor(private readonly i18n: I18nService){}
+
+  intercept(context: ExecutionContext, next: CallHandler): Observable<any> {
+    const ctxType = context.getType<'http' | 'graphql' | string>();
+
     return next.handle().pipe(
-      map((res: unknown) => this.responseHandler(res, context)),
-      catchError((err: HttpException) =>
-        throwError(() => this.errorHandler(err, context)),
-      ),
-    );
+      map((res: any) => {
+        if (ctxType === 'http') {
+          return this.buildHttpResponse(res, context);
+        } else if (ctxType === 'graphql') {
+          return this.buildGraphqlResponse(res, context);
+        } else {
+          return res;
+        }
+      }),
+  )}
+
+  private buildGraphqlResponse(res: any , context: ExecutionContext){
+    const gqlCtx = GqlExecutionContext.create(context);
+    const response = gqlCtx.getContext()?.res
+    // const mess = translate(this.i18n,response?.)
+
+
   }
- 
-  errorHandler(exception: HttpException, context: ExecutionContext) {
-    const ctx = context.switchToHttp();
-    const response = ctx.getResponse();
-    const request = ctx.getRequest();
- 
-    const status =
-      exception instanceof HttpException
-        ? exception.getStatus()
-        : HttpStatus.INTERNAL_SERVER_ERROR;
- 
-    response.status(status).json({
-      status: false,
-      statusCode: status,
-      path: request.url,
-      message: exception.message,
-      result: exception,
-      timestamp: new Date().toISOString(),
-    });
-  }
- 
-  responseHandler(res: any, context: ExecutionContext) {
-    const ctx = context.switchToHttp();
-    const response = ctx.getResponse();
-    const request = ctx.getRequest();
-    const statusCode = response.statusCode;
- 
+
+  private buildHttpResponse(res: any, context: ExecutionContext): ResponseFormat<T> {
+    const httpCtx = context.switchToHttp();
+    const request = httpCtx.getRequest();
+    const response = httpCtx.getResponse();
+
     return {
       status: true,
-      path: request.url,
-      statusCode,
-      data: res,
+      message: res?.message || 'Success',
+      path: request?.url,
+      statusCode: response?.statusCode || 200,
+      data: res?.data || res,
       timestamp: new Date().toISOString(),
     };
   }

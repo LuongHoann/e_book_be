@@ -35,8 +35,9 @@ import { EjsAdapter } from '@nestjs-modules/mailer/dist/adapters/ejs.adapter';
 import { ReadingHistoryModule } from './modules/reading_history/reading_history.module';
 import { DmsModule } from './aws s3/dms/dms.module';
 import { JwtModule } from '@nestjs/jwt';
-import { APP_GUARD } from '@nestjs/core';
+import { APP_GUARD, APP_INTERCEPTOR } from '@nestjs/core';
 import { JwtAuthGuard } from './auth/passport/jwt-auth.guard';
+import { ResponseInterceptor } from './common/interceptor/response.interceptor';
 
 @Module({
   imports: [
@@ -126,6 +127,10 @@ import { JwtAuthGuard } from './auth/passport/jwt-auth.guard';
     {
       provide: APP_GUARD,
       useClass: JwtAuthGuard
+    },
+    {
+      provide: APP_INTERCEPTOR,
+      useClass: ResponseInterceptor
     }
   ]
 })
