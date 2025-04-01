@@ -23,5 +23,5 @@ export class discount_codeUncheckedUpdateManyInput {
     discount_value_percent?: NullableIntFieldUpdateOperationsInput;
 
     @Field(() => NullableStringFieldUpdateOperationsInput, {nullable:true})
-    area_name?: NullableStringFieldUpdateOperationsInput;
+    area_code?: NullableStringFieldUpdateOperationsInput;
 }

@@ -4,7 +4,13 @@ import { ObjectType, Field } from '@nestjs/graphql';
 @ObjectType('area')
 export class Area {
   @Field(() => String, { nullable: false })
-  area_name: string;
+  name: string;
+
+  @Field(()=>String , {nullable:false})
+  code: string;
+
+  @Field(()=>String, {nullable: true})
+  description: string | null;
 
   @Field(()=>[DiscountCode], { nullable : "itemsAndList"})
   discountCodes?: DiscountCode[];

@@ -5,5 +5,12 @@ import { IsNotEmpty } from 'class-validator';
 export class CreateAreaInput {
   @Field(() => String)
   @IsNotEmpty()
-  area_name: string;
+  name: string;
+
+  @Field(()=> String)
+  @IsNotEmpty()
+  code:string;
+
+  @Field(()=>String , {nullable: false})
+  description:string;
 }

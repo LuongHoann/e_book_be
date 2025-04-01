@@ -1,6 +1,7 @@
 import { Field } from '@nestjs/graphql';
 import { InputType } from '@nestjs/graphql';
 import { SortOrder } from '../prisma/sort-order.enum';
+import { SortOrderInput } from '../prisma/sort-order.input';
 import { discount_codeOrderByRelationAggregateInput } from '../discount-code/discount-code-order-by-relation-aggregate.input';
 import { Type } from 'class-transformer';
 
@@ -8,7 +9,13 @@ import { Type } from 'class-transformer';
 export class areaOrderByWithRelationInput {
 
     @Field(() => SortOrder, {nullable:true})
-    area_name?: `${SortOrder}`;
+    name?: `${SortOrder}`;
+
+    @Field(() => SortOrder, {nullable:true})
+    code?: `${SortOrder}`;
+
+    @Field(() => SortOrderInput, {nullable:true})
+    description?: SortOrderInput;
 
     @Field(() => discount_codeOrderByRelationAggregateInput, {nullable:true})
     @Type(() => discount_codeOrderByRelationAggregateInput)

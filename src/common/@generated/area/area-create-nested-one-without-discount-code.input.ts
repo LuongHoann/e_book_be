@@ -19,5 +19,5 @@ export class areaCreateNestedOneWithoutDiscount_codeInput {
 
     @Field(() => areaWhereUniqueInput, {nullable:true})
     @Type(() => areaWhereUniqueInput)
-    connect?: Prisma.AtLeast<areaWhereUniqueInput, 'area_name'>;
+    connect?: Prisma.AtLeast<areaWhereUniqueInput, 'code'>;
 }

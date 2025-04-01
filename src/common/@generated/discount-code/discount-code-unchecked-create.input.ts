@@ -26,7 +26,7 @@ export class discount_codeUncheckedCreateInput {
     discount_value_percent?: number;
 
     @Field(() => String, {nullable:true})
-    area_name?: string;
+    area_code?: string;
 
     @Field(() => bookUncheckedCreateNestedManyWithoutDiscount_codeInput, {nullable:true})
     @Type(() => bookUncheckedCreateNestedManyWithoutDiscount_codeInput)

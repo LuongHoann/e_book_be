@@ -18,7 +18,7 @@ export class areaAggregateArgs {
     orderBy?: Array<areaOrderByWithRelationInput>;
 
     @Field(() => areaWhereUniqueInput, {nullable:true})
-    cursor?: Prisma.AtLeast<areaWhereUniqueInput, 'area_name'>;
+    cursor?: Prisma.AtLeast<areaWhereUniqueInput, 'code'>;
 
     @Field(() => Int, {nullable:true})
     take?: number;

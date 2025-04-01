@@ -24,7 +24,7 @@ export class discount_code {
     discount_value_percent!: number | null;
 
     @Field(() => String, {nullable:true})
-    area_name!: string | null;
+    area_code!: string | null;
 
     @Field(() => [book], {nullable:true})
     book?: Array<book>;

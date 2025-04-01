@@ -23,7 +23,7 @@ export class discount_codeOrderByWithRelationInput {
     discount_value_percent?: SortOrderInput;
 
     @Field(() => SortOrderInput, {nullable:true})
-    area_name?: SortOrderInput;
+    area_code?: SortOrderInput;
 
     @Field(() => bookOrderByRelationAggregateInput, {nullable:true})
     @Type(() => bookOrderByRelationAggregateInput)

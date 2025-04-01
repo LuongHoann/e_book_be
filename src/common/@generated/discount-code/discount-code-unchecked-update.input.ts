@@ -24,7 +24,7 @@ export class discount_codeUncheckedUpdateInput {
     discount_value_percent?: NullableIntFieldUpdateOperationsInput;
 
     @Field(() => NullableStringFieldUpdateOperationsInput, {nullable:true})
-    area_name?: NullableStringFieldUpdateOperationsInput;
+    area_code?: NullableStringFieldUpdateOperationsInput;
 
     @Field(() => bookUncheckedUpdateManyWithoutDiscount_codeNestedInput, {nullable:true})
     @Type(() => bookUncheckedUpdateManyWithoutDiscount_codeNestedInput)

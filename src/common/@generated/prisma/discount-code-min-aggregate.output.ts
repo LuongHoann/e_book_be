@@ -20,5 +20,5 @@ export class Discount_codeMinAggregate {
     discount_value_percent?: number;
 
     @Field(() => String, {nullable:true})
-    area_name?: string;
+    area_code?: string;
 }

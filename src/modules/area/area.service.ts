@@ -1,3 +1,4 @@
+import { area } from './../../common/@generated/area/area.model';
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { CreateAreaInput } from './dto/create-area.input';
 import { UpdateAreaInput } from './dto/update-area.input';
@@ -19,7 +20,7 @@ export class AreaService {
   async create(createAreaInput: CreateAreaInput): Promise<ResponseAPI<Area>> {
     try {
       const isAreaExist = await this.validator.isAreaExist(
-        createAreaInput.area_name,
+        createAreaInput.name,
       );
       if (!isAreaExist) {
         return buildResponse(
@@ -58,10 +59,9 @@ export class AreaService {
   }
 
   async update(
-    areaName: string,
     updateAreaInput: UpdateAreaInput,
   ): Promise<ResponseAPI<Area>> {
-    const isAreaExist = await this.validator.isAreaExist(areaName);
+    const isAreaExist = await this.validator.isAreaExist(updateAreaInput.code);
     if (!isAreaExist) {
       return buildResponse(
         this.i18n,
@@ -72,7 +72,7 @@ export class AreaService {
     try {
       await this.prisma.area.update({
         data: updateAreaInput,
-        where: { area_name: areaName },
+        where: { code: updateAreaInput.code },
       });
       return buildResponse(
         this.i18n,
@@ -88,8 +88,8 @@ export class AreaService {
     }
   }
 
-  async remove(areaName: string): Promise<ResponseAPI<Area>> {
-    const isAreaExist = await this.validator.isAreaExist(areaName);
+  async remove(areaCode: string): Promise<ResponseAPI<Area>> {
+    const isAreaExist = await this.validator.isAreaExist(areaCode);
 
     if (!isAreaExist) {
       return buildResponse(
@@ -99,7 +99,7 @@ export class AreaService {
       );
     }
     try {
-      await this.prisma.area.delete({ where: { area_name: areaName } });
+      await this.prisma.area.delete({ where: { code: areaCode } });
       return buildResponse(this.i18n, 'index.area.deleteSuccess', 0);
     } catch (error) {
       return buildResponse(

@@ -1,7 +1,9 @@
 import { registerEnumType } from '@nestjs/graphql';
 
 export enum AreaScalarFieldEnum {
-    area_name = "area_name"
+    name = "name",
+    code = "code",
+    description = "description"
 }
 
 

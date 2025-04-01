@@ -5,7 +5,7 @@ export enum Discount_codeScalarFieldEnum {
     discount_code_name = "discount_code_name",
     discount_value = "discount_value",
     discount_value_percent = "discount_value_percent",
-    area_name = "area_name"
+    area_code = "area_code"
 }
 
 

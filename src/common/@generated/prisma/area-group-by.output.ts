@@ -8,7 +8,13 @@ import { AreaMaxAggregate } from './area-max-aggregate.output';
 export class AreaGroupBy {
 
     @Field(() => String, {nullable:false})
-    area_name!: string;
+    name!: string;
+
+    @Field(() => String, {nullable:false})
+    code!: string;
+
+    @Field(() => String, {nullable:true})
+    description?: string;
 
     @Field(() => AreaCountAggregate, {nullable:true})
     _count?: AreaCountAggregate;

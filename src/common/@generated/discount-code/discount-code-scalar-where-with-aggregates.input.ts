@@ -35,5 +35,5 @@ export class discount_codeScalarWhereWithAggregatesInput {
     discount_value_percent?: IntNullableWithAggregatesFilter;
 
     @Field(() => StringNullableWithAggregatesFilter, {nullable:true})
-    area_name?: StringNullableWithAggregatesFilter;
+    area_code?: StringNullableWithAggregatesFilter;
 }

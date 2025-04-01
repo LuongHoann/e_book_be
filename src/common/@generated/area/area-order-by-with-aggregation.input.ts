@@ -1,6 +1,7 @@
 import { Field } from '@nestjs/graphql';
 import { InputType } from '@nestjs/graphql';
 import { SortOrder } from '../prisma/sort-order.enum';
+import { SortOrderInput } from '../prisma/sort-order.input';
 import { areaCountOrderByAggregateInput } from './area-count-order-by-aggregate.input';
 import { areaMaxOrderByAggregateInput } from './area-max-order-by-aggregate.input';
 import { areaMinOrderByAggregateInput } from './area-min-order-by-aggregate.input';
@@ -9,7 +10,13 @@ import { areaMinOrderByAggregateInput } from './area-min-order-by-aggregate.inpu
 export class areaOrderByWithAggregationInput {
 
     @Field(() => SortOrder, {nullable:true})
-    area_name?: `${SortOrder}`;
+    name?: `${SortOrder}`;
+
+    @Field(() => SortOrder, {nullable:true})
+    code?: `${SortOrder}`;
+
+    @Field(() => SortOrderInput, {nullable:true})
+    description?: SortOrderInput;
 
     @Field(() => areaCountOrderByAggregateInput, {nullable:true})
     _count?: areaCountOrderByAggregateInput;

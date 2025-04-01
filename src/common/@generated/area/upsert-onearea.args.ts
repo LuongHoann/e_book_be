@@ -11,7 +11,7 @@ export class UpsertOneareaArgs {
 
     @Field(() => areaWhereUniqueInput, {nullable:false})
     @Type(() => areaWhereUniqueInput)
-    where!: Prisma.AtLeast<areaWhereUniqueInput, 'area_name'>;
+    where!: Prisma.AtLeast<areaWhereUniqueInput, 'code'>;
 
     @Field(() => areaCreateInput, {nullable:false})
     @Type(() => areaCreateInput)

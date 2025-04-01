@@ -42,7 +42,7 @@ export class DmsService {
 
     async uploadSingleFile({
         file,
-        isPublic = true,
+        isPublic = false,
     }: {
         file: Express.Multer.File;
         isPublic: boolean;
@@ -60,17 +60,15 @@ export class DmsService {
             await this.client.send(command);
 
             return {
-              data: "ok"
-                // data: isPublic ? this.getCloudFrontUrl(key) : this.getSignedCloudFrontUrl(key),
-                // key,
-                // isPublic,
+                key,
+                isPublic,
             };
         } catch (error) {
             throw new InternalServerErrorException(error);
         }
     }
 
-    getCloudFrontUrl(key: string , type : string) {
+    getCloudFrontUrl(key: string , type : fileType) {
         return `${this.cloudfrontDomain}/${type}/${key}`;
     }
 

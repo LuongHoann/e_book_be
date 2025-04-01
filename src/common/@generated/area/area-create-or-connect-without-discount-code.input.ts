@@ -10,7 +10,7 @@ export class areaCreateOrConnectWithoutDiscount_codeInput {
 
     @Field(() => areaWhereUniqueInput, {nullable:false})
     @Type(() => areaWhereUniqueInput)
-    where!: Prisma.AtLeast<areaWhereUniqueInput, 'area_name'>;
+    where!: Prisma.AtLeast<areaWhereUniqueInput, 'code'>;
 
     @Field(() => areaCreateWithoutDiscount_codeInput, {nullable:false})
     @Type(() => areaCreateWithoutDiscount_codeInput)

@@ -26,7 +26,7 @@ export class discount_codeOrderByWithAggregationInput {
     discount_value_percent?: SortOrderInput;
 
     @Field(() => SortOrderInput, {nullable:true})
-    area_name?: SortOrderInput;
+    area_code?: SortOrderInput;
 
     @Field(() => discount_codeCountOrderByAggregateInput, {nullable:true})
     @Type(() => discount_codeCountOrderByAggregateInput)

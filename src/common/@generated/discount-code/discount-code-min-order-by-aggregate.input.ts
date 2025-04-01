@@ -18,5 +18,5 @@ export class discount_codeMinOrderByAggregateInput {
     discount_value_percent?: `${SortOrder}`;
 
     @Field(() => SortOrder, {nullable:true})
-    area_name?: `${SortOrder}`;
+    area_code?: `${SortOrder}`;
 }

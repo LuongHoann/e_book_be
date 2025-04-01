@@ -13,7 +13,9 @@ datasource db {
 }
 
 model area {
-  area_name     String          @id @db.VarChar(30)
+  name     String          @db.VarChar(30)
+  code     String          @id @db.VarChar(3)
+  description String?       @db.Text
   discount_code discount_code[]
 }
 
@@ -70,9 +72,9 @@ model discount_code {
   discount_code_name     String?  @db.VarChar(20)
   discount_value         Decimal? @db.Decimal(5, 2)
   discount_value_percent Int?
-  area_name              String?  @db.VarChar(30)
+  area_code              String?  @db.VarChar(3)
   book                   book[]
-  area                   area?    @relation(fields: [area_name], references: [area_name], onDelete: NoAction, onUpdate: NoAction)
+  area                   area?    @relation(fields: [area_code], references: [code], onDelete: NoAction, onUpdate: NoAction)
 }
 
 model favourite {

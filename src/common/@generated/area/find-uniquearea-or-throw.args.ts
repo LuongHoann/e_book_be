@@ -9,5 +9,5 @@ export class FindUniqueareaOrThrowArgs {
 
     @Field(() => areaWhereUniqueInput, {nullable:false})
     @Type(() => areaWhereUniqueInput)
-    where!: Prisma.AtLeast<areaWhereUniqueInput, 'area_name'>;
+    where!: Prisma.AtLeast<areaWhereUniqueInput, 'code'>;
 }

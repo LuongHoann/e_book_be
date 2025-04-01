@@ -21,7 +21,7 @@ export class AreaResolver {
 
   @Mutation(() => ResponseAPI<Area>)
   updateArea(@Args('updateAreaInput') updateAreaInput: UpdateAreaInput) {
-    return this.areaService.update(updateAreaInput.area_name, updateAreaInput);
+    return this.areaService.update(updateAreaInput);
   }
 
   @Mutation(() => ResponseAPI<Area>)

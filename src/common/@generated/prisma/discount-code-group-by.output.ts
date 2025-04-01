@@ -25,7 +25,7 @@ export class Discount_codeGroupBy {
     discount_value_percent?: number;
 
     @Field(() => String, {nullable:true})
-    area_name?: string;
+    area_code?: string;
 
     @Field(() => Discount_codeCountAggregate, {nullable:true})
     _count?: Discount_codeCountAggregate;
