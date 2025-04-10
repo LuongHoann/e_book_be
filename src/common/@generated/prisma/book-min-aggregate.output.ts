@@ -11,9 +11,6 @@ export class BookMinAggregate {
     @Field(() => String, {nullable:true})
     book_title?: string;
 
-    @Field(() => Int, {nullable:true})
-    pushlied_at?: number;
-
     @Field(() => String, {nullable:true})
     author?: string;
 
@@ -24,17 +21,23 @@ export class BookMinAggregate {
     page_number?: number;
 
     @Field(() => Int, {nullable:true})
-    discount_id?: number;
-
-    @Field(() => Int, {nullable:true})
     views?: number;
 
     @Field(() => Date, {nullable:true})
     created_at?: Date | string;
 
     @Field(() => String, {nullable:true})
-    book_content_url?: string;
+    banner_key?: string;
 
     @Field(() => String, {nullable:true})
-    book_banner_url?: string;
+    book_key?: string;
+
+    @Field(() => Int, {nullable:true})
+    published_at?: number;
+
+    @Field(() => String, {nullable:true})
+    description?: string;
+
+    @Field(() => String, {nullable:true})
+    status?: string;
 }

@@ -2,7 +2,6 @@ import { Field } from '@nestjs/graphql';
 import { InputType } from '@nestjs/graphql';
 import { StringFieldUpdateOperationsInput } from '../prisma/string-field-update-operations.input';
 import { IntFieldUpdateOperationsInput } from '../prisma/int-field-update-operations.input';
-import { NullableIntFieldUpdateOperationsInput } from '../prisma/nullable-int-field-update-operations.input';
 import { NullableDateTimeFieldUpdateOperationsInput } from '../prisma/nullable-date-time-field-update-operations.input';
 import { NullableStringFieldUpdateOperationsInput } from '../prisma/nullable-string-field-update-operations.input';
 
@@ -15,9 +14,6 @@ export class bookUncheckedUpdateManyInput {
     @Field(() => StringFieldUpdateOperationsInput, {nullable:true})
     book_title?: StringFieldUpdateOperationsInput;
 
-    @Field(() => IntFieldUpdateOperationsInput, {nullable:true})
-    pushlied_at?: IntFieldUpdateOperationsInput;
-
     @Field(() => StringFieldUpdateOperationsInput, {nullable:true})
     author?: StringFieldUpdateOperationsInput;
 
@@ -27,18 +23,24 @@ export class bookUncheckedUpdateManyInput {
     @Field(() => IntFieldUpdateOperationsInput, {nullable:true})
     page_number?: IntFieldUpdateOperationsInput;
 
-    @Field(() => NullableIntFieldUpdateOperationsInput, {nullable:true})
-    discount_id?: NullableIntFieldUpdateOperationsInput;
-
     @Field(() => IntFieldUpdateOperationsInput, {nullable:true})
     views?: IntFieldUpdateOperationsInput;
 
     @Field(() => NullableDateTimeFieldUpdateOperationsInput, {nullable:true})
     created_at?: NullableDateTimeFieldUpdateOperationsInput;
 
+    @Field(() => NullableStringFieldUpdateOperationsInput, {nullable:true})
+    banner_key?: NullableStringFieldUpdateOperationsInput;
+
     @Field(() => StringFieldUpdateOperationsInput, {nullable:true})
-    book_content_url?: StringFieldUpdateOperationsInput;
+    book_key?: StringFieldUpdateOperationsInput;
+
+    @Field(() => IntFieldUpdateOperationsInput, {nullable:true})
+    published_at?: IntFieldUpdateOperationsInput;
 
     @Field(() => NullableStringFieldUpdateOperationsInput, {nullable:true})
-    book_banner_url?: NullableStringFieldUpdateOperationsInput;
+    description?: NullableStringFieldUpdateOperationsInput;
+
+    @Field(() => StringFieldUpdateOperationsInput, {nullable:true})
+    status?: StringFieldUpdateOperationsInput;
 }

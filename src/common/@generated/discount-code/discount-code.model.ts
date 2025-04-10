@@ -4,7 +4,7 @@ import { ID } from '@nestjs/graphql';
 import { GraphQLDecimal } from 'prisma-graphql-type-decimal';
 import { Decimal } from '@prisma/client/runtime/library';
 import { Int } from '@nestjs/graphql';
-import { book } from '../book/book.model';
+import { book_discount } from '../book-discount/book-discount.model';
 import { area } from '../area/area.model';
 import { Discount_codeCount } from '../prisma/discount-code-count.output';
 
@@ -26,8 +26,8 @@ export class discount_code {
     @Field(() => String, {nullable:true})
     area_code!: string | null;
 
-    @Field(() => [book], {nullable:true})
-    book?: Array<book>;
+    @Field(() => [book_discount], {nullable:true})
+    book_discount?: Array<book_discount>;
 
     @Field(() => area, {nullable:true})
     area?: area | null;

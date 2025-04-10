@@ -6,13 +6,13 @@ import { Int } from '@nestjs/graphql';
 export class AreaCountAggregate {
 
     @Field(() => Int, {nullable:false})
-    name!: number;
-
-    @Field(() => Int, {nullable:false})
     code!: number;
 
     @Field(() => Int, {nullable:false})
     description!: number;
+
+    @Field(() => Int, {nullable:false})
+    name!: number;
 
     @Field(() => Int, {nullable:false})
     _all!: number;

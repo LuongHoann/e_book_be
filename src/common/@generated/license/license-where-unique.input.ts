@@ -4,7 +4,6 @@ import { licenseWhereInput } from './license-where.input';
 import { StringNullableFilter } from '../prisma/string-nullable-filter.input';
 import { UuidNullableFilter } from '../prisma/uuid-nullable-filter.input';
 import { BookNullableScalarRelationFilter } from '../prisma/book-nullable-scalar-relation-filter.input';
-import { Type } from 'class-transformer';
 import { License_typeNullableScalarRelationFilter } from '../prisma/license-type-nullable-scalar-relation-filter.input';
 import { License_ownershipListRelationFilter } from '../prisma/license-ownership-list-relation-filter.input';
 
@@ -33,7 +32,6 @@ export class licenseWhereUniqueInput {
     license_type_id?: UuidNullableFilter;
 
     @Field(() => BookNullableScalarRelationFilter, {nullable:true})
-    @Type(() => BookNullableScalarRelationFilter)
     book?: BookNullableScalarRelationFilter;
 
     @Field(() => License_typeNullableScalarRelationFilter, {nullable:true})

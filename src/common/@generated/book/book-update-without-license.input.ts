@@ -4,7 +4,7 @@ import { StringFieldUpdateOperationsInput } from '../prisma/string-field-update-
 import { IntFieldUpdateOperationsInput } from '../prisma/int-field-update-operations.input';
 import { NullableDateTimeFieldUpdateOperationsInput } from '../prisma/nullable-date-time-field-update-operations.input';
 import { NullableStringFieldUpdateOperationsInput } from '../prisma/nullable-string-field-update-operations.input';
-import { discount_codeUpdateOneWithoutBookNestedInput } from '../discount-code/discount-code-update-one-without-book-nested.input';
+import { book_discountUpdateManyWithoutBookNestedInput } from '../book-discount/book-discount-update-many-without-book-nested.input';
 import { Type } from 'class-transformer';
 import { category_bookUpdateManyWithoutBookNestedInput } from '../category-book/category-book-update-many-without-book-nested.input';
 import { commentUpdateManyWithoutBookNestedInput } from '../comment/comment-update-many-without-book-nested.input';
@@ -24,9 +24,6 @@ export class bookUpdateWithoutLicenseInput {
     @Field(() => StringFieldUpdateOperationsInput, {nullable:true})
     book_title?: StringFieldUpdateOperationsInput;
 
-    @Field(() => IntFieldUpdateOperationsInput, {nullable:true})
-    pushlied_at?: IntFieldUpdateOperationsInput;
-
     @Field(() => StringFieldUpdateOperationsInput, {nullable:true})
     author?: StringFieldUpdateOperationsInput;
 
@@ -42,15 +39,24 @@ export class bookUpdateWithoutLicenseInput {
     @Field(() => NullableDateTimeFieldUpdateOperationsInput, {nullable:true})
     created_at?: NullableDateTimeFieldUpdateOperationsInput;
 
+    @Field(() => NullableStringFieldUpdateOperationsInput, {nullable:true})
+    banner_key?: NullableStringFieldUpdateOperationsInput;
+
     @Field(() => StringFieldUpdateOperationsInput, {nullable:true})
-    book_content_url?: StringFieldUpdateOperationsInput;
+    book_key?: StringFieldUpdateOperationsInput;
+
+    @Field(() => IntFieldUpdateOperationsInput, {nullable:true})
+    published_at?: IntFieldUpdateOperationsInput;
 
     @Field(() => NullableStringFieldUpdateOperationsInput, {nullable:true})
-    book_banner_url?: NullableStringFieldUpdateOperationsInput;
+    description?: NullableStringFieldUpdateOperationsInput;
 
-    @Field(() => discount_codeUpdateOneWithoutBookNestedInput, {nullable:true})
-    @Type(() => discount_codeUpdateOneWithoutBookNestedInput)
-    discount_code?: discount_codeUpdateOneWithoutBookNestedInput;
+    @Field(() => StringFieldUpdateOperationsInput, {nullable:true})
+    status?: StringFieldUpdateOperationsInput;
+
+    @Field(() => book_discountUpdateManyWithoutBookNestedInput, {nullable:true})
+    @Type(() => book_discountUpdateManyWithoutBookNestedInput)
+    book_discount?: book_discountUpdateManyWithoutBookNestedInput;
 
     @Field(() => category_bookUpdateManyWithoutBookNestedInput, {nullable:true})
     category_book?: category_bookUpdateManyWithoutBookNestedInput;

@@ -6,5 +6,5 @@ import { Int } from '@nestjs/graphql';
 export class Discount_codeCount {
 
     @Field(() => Int, {nullable:false})
-    book!: number;
+    book_discount!: number;
 }

@@ -10,13 +10,13 @@ import { areaMinOrderByAggregateInput } from './area-min-order-by-aggregate.inpu
 export class areaOrderByWithAggregationInput {
 
     @Field(() => SortOrder, {nullable:true})
-    name?: `${SortOrder}`;
-
-    @Field(() => SortOrder, {nullable:true})
     code?: `${SortOrder}`;
 
     @Field(() => SortOrderInput, {nullable:true})
     description?: SortOrderInput;
+
+    @Field(() => SortOrder, {nullable:true})
+    name?: `${SortOrder}`;
 
     @Field(() => areaCountOrderByAggregateInput, {nullable:true})
     _count?: areaCountOrderByAggregateInput;

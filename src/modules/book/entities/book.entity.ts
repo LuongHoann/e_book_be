@@ -16,8 +16,8 @@ export class Book {
   @Field(() => String, { nullable: false })
   book_title: string;
 
-  @Field(() => Int, { nullable: false })
-  pushlied_at: number;
+  @Field(() => String, { nullable: false })
+  published_at: Date;
 
   @Field(() => String, { nullable: false })
   author: string;
@@ -29,16 +29,19 @@ export class Book {
   page_number: number;
 
   @Field(() => Int, { nullable: true })
-  discount_id: number | null;
-
-  @Field(() => Int, { nullable: true })
   views: number;
 
   @Field(() => String, { nullable: false })
-  book_content_url: string;
+  book_key: string;
 
   @Field(() => String, { nullable: true })
-  book_banner_url: string | null;
+  banner_key: string | null;
+
+  @Field(()=> String,{nullable: true})
+  description: string | null;
+
+  @Field(() => String, { nullable: false })
+  status: string; /* draft | published */
 
   @Field(() => [Language], { nullable: 'itemsAndList' })
   language_book?: Language[];

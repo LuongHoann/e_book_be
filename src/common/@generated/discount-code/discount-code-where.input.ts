@@ -5,7 +5,7 @@ import { IntFilter } from '../prisma/int-filter.input';
 import { StringNullableFilter } from '../prisma/string-nullable-filter.input';
 import { DecimalNullableFilter } from '../prisma/decimal-nullable-filter.input';
 import { IntNullableFilter } from '../prisma/int-nullable-filter.input';
-import { BookListRelationFilter } from '../prisma/book-list-relation-filter.input';
+import { Book_discountListRelationFilter } from '../prisma/book-discount-list-relation-filter.input';
 import { AreaNullableScalarRelationFilter } from '../prisma/area-nullable-scalar-relation-filter.input';
 
 @InputType()
@@ -39,9 +39,9 @@ export class discount_codeWhereInput {
     @Field(() => StringNullableFilter, {nullable:true})
     area_code?: StringNullableFilter;
 
-    @Field(() => BookListRelationFilter, {nullable:true})
-    @Type(() => BookListRelationFilter)
-    book?: BookListRelationFilter;
+    @Field(() => Book_discountListRelationFilter, {nullable:true})
+    @Type(() => Book_discountListRelationFilter)
+    book_discount?: Book_discountListRelationFilter;
 
     @Field(() => AreaNullableScalarRelationFilter, {nullable:true})
     @Type(() => AreaNullableScalarRelationFilter)

@@ -4,7 +4,7 @@ import { NullableStringFieldUpdateOperationsInput } from '../prisma/nullable-str
 import { NullableDecimalFieldUpdateOperationsInput } from '../prisma/nullable-decimal-field-update-operations.input';
 import { Type } from 'class-transformer';
 import { NullableIntFieldUpdateOperationsInput } from '../prisma/nullable-int-field-update-operations.input';
-import { bookUpdateManyWithoutDiscount_codeNestedInput } from '../book/book-update-many-without-discount-code-nested.input';
+import { book_discountUpdateManyWithoutDiscount_codeNestedInput } from '../book-discount/book-discount-update-many-without-discount-code-nested.input';
 
 @InputType()
 export class discount_codeUpdateWithoutAreaInput {
@@ -19,7 +19,7 @@ export class discount_codeUpdateWithoutAreaInput {
     @Field(() => NullableIntFieldUpdateOperationsInput, {nullable:true})
     discount_value_percent?: NullableIntFieldUpdateOperationsInput;
 
-    @Field(() => bookUpdateManyWithoutDiscount_codeNestedInput, {nullable:true})
-    @Type(() => bookUpdateManyWithoutDiscount_codeNestedInput)
-    book?: bookUpdateManyWithoutDiscount_codeNestedInput;
+    @Field(() => book_discountUpdateManyWithoutDiscount_codeNestedInput, {nullable:true})
+    @Type(() => book_discountUpdateManyWithoutDiscount_codeNestedInput)
+    book_discount?: book_discountUpdateManyWithoutDiscount_codeNestedInput;
 }

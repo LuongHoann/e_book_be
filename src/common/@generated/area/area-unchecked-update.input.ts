@@ -9,13 +9,13 @@ import { Type } from 'class-transformer';
 export class areaUncheckedUpdateInput {
 
     @Field(() => StringFieldUpdateOperationsInput, {nullable:true})
-    name?: StringFieldUpdateOperationsInput;
-
-    @Field(() => StringFieldUpdateOperationsInput, {nullable:true})
     code?: StringFieldUpdateOperationsInput;
 
     @Field(() => NullableStringFieldUpdateOperationsInput, {nullable:true})
     description?: NullableStringFieldUpdateOperationsInput;
+
+    @Field(() => StringFieldUpdateOperationsInput, {nullable:true})
+    name?: StringFieldUpdateOperationsInput;
 
     @Field(() => discount_codeUncheckedUpdateManyWithoutAreaNestedInput, {nullable:true})
     @Type(() => discount_codeUncheckedUpdateManyWithoutAreaNestedInput)

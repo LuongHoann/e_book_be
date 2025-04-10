@@ -1,8 +1,8 @@
 import { Field } from '@nestjs/graphql';
 import { InputType } from '@nestjs/graphql';
 import { bookCreateNestedOneWithoutLicenseInput } from '../book/book-create-nested-one-without-license.input';
-import { Type } from 'class-transformer';
 import { license_typeCreateNestedOneWithoutLicenseInput } from '../license-type/license-type-create-nested-one-without-license.input';
+import { Type } from 'class-transformer';
 
 @InputType()
 export class licenseCreateWithoutLicense_ownershipInput {
@@ -14,7 +14,6 @@ export class licenseCreateWithoutLicense_ownershipInput {
     license_name?: string;
 
     @Field(() => bookCreateNestedOneWithoutLicenseInput, {nullable:true})
-    @Type(() => bookCreateNestedOneWithoutLicenseInput)
     book?: bookCreateNestedOneWithoutLicenseInput;
 
     @Field(() => license_typeCreateNestedOneWithoutLicenseInput, {nullable:true})

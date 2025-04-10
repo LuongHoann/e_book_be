@@ -26,7 +26,7 @@ export class bookScalarWhereInput {
     book_title?: StringFilter;
 
     @Field(() => IntFilter, {nullable:true})
-    pushlied_at?: IntFilter;
+    published_at?: IntFilter;
 
     @Field(() => StringFilter, {nullable:true})
     author?: StringFilter;
@@ -47,8 +47,8 @@ export class bookScalarWhereInput {
     created_at?: DateTimeNullableFilter;
 
     @Field(() => StringFilter, {nullable:true})
-    book_content_url?: StringFilter;
+    book_key?: StringFilter;
 
     @Field(() => StringNullableFilter, {nullable:true})
-    book_banner_url?: StringNullableFilter;
+    banner_key?: StringNullableFilter;
 }

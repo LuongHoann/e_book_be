@@ -10,6 +10,7 @@ import { v4 as uuidv4 } from 'uuid';
 import slugify from 'slugify';
 import * as fs from 'fs';
 import { getSignedUrl } from 'aws-cloudfront-sign';
+import { getFileHash } from '@/utils/hashFileName';
 
 @Injectable()
 export class DmsService {
@@ -43,12 +44,17 @@ export class DmsService {
     async uploadSingleFile({
         file,
         isPublic = false,
+        type
     }: {
         file: Express.Multer.File;
         isPublic: boolean;
+        type: string
     }) {
+
+        const fileBuffer = file.buffer
+        const hashedBuffer = await getFileHash(fileBuffer)
         try {
-            const key = `uploads/${uuidv4()}-${slugify(file.originalname, { lower: true, strict: true })}`;
+            const key = `${type}/${hashedBuffer}`;
             const command = new PutObjectCommand({
                 Bucket: this.bucketName,
                 Key: key,
@@ -57,8 +63,8 @@ export class DmsService {
                 ACL: isPublic ? 'public-read' : 'private',
             });
 
-            await this.client.send(command);
-
+            let res = await this.client.send(command);
+            console.log("res",res)
             return {
                 key,
                 isPublic,

@@ -4,7 +4,6 @@ import { favouriteBook_idUser_idCompoundUniqueInput } from './favourite-book-id-
 import { favouriteWhereInput } from './favourite-where.input';
 import { UuidFilter } from '../prisma/uuid-filter.input';
 import { BookScalarRelationFilter } from '../prisma/book-scalar-relation-filter.input';
-import { Type } from 'class-transformer';
 import { UserScalarRelationFilter } from '../prisma/user-scalar-relation-filter.input';
 
 @InputType()
@@ -29,7 +28,6 @@ export class favouriteWhereUniqueInput {
     user_id?: UuidFilter;
 
     @Field(() => BookScalarRelationFilter, {nullable:true})
-    @Type(() => BookScalarRelationFilter)
     book?: BookScalarRelationFilter;
 
     @Field(() => UserScalarRelationFilter, {nullable:true})

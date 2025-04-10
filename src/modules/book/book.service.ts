@@ -16,16 +16,45 @@ export class BookService {
     private validator: BookValidators,
   ) {}
 
-  async create(createBookInput: CreateBookInput): Promise<ResponseAPI<Book>> {
+  async create(input: CreateBookInput): Promise<ResponseAPI<Book>> {
     try {
       const isIsbnExist = await this.validator.isISBNExist(
-        createBookInput.isbn,
+        input.isbn,
       );
       if (isIsbnExist) {
         return  buildResponse(this.i18n, 'index.book.isbnExists', HttpStatus.CONFLICT)
       }
       await this.prisma.book.create({
-        data: createBookInput,
+        data:{ 
+          book_title:input.book_title,
+          published_at: input.published_at,
+          author: input.author,
+          isbn: input.isbn,
+          page_number: input.page_number,
+          views: input.views,
+          banner_key: input.banner_key,
+          book_key: input.book_key,
+          description: input.description,
+          status: input.status,
+          //  create data for relation of book and discount table 
+          book_discount: { 
+              createMany: {
+               data: input.discount_code.map(id => ({discount_id: id}))
+              } 
+          },
+          //  create data for relation of book and category table 
+          category_book: { 
+              createMany: { 
+                data: input.categories.map(id =>({category: id}))
+              }
+          },
+          // 
+          language_book: { 
+            createMany: { 
+              data:input.languages.map((id)=> ({language_id: id}))
+            }
+          },
+        }
       });
       return buildResponse(
         this.i18n,

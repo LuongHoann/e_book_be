@@ -25,7 +25,7 @@ export class bookUpdateWithoutDiscount_codeInput {
     book_title?: StringFieldUpdateOperationsInput;
 
     @Field(() => IntFieldUpdateOperationsInput, {nullable:true})
-    pushlied_at?: IntFieldUpdateOperationsInput;
+    published_at?: IntFieldUpdateOperationsInput;
 
     @Field(() => StringFieldUpdateOperationsInput, {nullable:true})
     author?: StringFieldUpdateOperationsInput;
@@ -43,10 +43,10 @@ export class bookUpdateWithoutDiscount_codeInput {
     created_at?: NullableDateTimeFieldUpdateOperationsInput;
 
     @Field(() => StringFieldUpdateOperationsInput, {nullable:true})
-    book_content_url?: StringFieldUpdateOperationsInput;
+    book_key?: StringFieldUpdateOperationsInput;
 
     @Field(() => NullableStringFieldUpdateOperationsInput, {nullable:true})
-    book_banner_url?: NullableStringFieldUpdateOperationsInput;
+    banner_key?: NullableStringFieldUpdateOperationsInput;
 
     @Field(() => category_bookUpdateManyWithoutBookNestedInput, {nullable:true})
     category_book?: category_bookUpdateManyWithoutBookNestedInput;

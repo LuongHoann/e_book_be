@@ -6,11 +6,11 @@ import { SortOrder } from '../prisma/sort-order.enum';
 export class areaMinOrderByAggregateInput {
 
     @Field(() => SortOrder, {nullable:true})
-    name?: `${SortOrder}`;
-
-    @Field(() => SortOrder, {nullable:true})
     code?: `${SortOrder}`;
 
     @Field(() => SortOrder, {nullable:true})
     description?: `${SortOrder}`;
+
+    @Field(() => SortOrder, {nullable:true})
+    name?: `${SortOrder}`;
 }

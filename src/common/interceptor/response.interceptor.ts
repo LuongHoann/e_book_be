@@ -8,7 +8,6 @@ import { GqlExecutionContext } from '@nestjs/graphql';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { I18nService } from 'nestjs-i18n';
-import { translate } from '@/utils/translate';
 
 interface PaginationMeta {
   total: number;

@@ -2,7 +2,7 @@ import { Field } from '@nestjs/graphql';
 import { ObjectType } from '@nestjs/graphql';
 import { ID } from '@nestjs/graphql';
 import { Int } from '@nestjs/graphql';
-import { discount_code } from '../discount-code/discount-code.model';
+import { book_discount } from '../book-discount/book-discount.model';
 import { category_book } from '../category-book/category-book.model';
 import { comment } from '../comment/comment.model';
 import { favourite } from '../favourite/favourite.model';
@@ -23,9 +23,6 @@ export class book {
     @Field(() => String, {nullable:false})
     book_title!: string;
 
-    @Field(() => Int, {nullable:false})
-    pushlied_at!: number;
-
     @Field(() => String, {nullable:false})
     author!: string;
 
@@ -35,23 +32,29 @@ export class book {
     @Field(() => Int, {nullable:false})
     page_number!: number;
 
-    @Field(() => Int, {nullable:true})
-    discount_id!: number | null;
-
     @Field(() => Int, {nullable:false})
     views!: number;
 
     @Field(() => Date, {nullable:true})
     created_at!: Date | null;
 
+    @Field(() => String, {nullable:true})
+    banner_key!: string | null;
+
     @Field(() => String, {nullable:false})
-    book_content_url!: string;
+    book_key!: string;
+
+    @Field(() => Int, {nullable:false})
+    published_at!: number;
 
     @Field(() => String, {nullable:true})
-    book_banner_url!: string | null;
+    description!: string | null;
 
-    @Field(() => discount_code, {nullable:true})
-    discount_code?: discount_code | null;
+    @Field(() => String, {nullable:false})
+    status!: string;
+
+    @Field(() => [book_discount], {nullable:true})
+    book_discount?: Array<book_discount>;
 
     @Field(() => [category_book], {nullable:true})
     category_book?: Array<category_book>;

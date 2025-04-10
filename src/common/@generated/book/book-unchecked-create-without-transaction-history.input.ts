@@ -1,12 +1,13 @@
 import { Field } from '@nestjs/graphql';
 import { InputType } from '@nestjs/graphql';
 import { Int } from '@nestjs/graphql';
+import { book_discountUncheckedCreateNestedManyWithoutBookInput } from '../book-discount/book-discount-unchecked-create-nested-many-without-book.input';
+import { Type } from 'class-transformer';
 import { category_bookUncheckedCreateNestedManyWithoutBookInput } from '../category-book/category-book-unchecked-create-nested-many-without-book.input';
 import { commentUncheckedCreateNestedManyWithoutBookInput } from '../comment/comment-unchecked-create-nested-many-without-book.input';
 import { favouriteUncheckedCreateNestedManyWithoutBookInput } from '../favourite/favourite-unchecked-create-nested-many-without-book.input';
 import { language_bookUncheckedCreateNestedManyWithoutBookInput } from '../language-book/language-book-unchecked-create-nested-many-without-book.input';
 import { licenseUncheckedCreateNestedManyWithoutBookInput } from '../license/license-unchecked-create-nested-many-without-book.input';
-import { Type } from 'class-transformer';
 import { reading_historyUncheckedCreateNestedManyWithoutBookInput } from '../reading-history/reading-history-unchecked-create-nested-many-without-book.input';
 import { reviewUncheckedCreateNestedManyWithoutBookInput } from '../review/review-unchecked-create-nested-many-without-book.input';
 import { shopping_cartUncheckedCreateNestedManyWithoutBookInput } from '../shopping-cart/shopping-cart-unchecked-create-nested-many-without-book.input';
@@ -20,9 +21,6 @@ export class bookUncheckedCreateWithoutTransaction_historyInput {
     @Field(() => String, {nullable:false})
     book_title!: string;
 
-    @Field(() => Int, {nullable:false})
-    pushlied_at!: number;
-
     @Field(() => String, {nullable:false})
     author!: string;
 
@@ -32,20 +30,30 @@ export class bookUncheckedCreateWithoutTransaction_historyInput {
     @Field(() => Int, {nullable:false})
     page_number!: number;
 
-    @Field(() => Int, {nullable:true})
-    discount_id?: number;
-
     @Field(() => Int, {nullable:false})
     views!: number;
 
     @Field(() => Date, {nullable:true})
     created_at?: Date | string;
 
+    @Field(() => String, {nullable:true})
+    banner_key?: string;
+
     @Field(() => String, {nullable:false})
-    book_content_url!: string;
+    book_key!: string;
+
+    @Field(() => Int, {nullable:false})
+    published_at!: number;
 
     @Field(() => String, {nullable:true})
-    book_banner_url?: string;
+    description?: string;
+
+    @Field(() => String, {nullable:false})
+    status!: string;
+
+    @Field(() => book_discountUncheckedCreateNestedManyWithoutBookInput, {nullable:true})
+    @Type(() => book_discountUncheckedCreateNestedManyWithoutBookInput)
+    book_discount?: book_discountUncheckedCreateNestedManyWithoutBookInput;
 
     @Field(() => category_bookUncheckedCreateNestedManyWithoutBookInput, {nullable:true})
     category_book?: category_bookUncheckedCreateNestedManyWithoutBookInput;

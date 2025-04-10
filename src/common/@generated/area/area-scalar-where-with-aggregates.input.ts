@@ -16,11 +16,11 @@ export class areaScalarWhereWithAggregatesInput {
     NOT?: Array<areaScalarWhereWithAggregatesInput>;
 
     @Field(() => StringWithAggregatesFilter, {nullable:true})
-    name?: StringWithAggregatesFilter;
-
-    @Field(() => StringWithAggregatesFilter, {nullable:true})
     code?: StringWithAggregatesFilter;
 
     @Field(() => StringNullableWithAggregatesFilter, {nullable:true})
     description?: StringNullableWithAggregatesFilter;
+
+    @Field(() => StringWithAggregatesFilter, {nullable:true})
+    name?: StringWithAggregatesFilter;
 }

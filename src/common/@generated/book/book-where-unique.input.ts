@@ -3,16 +3,15 @@ import { InputType } from '@nestjs/graphql';
 import { bookWhereInput } from './book-where.input';
 import { StringFilter } from '../prisma/string-filter.input';
 import { IntFilter } from '../prisma/int-filter.input';
-import { IntNullableFilter } from '../prisma/int-nullable-filter.input';
 import { DateTimeNullableFilter } from '../prisma/date-time-nullable-filter.input';
 import { StringNullableFilter } from '../prisma/string-nullable-filter.input';
-import { Discount_codeNullableScalarRelationFilter } from '../prisma/discount-code-nullable-scalar-relation-filter.input';
+import { Book_discountListRelationFilter } from '../prisma/book-discount-list-relation-filter.input';
+import { Type } from 'class-transformer';
 import { Category_bookListRelationFilter } from '../prisma/category-book-list-relation-filter.input';
 import { CommentListRelationFilter } from '../prisma/comment-list-relation-filter.input';
 import { FavouriteListRelationFilter } from '../prisma/favourite-list-relation-filter.input';
 import { Language_bookListRelationFilter } from '../prisma/language-book-list-relation-filter.input';
 import { LicenseListRelationFilter } from '../prisma/license-list-relation-filter.input';
-import { Type } from 'class-transformer';
 import { Reading_historyListRelationFilter } from '../prisma/reading-history-list-relation-filter.input';
 import { ReviewListRelationFilter } from '../prisma/review-list-relation-filter.input';
 import { Shopping_cartListRelationFilter } from '../prisma/shopping-cart-list-relation-filter.input';
@@ -39,17 +38,11 @@ export class bookWhereUniqueInput {
     @Field(() => StringFilter, {nullable:true})
     book_title?: StringFilter;
 
-    @Field(() => IntFilter, {nullable:true})
-    pushlied_at?: IntFilter;
-
     @Field(() => StringFilter, {nullable:true})
     author?: StringFilter;
 
     @Field(() => IntFilter, {nullable:true})
     page_number?: IntFilter;
-
-    @Field(() => IntNullableFilter, {nullable:true})
-    discount_id?: IntNullableFilter;
 
     @Field(() => IntFilter, {nullable:true})
     views?: IntFilter;
@@ -57,14 +50,24 @@ export class bookWhereUniqueInput {
     @Field(() => DateTimeNullableFilter, {nullable:true})
     created_at?: DateTimeNullableFilter;
 
+    @Field(() => StringNullableFilter, {nullable:true})
+    banner_key?: StringNullableFilter;
+
     @Field(() => StringFilter, {nullable:true})
-    book_content_url?: StringFilter;
+    book_key?: StringFilter;
+
+    @Field(() => IntFilter, {nullable:true})
+    published_at?: IntFilter;
 
     @Field(() => StringNullableFilter, {nullable:true})
-    book_banner_url?: StringNullableFilter;
+    description?: StringNullableFilter;
 
-    @Field(() => Discount_codeNullableScalarRelationFilter, {nullable:true})
-    discount_code?: Discount_codeNullableScalarRelationFilter;
+    @Field(() => StringFilter, {nullable:true})
+    status?: StringFilter;
+
+    @Field(() => Book_discountListRelationFilter, {nullable:true})
+    @Type(() => Book_discountListRelationFilter)
+    book_discount?: Book_discountListRelationFilter;
 
     @Field(() => Category_bookListRelationFilter, {nullable:true})
     category_book?: Category_bookListRelationFilter;

@@ -5,7 +5,6 @@ import { language_bookWhereInput } from './language-book-where.input';
 import { IntFilter } from '../prisma/int-filter.input';
 import { UuidFilter } from '../prisma/uuid-filter.input';
 import { BookScalarRelationFilter } from '../prisma/book-scalar-relation-filter.input';
-import { Type } from 'class-transformer';
 import { LanguageScalarRelationFilter } from '../prisma/language-scalar-relation-filter.input';
 
 @InputType()
@@ -30,7 +29,6 @@ export class language_bookWhereUniqueInput {
     book_id?: UuidFilter;
 
     @Field(() => BookScalarRelationFilter, {nullable:true})
-    @Type(() => BookScalarRelationFilter)
     book?: BookScalarRelationFilter;
 
     @Field(() => LanguageScalarRelationFilter, {nullable:true})

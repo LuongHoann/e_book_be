@@ -3,7 +3,7 @@ import { InputType } from '@nestjs/graphql';
 import { SortOrder } from '../prisma/sort-order.enum';
 import { SortOrderInput } from '../prisma/sort-order.input';
 import { Type } from 'class-transformer';
-import { bookOrderByRelationAggregateInput } from '../book/book-order-by-relation-aggregate.input';
+import { book_discountOrderByRelationAggregateInput } from '../book-discount/book-discount-order-by-relation-aggregate.input';
 import { areaOrderByWithRelationInput } from '../area/area-order-by-with-relation.input';
 
 @InputType()
@@ -25,9 +25,9 @@ export class discount_codeOrderByWithRelationInput {
     @Field(() => SortOrderInput, {nullable:true})
     area_code?: SortOrderInput;
 
-    @Field(() => bookOrderByRelationAggregateInput, {nullable:true})
-    @Type(() => bookOrderByRelationAggregateInput)
-    book?: bookOrderByRelationAggregateInput;
+    @Field(() => book_discountOrderByRelationAggregateInput, {nullable:true})
+    @Type(() => book_discountOrderByRelationAggregateInput)
+    book_discount?: book_discountOrderByRelationAggregateInput;
 
     @Field(() => areaOrderByWithRelationInput, {nullable:true})
     @Type(() => areaOrderByWithRelationInput)

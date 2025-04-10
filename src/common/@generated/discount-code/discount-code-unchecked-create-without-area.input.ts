@@ -6,7 +6,7 @@ import { GraphQLDecimal } from 'prisma-graphql-type-decimal';
 import { transformToDecimal } from 'prisma-graphql-type-decimal';
 import { Transform } from 'class-transformer';
 import { Type } from 'class-transformer';
-import { bookUncheckedCreateNestedManyWithoutDiscount_codeInput } from '../book/book-unchecked-create-nested-many-without-discount-code.input';
+import { book_discountUncheckedCreateNestedManyWithoutDiscount_codeInput } from '../book-discount/book-discount-unchecked-create-nested-many-without-discount-code.input';
 
 @InputType()
 export class discount_codeUncheckedCreateWithoutAreaInput {
@@ -25,7 +25,7 @@ export class discount_codeUncheckedCreateWithoutAreaInput {
     @Field(() => Int, {nullable:true})
     discount_value_percent?: number;
 
-    @Field(() => bookUncheckedCreateNestedManyWithoutDiscount_codeInput, {nullable:true})
-    @Type(() => bookUncheckedCreateNestedManyWithoutDiscount_codeInput)
-    book?: bookUncheckedCreateNestedManyWithoutDiscount_codeInput;
+    @Field(() => book_discountUncheckedCreateNestedManyWithoutDiscount_codeInput, {nullable:true})
+    @Type(() => book_discountUncheckedCreateNestedManyWithoutDiscount_codeInput)
+    book_discount?: book_discountUncheckedCreateNestedManyWithoutDiscount_codeInput;
 }

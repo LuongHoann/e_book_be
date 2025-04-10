@@ -7,11 +7,11 @@ import { NullableStringFieldUpdateOperationsInput } from '../prisma/nullable-str
 export class areaUncheckedUpdateWithoutDiscount_codeInput {
 
     @Field(() => StringFieldUpdateOperationsInput, {nullable:true})
-    name?: StringFieldUpdateOperationsInput;
-
-    @Field(() => StringFieldUpdateOperationsInput, {nullable:true})
     code?: StringFieldUpdateOperationsInput;
 
     @Field(() => NullableStringFieldUpdateOperationsInput, {nullable:true})
     description?: NullableStringFieldUpdateOperationsInput;
+
+    @Field(() => StringFieldUpdateOperationsInput, {nullable:true})
+    name?: StringFieldUpdateOperationsInput;
 }

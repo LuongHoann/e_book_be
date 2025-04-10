@@ -24,7 +24,9 @@ type DiscountCode {
 }
 
 type area {
-  area_name: String!
+  name: String!
+  code: String!
+  description: String
   discountCodes: [DiscountCode]
 }
 
@@ -136,14 +138,15 @@ type Review {
 type Book {
   id: ID!
   book_title: String!
-  pushlied_at: Int!
+  published_at: Int!
   author: String!
   isbn: String
   page_number: Int!
-  discount_id: Int
   views: Int
-  book_content_url: String!
-  book_banner_url: String
+  book_key: String!
+  banner_key: String
+  description: String
+  status: String!
   language_book: [Language]
   category_book: [CategoryBook]
   comment: [Comment]
@@ -220,23 +223,34 @@ type Mutation {
 }
 
 input CreateAreaInput {
-  area_name: String!
+  name: String!
+  code: String!
+  description: String!
 }
 
 input UpdateAreaInput {
-  area_name: String!
+  name: String
+  code: String!
+  description: String
 }
 
 input CreateBookInput {
   book_title: String!
-  pushlied_at: Int!
   author: String!
+  description: String
   isbn: String
   page_number: Int!
-  discount_id: Int
-  views: Int = 0
-  book_content_url: String!
-  book_banner_url: String
+  price: Float!
+  published_at: Int!
+  status: String!
+  licenseType: ID!
+  languages: [ID!]!
+  areas: [ID!]!
+  categories: [ID!]!
+  book_key: String!
+  banner_key: String
+  views: Int! = 0
+  discount_code: [ID!]!
 }
 
 input UpdateBookInput {

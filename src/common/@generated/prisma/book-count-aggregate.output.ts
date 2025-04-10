@@ -12,9 +12,6 @@ export class BookCountAggregate {
     book_title!: number;
 
     @Field(() => Int, {nullable:false})
-    pushlied_at!: number;
-
-    @Field(() => Int, {nullable:false})
     author!: number;
 
     @Field(() => Int, {nullable:false})
@@ -24,19 +21,25 @@ export class BookCountAggregate {
     page_number!: number;
 
     @Field(() => Int, {nullable:false})
-    discount_id!: number;
-
-    @Field(() => Int, {nullable:false})
     views!: number;
 
     @Field(() => Int, {nullable:false})
     created_at!: number;
 
     @Field(() => Int, {nullable:false})
-    book_content_url!: number;
+    banner_key!: number;
 
     @Field(() => Int, {nullable:false})
-    book_banner_url!: number;
+    book_key!: number;
+
+    @Field(() => Int, {nullable:false})
+    published_at!: number;
+
+    @Field(() => Int, {nullable:false})
+    description!: number;
+
+    @Field(() => Int, {nullable:false})
+    status!: number;
 
     @Field(() => Int, {nullable:false})
     _all!: number;

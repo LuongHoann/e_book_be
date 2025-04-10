@@ -5,7 +5,6 @@ import { category_bookWhereInput } from './category-book-where.input';
 import { StringFilter } from '../prisma/string-filter.input';
 import { UuidFilter } from '../prisma/uuid-filter.input';
 import { BookScalarRelationFilter } from '../prisma/book-scalar-relation-filter.input';
-import { Type } from 'class-transformer';
 import { CategoryScalarRelationFilter } from '../prisma/category-scalar-relation-filter.input';
 
 @InputType()
@@ -30,7 +29,6 @@ export class category_bookWhereUniqueInput {
     book_id?: UuidFilter;
 
     @Field(() => BookScalarRelationFilter, {nullable:true})
-    @Type(() => BookScalarRelationFilter)
     book?: BookScalarRelationFilter;
 
     @Field(() => CategoryScalarRelationFilter, {nullable:true})

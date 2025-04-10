@@ -22,7 +22,7 @@ export class bookUncheckedCreateWithoutDiscount_codeInput {
     book_title!: string;
 
     @Field(() => Int, {nullable:false})
-    pushlied_at!: number;
+    published_at!: number;
 
     @Field(() => String, {nullable:false})
     author!: string;
@@ -40,10 +40,10 @@ export class bookUncheckedCreateWithoutDiscount_codeInput {
     created_at?: Date | string;
 
     @Field(() => String, {nullable:false})
-    book_content_url!: string;
+    book_key!: string;
 
     @Field(() => String, {nullable:true})
-    book_banner_url?: string;
+    banner_key?: string;
 
     @Field(() => category_bookUncheckedCreateNestedManyWithoutBookInput, {nullable:true})
     category_book?: category_bookUncheckedCreateNestedManyWithoutBookInput;

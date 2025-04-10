@@ -3,8 +3,8 @@ import { InputType } from '@nestjs/graphql';
 import { SortOrder } from '../prisma/sort-order.enum';
 import { SortOrderInput } from '../prisma/sort-order.input';
 import { bookOrderByWithRelationInput } from '../book/book-order-by-with-relation.input';
-import { Type } from 'class-transformer';
 import { license_typeOrderByWithRelationInput } from '../license-type/license-type-order-by-with-relation.input';
+import { Type } from 'class-transformer';
 import { license_ownershipOrderByRelationAggregateInput } from '../license-ownership/license-ownership-order-by-relation-aggregate.input';
 
 @InputType()
@@ -23,7 +23,6 @@ export class licenseOrderByWithRelationInput {
     license_type_id?: SortOrderInput;
 
     @Field(() => bookOrderByWithRelationInput, {nullable:true})
-    @Type(() => bookOrderByWithRelationInput)
     book?: bookOrderByWithRelationInput;
 
     @Field(() => license_typeOrderByWithRelationInput, {nullable:true})

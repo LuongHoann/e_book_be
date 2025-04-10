@@ -31,7 +31,7 @@ export class DmsController {
         @UploadedFile(
             new ParseFilePipe({
                 validators: [
-                    new FileTypeValidator({ fileType: 'application/pdf' }),
+                    // new FileTypeValidator({ fileType: 'application/pdf' , 'image/*' }),
                     new MaxFileSizeValidator({
                         maxSize: MAX_FILE_SIZE , // 10MB
                         message: 'File is too large. Max file size is 10MB',
@@ -42,10 +42,10 @@ export class DmsController {
         )
         file: Express.Multer.File,
         @Body('isPublic') isPublic: string,
+        @Body('type') type: string
     ) {
-        console.log(file)
         const isPublicBool = isPublic === 'true' ? true : false;
-        return this.dmsService.uploadSingleFile({ file, isPublic: isPublicBool });
+        return this.dmsService.uploadSingleFile({ file, isPublic: isPublicBool , type});
     }
 
     @Public()

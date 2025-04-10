@@ -5,9 +5,9 @@ import { Injectable } from '@nestjs/common';
 export class AreaValidators {
   constructor(private prisma: PrismaService) {}
   //
-  async isAreaExist(area_name: string) {
+  async isAreaExist(code: string) {
     const result = await this.prisma.area.findUnique({
-      where: {area_name: area_name},
+      where: {code: code},
     });
     return result 
   }

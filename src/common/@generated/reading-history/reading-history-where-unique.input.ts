@@ -7,7 +7,6 @@ import { StringNullableFilter } from '../prisma/string-nullable-filter.input';
 import { IntNullableFilter } from '../prisma/int-nullable-filter.input';
 import { DateTimeNullableFilter } from '../prisma/date-time-nullable-filter.input';
 import { BookScalarRelationFilter } from '../prisma/book-scalar-relation-filter.input';
-import { Type } from 'class-transformer';
 import { UserScalarRelationFilter } from '../prisma/user-scalar-relation-filter.input';
 
 @InputType()
@@ -41,7 +40,6 @@ export class reading_historyWhereUniqueInput {
     update_at?: DateTimeNullableFilter;
 
     @Field(() => BookScalarRelationFilter, {nullable:true})
-    @Type(() => BookScalarRelationFilter)
     book?: BookScalarRelationFilter;
 
     @Field(() => UserScalarRelationFilter, {nullable:true})

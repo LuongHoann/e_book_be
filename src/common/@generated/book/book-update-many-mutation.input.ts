@@ -14,9 +14,6 @@ export class bookUpdateManyMutationInput {
     @Field(() => StringFieldUpdateOperationsInput, {nullable:true})
     book_title?: StringFieldUpdateOperationsInput;
 
-    @Field(() => IntFieldUpdateOperationsInput, {nullable:true})
-    pushlied_at?: IntFieldUpdateOperationsInput;
-
     @Field(() => StringFieldUpdateOperationsInput, {nullable:true})
     author?: StringFieldUpdateOperationsInput;
 
@@ -32,9 +29,18 @@ export class bookUpdateManyMutationInput {
     @Field(() => NullableDateTimeFieldUpdateOperationsInput, {nullable:true})
     created_at?: NullableDateTimeFieldUpdateOperationsInput;
 
+    @Field(() => NullableStringFieldUpdateOperationsInput, {nullable:true})
+    banner_key?: NullableStringFieldUpdateOperationsInput;
+
     @Field(() => StringFieldUpdateOperationsInput, {nullable:true})
-    book_content_url?: StringFieldUpdateOperationsInput;
+    book_key?: StringFieldUpdateOperationsInput;
+
+    @Field(() => IntFieldUpdateOperationsInput, {nullable:true})
+    published_at?: IntFieldUpdateOperationsInput;
 
     @Field(() => NullableStringFieldUpdateOperationsInput, {nullable:true})
-    book_banner_url?: NullableStringFieldUpdateOperationsInput;
+    description?: NullableStringFieldUpdateOperationsInput;
+
+    @Field(() => StringFieldUpdateOperationsInput, {nullable:true})
+    status?: StringFieldUpdateOperationsInput;
 }

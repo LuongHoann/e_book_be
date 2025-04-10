@@ -6,6 +6,9 @@ import { Int } from '@nestjs/graphql';
 export class BookCount {
 
     @Field(() => Int, {nullable:false})
+    book_discount!: number;
+
+    @Field(() => Int, {nullable:false})
     category_book!: number;
 
     @Field(() => Int, {nullable:false})

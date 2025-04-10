@@ -17,13 +17,13 @@ export class areaWhereInput {
     NOT?: Array<areaWhereInput>;
 
     @Field(() => StringFilter, {nullable:true})
-    name?: StringFilter;
-
-    @Field(() => StringFilter, {nullable:true})
     code?: StringFilter;
 
     @Field(() => StringNullableFilter, {nullable:true})
     description?: StringNullableFilter;
+
+    @Field(() => StringFilter, {nullable:true})
+    name?: StringFilter;
 
     @Field(() => Discount_codeListRelationFilter, {nullable:true})
     discount_code?: Discount_codeListRelationFilter;

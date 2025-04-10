@@ -24,10 +24,7 @@ export class LicenseTypeService {
   } catch (err){ 
     return buildResponse(this.i18n,'index.general.failed', HttpStatus.INTERNAL_SERVER_ERROR)
   }
-  }
-
-
-
+}
  async update(id: string, updateLicenseTypeInput: UpdateLicenseTypeInput) {
     try {
         await this.prisma.license_type.update({where: {id:id}, data: updateLicenseTypeInput})
@@ -37,6 +34,7 @@ export class LicenseTypeService {
     }
   }
 
+  
  async remove(id: string) {
     try {
       await this.prisma.license_type.delete({where: { id:id}})

@@ -7,14 +7,14 @@ import { AreaCount } from '../prisma/area-count.output';
 @ObjectType()
 export class area {
 
-    @Field(() => String, {nullable:false})
-    name!: string;
-
     @Field(() => ID, {nullable:false})
     code!: string;
 
     @Field(() => String, {nullable:true})
     description!: string | null;
+
+    @Field(() => String, {nullable:false})
+    name!: string;
 
     @Field(() => [discount_code], {nullable:true})
     discount_code?: Array<discount_code>;

@@ -6,14 +6,11 @@ import { SortOrder } from '../prisma/sort-order.enum';
 export class bookSumOrderByAggregateInput {
 
     @Field(() => SortOrder, {nullable:true})
-    pushlied_at?: `${SortOrder}`;
-
-    @Field(() => SortOrder, {nullable:true})
     page_number?: `${SortOrder}`;
 
     @Field(() => SortOrder, {nullable:true})
-    discount_id?: `${SortOrder}`;
+    views?: `${SortOrder}`;
 
     @Field(() => SortOrder, {nullable:true})
-    views?: `${SortOrder}`;
+    published_at?: `${SortOrder}`;
 }

@@ -9,13 +9,13 @@ import { Type } from 'class-transformer';
 export class areaOrderByWithRelationInput {
 
     @Field(() => SortOrder, {nullable:true})
-    name?: `${SortOrder}`;
-
-    @Field(() => SortOrder, {nullable:true})
     code?: `${SortOrder}`;
 
     @Field(() => SortOrderInput, {nullable:true})
     description?: SortOrderInput;
+
+    @Field(() => SortOrder, {nullable:true})
+    name?: `${SortOrder}`;
 
     @Field(() => discount_codeOrderByRelationAggregateInput, {nullable:true})
     @Type(() => discount_codeOrderByRelationAggregateInput)

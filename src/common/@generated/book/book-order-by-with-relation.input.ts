@@ -2,7 +2,7 @@ import { Field } from '@nestjs/graphql';
 import { InputType } from '@nestjs/graphql';
 import { SortOrder } from '../prisma/sort-order.enum';
 import { SortOrderInput } from '../prisma/sort-order.input';
-import { discount_codeOrderByWithRelationInput } from '../discount-code/discount-code-order-by-with-relation.input';
+import { book_discountOrderByRelationAggregateInput } from '../book-discount/book-discount-order-by-relation-aggregate.input';
 import { Type } from 'class-transformer';
 import { category_bookOrderByRelationAggregateInput } from '../category-book/category-book-order-by-relation-aggregate.input';
 import { commentOrderByRelationAggregateInput } from '../comment/comment-order-by-relation-aggregate.input';
@@ -24,9 +24,6 @@ export class bookOrderByWithRelationInput {
     book_title?: `${SortOrder}`;
 
     @Field(() => SortOrder, {nullable:true})
-    pushlied_at?: `${SortOrder}`;
-
-    @Field(() => SortOrder, {nullable:true})
     author?: `${SortOrder}`;
 
     @Field(() => SortOrder, {nullable:true})
@@ -35,24 +32,30 @@ export class bookOrderByWithRelationInput {
     @Field(() => SortOrder, {nullable:true})
     page_number?: `${SortOrder}`;
 
-    @Field(() => SortOrderInput, {nullable:true})
-    discount_id?: SortOrderInput;
-
     @Field(() => SortOrder, {nullable:true})
     views?: `${SortOrder}`;
 
     @Field(() => SortOrderInput, {nullable:true})
     created_at?: SortOrderInput;
 
+    @Field(() => SortOrderInput, {nullable:true})
+    banner_key?: SortOrderInput;
+
     @Field(() => SortOrder, {nullable:true})
-    book_content_url?: `${SortOrder}`;
+    book_key?: `${SortOrder}`;
+
+    @Field(() => SortOrder, {nullable:true})
+    published_at?: `${SortOrder}`;
 
     @Field(() => SortOrderInput, {nullable:true})
-    book_banner_url?: SortOrderInput;
+    description?: SortOrderInput;
 
-    @Field(() => discount_codeOrderByWithRelationInput, {nullable:true})
-    @Type(() => discount_codeOrderByWithRelationInput)
-    discount_code?: discount_codeOrderByWithRelationInput;
+    @Field(() => SortOrder, {nullable:true})
+    status?: `${SortOrder}`;
+
+    @Field(() => book_discountOrderByRelationAggregateInput, {nullable:true})
+    @Type(() => book_discountOrderByRelationAggregateInput)
+    book_discount?: book_discountOrderByRelationAggregateInput;
 
     @Field(() => category_bookOrderByRelationAggregateInput, {nullable:true})
     category_book?: category_bookOrderByRelationAggregateInput;

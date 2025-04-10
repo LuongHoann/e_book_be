@@ -5,11 +5,11 @@ import { InputType } from '@nestjs/graphql';
 export class areaUncheckedCreateWithoutDiscount_codeInput {
 
     @Field(() => String, {nullable:false})
-    name!: string;
-
-    @Field(() => String, {nullable:false})
     code!: string;
 
     @Field(() => String, {nullable:true})
     description?: string;
+
+    @Field(() => String, {nullable:false})
+    name!: string;
 }

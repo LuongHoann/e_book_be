@@ -3,7 +3,6 @@ import { InputType } from '@nestjs/graphql';
 import { UuidWithAggregatesFilter } from '../prisma/uuid-with-aggregates-filter.input';
 import { StringWithAggregatesFilter } from '../prisma/string-with-aggregates-filter.input';
 import { IntWithAggregatesFilter } from '../prisma/int-with-aggregates-filter.input';
-import { IntNullableWithAggregatesFilter } from '../prisma/int-nullable-with-aggregates-filter.input';
 import { DateTimeNullableWithAggregatesFilter } from '../prisma/date-time-nullable-with-aggregates-filter.input';
 import { StringNullableWithAggregatesFilter } from '../prisma/string-nullable-with-aggregates-filter.input';
 
@@ -25,9 +24,6 @@ export class bookScalarWhereWithAggregatesInput {
     @Field(() => StringWithAggregatesFilter, {nullable:true})
     book_title?: StringWithAggregatesFilter;
 
-    @Field(() => IntWithAggregatesFilter, {nullable:true})
-    pushlied_at?: IntWithAggregatesFilter;
-
     @Field(() => StringWithAggregatesFilter, {nullable:true})
     author?: StringWithAggregatesFilter;
 
@@ -37,18 +33,24 @@ export class bookScalarWhereWithAggregatesInput {
     @Field(() => IntWithAggregatesFilter, {nullable:true})
     page_number?: IntWithAggregatesFilter;
 
-    @Field(() => IntNullableWithAggregatesFilter, {nullable:true})
-    discount_id?: IntNullableWithAggregatesFilter;
-
     @Field(() => IntWithAggregatesFilter, {nullable:true})
     views?: IntWithAggregatesFilter;
 
     @Field(() => DateTimeNullableWithAggregatesFilter, {nullable:true})
     created_at?: DateTimeNullableWithAggregatesFilter;
 
+    @Field(() => StringNullableWithAggregatesFilter, {nullable:true})
+    banner_key?: StringNullableWithAggregatesFilter;
+
     @Field(() => StringWithAggregatesFilter, {nullable:true})
-    book_content_url?: StringWithAggregatesFilter;
+    book_key?: StringWithAggregatesFilter;
+
+    @Field(() => IntWithAggregatesFilter, {nullable:true})
+    published_at?: IntWithAggregatesFilter;
 
     @Field(() => StringNullableWithAggregatesFilter, {nullable:true})
-    book_banner_url?: StringNullableWithAggregatesFilter;
+    description?: StringNullableWithAggregatesFilter;
+
+    @Field(() => StringWithAggregatesFilter, {nullable:true})
+    status?: StringWithAggregatesFilter;
 }

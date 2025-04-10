@@ -1,7 +1,7 @@
 import { Field } from '@nestjs/graphql';
 import { InputType } from '@nestjs/graphql';
 import { Int } from '@nestjs/graphql';
-import { discount_codeCreateNestedOneWithoutBookInput } from '../discount-code/discount-code-create-nested-one-without-book.input';
+import { book_discountCreateNestedManyWithoutBookInput } from '../book-discount/book-discount-create-nested-many-without-book.input';
 import { Type } from 'class-transformer';
 import { category_bookCreateNestedManyWithoutBookInput } from '../category-book/category-book-create-nested-many-without-book.input';
 import { favouriteCreateNestedManyWithoutBookInput } from '../favourite/favourite-create-nested-many-without-book.input';
@@ -21,9 +21,6 @@ export class bookCreateWithoutCommentInput {
     @Field(() => String, {nullable:false})
     book_title!: string;
 
-    @Field(() => Int, {nullable:false})
-    pushlied_at!: number;
-
     @Field(() => String, {nullable:false})
     author!: string;
 
@@ -39,15 +36,24 @@ export class bookCreateWithoutCommentInput {
     @Field(() => Date, {nullable:true})
     created_at?: Date | string;
 
+    @Field(() => String, {nullable:true})
+    banner_key?: string;
+
     @Field(() => String, {nullable:false})
-    book_content_url!: string;
+    book_key!: string;
+
+    @Field(() => Int, {nullable:false})
+    published_at!: number;
 
     @Field(() => String, {nullable:true})
-    book_banner_url?: string;
+    description?: string;
 
-    @Field(() => discount_codeCreateNestedOneWithoutBookInput, {nullable:true})
-    @Type(() => discount_codeCreateNestedOneWithoutBookInput)
-    discount_code?: discount_codeCreateNestedOneWithoutBookInput;
+    @Field(() => String, {nullable:false})
+    status!: string;
+
+    @Field(() => book_discountCreateNestedManyWithoutBookInput, {nullable:true})
+    @Type(() => book_discountCreateNestedManyWithoutBookInput)
+    book_discount?: book_discountCreateNestedManyWithoutBookInput;
 
     @Field(() => category_bookCreateNestedManyWithoutBookInput, {nullable:true})
     category_book?: category_bookCreateNestedManyWithoutBookInput;

@@ -7,13 +7,13 @@ import { Type } from 'class-transformer';
 export class areaCreateInput {
 
     @Field(() => String, {nullable:false})
-    name!: string;
-
-    @Field(() => String, {nullable:false})
     code!: string;
 
     @Field(() => String, {nullable:true})
     description?: string;
+
+    @Field(() => String, {nullable:false})
+    name!: string;
 
     @Field(() => discount_codeCreateNestedManyWithoutAreaInput, {nullable:true})
     @Type(() => discount_codeCreateNestedManyWithoutAreaInput)

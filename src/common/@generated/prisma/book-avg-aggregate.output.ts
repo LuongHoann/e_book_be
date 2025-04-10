@@ -6,14 +6,11 @@ import { Float } from '@nestjs/graphql';
 export class BookAvgAggregate {
 
     @Field(() => Float, {nullable:true})
-    pushlied_at?: number;
-
-    @Field(() => Float, {nullable:true})
     page_number?: number;
 
     @Field(() => Float, {nullable:true})
-    discount_id?: number;
+    views?: number;
 
     @Field(() => Float, {nullable:true})
-    views?: number;
+    published_at?: number;
 }
