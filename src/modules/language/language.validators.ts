@@ -5,9 +5,9 @@ import { Injectable } from '@nestjs/common';
 export class LanguageValidators {
   constructor(private prisma: PrismaService) {}
   //
-  async isLanguageCodeExist(language_code : string) {
+  async isLanguageCodeExist(code : string) {
     const result = await this.prisma.language.findUnique({
-      where: { language_code: language_code },
+      where: { code: code },
     });
     return result 
   }

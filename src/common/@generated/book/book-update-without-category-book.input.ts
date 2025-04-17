@@ -4,6 +4,7 @@ import { StringFieldUpdateOperationsInput } from '../prisma/string-field-update-
 import { IntFieldUpdateOperationsInput } from '../prisma/int-field-update-operations.input';
 import { NullableDateTimeFieldUpdateOperationsInput } from '../prisma/nullable-date-time-field-update-operations.input';
 import { NullableStringFieldUpdateOperationsInput } from '../prisma/nullable-string-field-update-operations.input';
+import { DateTimeFieldUpdateOperationsInput } from '../prisma/date-time-field-update-operations.input';
 import { book_discountUpdateManyWithoutBookNestedInput } from '../book-discount/book-discount-update-many-without-book-nested.input';
 import { Type } from 'class-transformer';
 import { commentUpdateManyWithoutBookNestedInput } from '../comment/comment-update-many-without-book-nested.input';
@@ -45,8 +46,8 @@ export class bookUpdateWithoutCategory_bookInput {
     @Field(() => StringFieldUpdateOperationsInput, {nullable:true})
     book_key?: StringFieldUpdateOperationsInput;
 
-    @Field(() => IntFieldUpdateOperationsInput, {nullable:true})
-    published_at?: IntFieldUpdateOperationsInput;
+    @Field(() => DateTimeFieldUpdateOperationsInput, {nullable:true})
+    published_at?: DateTimeFieldUpdateOperationsInput;
 
     @Field(() => NullableStringFieldUpdateOperationsInput, {nullable:true})
     description?: NullableStringFieldUpdateOperationsInput;

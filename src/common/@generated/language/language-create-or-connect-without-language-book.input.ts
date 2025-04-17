@@ -10,7 +10,7 @@ export class languageCreateOrConnectWithoutLanguage_bookInput {
 
     @Field(() => languageWhereUniqueInput, {nullable:false})
     @Type(() => languageWhereUniqueInput)
-    where!: Prisma.AtLeast<languageWhereUniqueInput, 'id' | 'language_code'>;
+    where!: Prisma.AtLeast<languageWhereUniqueInput, 'id' | 'code'>;
 
     @Field(() => languageCreateWithoutLanguage_bookInput, {nullable:false})
     @Type(() => languageCreateWithoutLanguage_bookInput)

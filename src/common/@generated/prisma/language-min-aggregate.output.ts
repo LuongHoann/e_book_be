@@ -9,8 +9,8 @@ export class LanguageMinAggregate {
     id?: number;
 
     @Field(() => String, {nullable:true})
-    language_name?: string;
+    name?: string;
 
     @Field(() => String, {nullable:true})
-    language_code?: string;
+    code?: string;
 }

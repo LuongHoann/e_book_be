@@ -9,7 +9,7 @@ export class LicenseType {
   id: string
 
   @Field(()=>String)
-  license_name_type:string
+  name:string
 
   @Field(()=>Int)
   download_count: number

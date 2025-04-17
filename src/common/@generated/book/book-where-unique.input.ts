@@ -5,6 +5,7 @@ import { StringFilter } from '../prisma/string-filter.input';
 import { IntFilter } from '../prisma/int-filter.input';
 import { DateTimeNullableFilter } from '../prisma/date-time-nullable-filter.input';
 import { StringNullableFilter } from '../prisma/string-nullable-filter.input';
+import { DateTimeFilter } from '../prisma/date-time-filter.input';
 import { Book_discountListRelationFilter } from '../prisma/book-discount-list-relation-filter.input';
 import { Type } from 'class-transformer';
 import { Category_bookListRelationFilter } from '../prisma/category-book-list-relation-filter.input';
@@ -56,8 +57,8 @@ export class bookWhereUniqueInput {
     @Field(() => StringFilter, {nullable:true})
     book_key?: StringFilter;
 
-    @Field(() => IntFilter, {nullable:true})
-    published_at?: IntFilter;
+    @Field(() => DateTimeFilter, {nullable:true})
+    published_at?: DateTimeFilter;
 
     @Field(() => StringNullableFilter, {nullable:true})
     description?: StringNullableFilter;

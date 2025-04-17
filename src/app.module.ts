@@ -38,6 +38,7 @@ import { JwtModule } from '@nestjs/jwt';
 import { APP_GUARD, APP_INTERCEPTOR } from '@nestjs/core';
 import { JwtAuthGuard } from './auth/passport/jwt-auth.guard';
 import { ResponseInterceptor } from './common/interceptor/response.interceptor';
+import { CategoryModule } from './modules/category /category.module';
 
 @Module({
   imports: [
@@ -104,6 +105,7 @@ import { ResponseInterceptor } from './common/interceptor/response.interceptor';
         }
       }),
     }),
+    // graphql modules
     AreaModule,
     BookModule,
     CommentModule,
@@ -118,21 +120,26 @@ import { ResponseInterceptor } from './common/interceptor/response.interceptor';
     RolesModule,
     ShoppingCartModule,
     TransactionHistoryModule,
+    CategoryModule,
     UsersModule,
     ReadingHistoryModule,
+    LanguageModule,
+    CategoryModule,
+    // jwt modules
     AuthModule,
+    // s3 modules
     DmsModule
   ],
-  providers: [
-    {
-      provide: APP_GUARD,
-      useClass: JwtAuthGuard
-    },
-    {
-      provide: APP_INTERCEPTOR,
-      useClass: ResponseInterceptor
-    }
-  ]
+  // providers: [
+  //   {
+  //     provide: APP_GUARD,
+  //     useClass: JwtAuthGuard
+  //   },
+  //   {
+  //     provide: APP_INTERCEPTOR,
+  //     useClass: ResponseInterceptor
+  //   }
+  // ]
 })
 export class AppModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {

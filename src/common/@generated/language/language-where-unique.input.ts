@@ -12,7 +12,7 @@ export class languageWhereUniqueInput {
     id?: number;
 
     @Field(() => String, {nullable:true})
-    language_code?: string;
+    code?: string;
 
     @Field(() => [languageWhereInput], {nullable:true})
     AND?: Array<languageWhereInput>;
@@ -24,7 +24,7 @@ export class languageWhereUniqueInput {
     NOT?: Array<languageWhereInput>;
 
     @Field(() => StringFilter, {nullable:true})
-    language_name?: StringFilter;
+    name?: StringFilter;
 
     @Field(() => Language_bookListRelationFilter, {nullable:true})
     language_book?: Language_bookListRelationFilter;

@@ -7,10 +7,10 @@ import { language_bookUpdateManyWithoutLanguageNestedInput } from '../language-b
 export class languageUpdateInput {
 
     @Field(() => StringFieldUpdateOperationsInput, {nullable:true})
-    language_name?: StringFieldUpdateOperationsInput;
+    name?: StringFieldUpdateOperationsInput;
 
     @Field(() => StringFieldUpdateOperationsInput, {nullable:true})
-    language_code?: StringFieldUpdateOperationsInput;
+    code?: StringFieldUpdateOperationsInput;
 
     @Field(() => language_bookUpdateManyWithoutLanguageNestedInput, {nullable:true})
     language_book?: language_bookUpdateManyWithoutLanguageNestedInput;

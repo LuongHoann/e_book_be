@@ -32,8 +32,8 @@ export class BookMaxAggregate {
     @Field(() => String, {nullable:true})
     book_key?: string;
 
-    @Field(() => Int, {nullable:true})
-    published_at?: number;
+    @Field(() => Date, {nullable:true})
+    published_at?: Date | string;
 
     @Field(() => String, {nullable:true})
     description?: string;

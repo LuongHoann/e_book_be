@@ -10,7 +10,7 @@ export class category_bookCreateOrConnectWithoutBookInput {
 
     @Field(() => category_bookWhereUniqueInput, {nullable:false})
     @Type(() => category_bookWhereUniqueInput)
-    where!: Prisma.AtLeast<category_bookWhereUniqueInput, 'category_book_id'>;
+    where!: Prisma.AtLeast<category_bookWhereUniqueInput, 'category_id_book_id'>;
 
     @Field(() => category_bookCreateWithoutBookInput, {nullable:false})
     @Type(() => category_bookCreateWithoutBookInput)

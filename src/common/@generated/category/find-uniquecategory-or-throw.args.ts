@@ -9,5 +9,5 @@ export class FindUniquecategoryOrThrowArgs {
 
     @Field(() => categoryWhereUniqueInput, {nullable:false})
     @Type(() => categoryWhereUniqueInput)
-    where!: Prisma.AtLeast<categoryWhereUniqueInput, 'name'>;
+    where!: Prisma.AtLeast<categoryWhereUniqueInput, 'id' | 'name'>;
 }

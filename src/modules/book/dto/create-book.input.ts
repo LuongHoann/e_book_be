@@ -73,7 +73,7 @@ export class CreateBookInput {
   @Field(() => [ID], { nullable: false })
   @IsArray()
   @IsNotEmpty({ each: true })
-  categories: string[];
+  categories: number[];
 
   @Field(() => String, { nullable: false })
   @IsUrl() // Kiểm tra URL hợp lệ

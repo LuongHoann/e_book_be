@@ -24,5 +24,5 @@ export class category_bookUncheckedCreateNestedManyWithoutBookInput {
 
     @Field(() => [category_bookWhereUniqueInput], {nullable:true})
     @Type(() => category_bookWhereUniqueInput)
-    connect?: Array<Prisma.AtLeast<category_bookWhereUniqueInput, 'category_book_id'>>;
+    connect?: Array<Prisma.AtLeast<category_bookWhereUniqueInput, 'category_id_book_id'>>;
 }

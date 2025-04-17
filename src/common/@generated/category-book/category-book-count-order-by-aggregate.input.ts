@@ -6,7 +6,7 @@ import { SortOrder } from '../prisma/sort-order.enum';
 export class category_bookCountOrderByAggregateInput {
 
     @Field(() => SortOrder, {nullable:true})
-    category?: `${SortOrder}`;
+    category_id?: `${SortOrder}`;
 
     @Field(() => SortOrder, {nullable:true})
     book_id?: `${SortOrder}`;

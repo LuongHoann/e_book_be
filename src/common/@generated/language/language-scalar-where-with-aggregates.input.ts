@@ -19,8 +19,8 @@ export class languageScalarWhereWithAggregatesInput {
     id?: IntWithAggregatesFilter;
 
     @Field(() => StringWithAggregatesFilter, {nullable:true})
-    language_name?: StringWithAggregatesFilter;
+    name?: StringWithAggregatesFilter;
 
     @Field(() => StringWithAggregatesFilter, {nullable:true})
-    language_code?: StringWithAggregatesFilter;
+    code?: StringWithAggregatesFilter;
 }

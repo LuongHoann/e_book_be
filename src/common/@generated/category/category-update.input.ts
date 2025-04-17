@@ -1,7 +1,7 @@
 import { Field } from '@nestjs/graphql';
 import { InputType } from '@nestjs/graphql';
 import { StringFieldUpdateOperationsInput } from '../prisma/string-field-update-operations.input';
-import { category_bookUpdateManyWithoutCategory_category_book_categoryTocategoryNestedInput } from '../category-book/category-book-update-many-without-category-category-book-category-tocategory-nested.input';
+import { category_bookUpdateManyWithoutCategoryNestedInput } from '../category-book/category-book-update-many-without-category-nested.input';
 
 @InputType()
 export class categoryUpdateInput {
@@ -9,6 +9,9 @@ export class categoryUpdateInput {
     @Field(() => StringFieldUpdateOperationsInput, {nullable:true})
     name?: StringFieldUpdateOperationsInput;
 
-    @Field(() => category_bookUpdateManyWithoutCategory_category_book_categoryTocategoryNestedInput, {nullable:true})
-    category_book_category_book_categoryTocategory?: category_bookUpdateManyWithoutCategory_category_book_categoryTocategoryNestedInput;
+    @Field(() => StringFieldUpdateOperationsInput, {nullable:true})
+    description?: StringFieldUpdateOperationsInput;
+
+    @Field(() => category_bookUpdateManyWithoutCategoryNestedInput, {nullable:true})
+    category_book?: category_bookUpdateManyWithoutCategoryNestedInput;
 }

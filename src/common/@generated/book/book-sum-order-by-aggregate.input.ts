@@ -10,7 +10,4 @@ export class bookSumOrderByAggregateInput {
 
     @Field(() => SortOrder, {nullable:true})
     views?: `${SortOrder}`;
-
-    @Field(() => SortOrder, {nullable:true})
-    published_at?: `${SortOrder}`;
 }

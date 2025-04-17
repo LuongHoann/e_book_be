@@ -14,7 +14,7 @@ export class LanguageResolver {
     return this.languageService.create(createLanguageInput);
   }
 
-  @Query(() => ResponseAPI<Language>, { name: 'languages' })
+  @Query(() => ResponseAPI<Language>, { name: 'Languages' })
   findAll() {
     return this.languageService.findAll();
   }

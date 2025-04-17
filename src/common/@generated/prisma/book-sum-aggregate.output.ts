@@ -10,7 +10,4 @@ export class BookSumAggregate {
 
     @Field(() => Int, {nullable:true})
     views?: number;
-
-    @Field(() => Int, {nullable:true})
-    published_at?: number;
 }

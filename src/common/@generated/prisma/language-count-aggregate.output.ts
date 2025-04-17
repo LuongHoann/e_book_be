@@ -9,10 +9,10 @@ export class LanguageCountAggregate {
     id!: number;
 
     @Field(() => Int, {nullable:false})
-    language_name!: number;
+    name!: number;
 
     @Field(() => Int, {nullable:false})
-    language_code!: number;
+    code!: number;
 
     @Field(() => Int, {nullable:false})
     _all!: number;

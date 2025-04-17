@@ -1,8 +1,8 @@
 import { Field } from '@nestjs/graphql';
 import { InputType } from '@nestjs/graphql';
-import { category_bookCategoryBook_idCompoundUniqueInput } from './category-book-category-book-id-compound-unique.input';
+import { category_bookCategory_idBook_idCompoundUniqueInput } from './category-book-category-id-book-id-compound-unique.input';
 import { category_bookWhereInput } from './category-book-where.input';
-import { StringFilter } from '../prisma/string-filter.input';
+import { IntFilter } from '../prisma/int-filter.input';
 import { UuidFilter } from '../prisma/uuid-filter.input';
 import { BookScalarRelationFilter } from '../prisma/book-scalar-relation-filter.input';
 import { CategoryScalarRelationFilter } from '../prisma/category-scalar-relation-filter.input';
@@ -10,8 +10,8 @@ import { CategoryScalarRelationFilter } from '../prisma/category-scalar-relation
 @InputType()
 export class category_bookWhereUniqueInput {
 
-    @Field(() => category_bookCategoryBook_idCompoundUniqueInput, {nullable:true})
-    category_book_id?: category_bookCategoryBook_idCompoundUniqueInput;
+    @Field(() => category_bookCategory_idBook_idCompoundUniqueInput, {nullable:true})
+    category_id_book_id?: category_bookCategory_idBook_idCompoundUniqueInput;
 
     @Field(() => [category_bookWhereInput], {nullable:true})
     AND?: Array<category_bookWhereInput>;
@@ -22,8 +22,8 @@ export class category_bookWhereUniqueInput {
     @Field(() => [category_bookWhereInput], {nullable:true})
     NOT?: Array<category_bookWhereInput>;
 
-    @Field(() => StringFilter, {nullable:true})
-    category?: StringFilter;
+    @Field(() => IntFilter, {nullable:true})
+    category_id?: IntFilter;
 
     @Field(() => UuidFilter, {nullable:true})
     book_id?: UuidFilter;
@@ -32,5 +32,5 @@ export class category_bookWhereUniqueInput {
     book?: BookScalarRelationFilter;
 
     @Field(() => CategoryScalarRelationFilter, {nullable:true})
-    category_category_book_categoryTocategory?: CategoryScalarRelationFilter;
+    category?: CategoryScalarRelationFilter;
 }

@@ -19,7 +19,7 @@ export class FindManycategoryArgs {
     orderBy?: Array<categoryOrderByWithRelationInput>;
 
     @Field(() => categoryWhereUniqueInput, {nullable:true})
-    cursor?: Prisma.AtLeast<categoryWhereUniqueInput, 'name'>;
+    cursor?: Prisma.AtLeast<categoryWhereUniqueInput, 'id' | 'name'>;
 
     @Field(() => Int, {nullable:true})
     take?: number;

@@ -5,8 +5,8 @@ import { InputType } from '@nestjs/graphql';
 export class languageCreateWithoutLanguage_bookInput {
 
     @Field(() => String, {nullable:false})
-    language_name!: string;
+    name!: string;
 
     @Field(() => String, {nullable:false})
-    language_code!: string;
+    code!: string;
 }

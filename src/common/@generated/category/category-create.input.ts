@@ -1,6 +1,6 @@
 import { Field } from '@nestjs/graphql';
 import { InputType } from '@nestjs/graphql';
-import { category_bookCreateNestedManyWithoutCategory_category_book_categoryTocategoryInput } from '../category-book/category-book-create-nested-many-without-category-category-book-category-tocategory.input';
+import { category_bookCreateNestedManyWithoutCategoryInput } from '../category-book/category-book-create-nested-many-without-category.input';
 
 @InputType()
 export class categoryCreateInput {
@@ -8,6 +8,9 @@ export class categoryCreateInput {
     @Field(() => String, {nullable:false})
     name!: string;
 
-    @Field(() => category_bookCreateNestedManyWithoutCategory_category_book_categoryTocategoryInput, {nullable:true})
-    category_book_category_book_categoryTocategory?: category_bookCreateNestedManyWithoutCategory_category_book_categoryTocategoryInput;
+    @Field(() => String, {nullable:false})
+    description!: string;
+
+    @Field(() => category_bookCreateNestedManyWithoutCategoryInput, {nullable:true})
+    category_book?: category_bookCreateNestedManyWithoutCategoryInput;
 }

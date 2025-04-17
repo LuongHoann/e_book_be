@@ -44,8 +44,8 @@ export class book {
     @Field(() => String, {nullable:false})
     book_key!: string;
 
-    @Field(() => Int, {nullable:false})
-    published_at!: number;
+    @Field(() => Date, {nullable:false})
+    published_at!: Date;
 
     @Field(() => String, {nullable:true})
     description!: string | null;

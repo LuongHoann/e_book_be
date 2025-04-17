@@ -8,7 +8,7 @@ import { categoryOrderByWithRelationInput } from '../category/category-order-by-
 export class category_bookOrderByWithRelationInput {
 
     @Field(() => SortOrder, {nullable:true})
-    category?: `${SortOrder}`;
+    category_id?: `${SortOrder}`;
 
     @Field(() => SortOrder, {nullable:true})
     book_id?: `${SortOrder}`;
@@ -17,5 +17,5 @@ export class category_bookOrderByWithRelationInput {
     book?: bookOrderByWithRelationInput;
 
     @Field(() => categoryOrderByWithRelationInput, {nullable:true})
-    category_category_book_categoryTocategory?: categoryOrderByWithRelationInput;
+    category?: categoryOrderByWithRelationInput;
 }

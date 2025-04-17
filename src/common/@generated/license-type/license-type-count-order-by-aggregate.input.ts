@@ -9,7 +9,7 @@ export class license_typeCountOrderByAggregateInput {
     id?: `${SortOrder}`;
 
     @Field(() => SortOrder, {nullable:true})
-    license_type_name?: `${SortOrder}`;
+    name?: `${SortOrder}`;
 
     @Field(() => SortOrder, {nullable:true})
     download_count?: `${SortOrder}`;

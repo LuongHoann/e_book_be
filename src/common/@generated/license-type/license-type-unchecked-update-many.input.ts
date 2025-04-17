@@ -14,7 +14,7 @@ export class license_typeUncheckedUpdateManyInput {
     id?: StringFieldUpdateOperationsInput;
 
     @Field(() => StringFieldUpdateOperationsInput, {nullable:true})
-    license_type_name?: StringFieldUpdateOperationsInput;
+    name?: StringFieldUpdateOperationsInput;
 
     @Field(() => IntFieldUpdateOperationsInput, {nullable:true})
     download_count?: IntFieldUpdateOperationsInput;

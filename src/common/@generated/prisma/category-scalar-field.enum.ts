@@ -1,7 +1,9 @@
 import { registerEnumType } from '@nestjs/graphql';
 
 export enum CategoryScalarFieldEnum {
-    name = "name"
+    id = "id",
+    name = "name",
+    description = "description"
 }
 
 

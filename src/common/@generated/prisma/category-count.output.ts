@@ -6,5 +6,5 @@ import { Int } from '@nestjs/graphql';
 export class CategoryCount {
 
     @Field(() => Int, {nullable:false})
-    category_book_category_book_categoryTocategory!: number;
+    category_book!: number;
 }

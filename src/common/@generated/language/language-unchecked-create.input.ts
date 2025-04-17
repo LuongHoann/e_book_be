@@ -10,10 +10,10 @@ export class languageUncheckedCreateInput {
     id?: number;
 
     @Field(() => String, {nullable:false})
-    language_name!: string;
+    name!: string;
 
     @Field(() => String, {nullable:false})
-    language_code!: string;
+    code!: string;
 
     @Field(() => language_bookUncheckedCreateNestedManyWithoutLanguageInput, {nullable:true})
     language_book?: language_bookUncheckedCreateNestedManyWithoutLanguageInput;

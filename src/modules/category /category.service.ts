@@ -4,6 +4,8 @@ import { PrismaService } from '@/provider/prisma/prisma.service';
 import { I18nService } from 'nestjs-i18n';
 import { buildResponse } from '@/utils/customResponse';
 import { CategoryValidators } from './category.validators';
+import { UpdateCategoryInput } from './dto/update-category.input';
+import { parse } from 'path';
 
 @Injectable()
 export class CategoryService {
@@ -34,9 +36,19 @@ export class CategoryService {
   }
 }
 
- async remove(name: string) {
+async update( updateCategoryInput: UpdateCategoryInput) {
+  const {id , ...updateCategoryData} = updateCategoryInput
+  try {
+    await this.prisma.category.update({where: { id: parseInt(updateCategoryInput.id)}, data: updateCategoryData}) 
+    return buildResponse(this.i18n , 'index.category.updateSuccess' , HttpStatus.OK)
+  } catch (error) {
+    return buildResponse(this.i18n , 'index.category.updateFailed' , HttpStatus.INTERNAL_SERVER_ERROR)
+  }
+}
+
+ async remove(id: string) {
     try {
-        await this.prisma.category.delete({where: { name: name}})
+        await this.prisma.category.delete({where: { id: parseInt(id)}})
         return buildResponse(this.i18n , 'index.category.deleteSuccess', HttpStatus.OK)
     } catch (error) {
       return buildResponse(this.i18n , 'index.category.deleteFailed',HttpStatus.INTERNAL_SERVER_ERROR)

@@ -9,7 +9,7 @@ export class License_typeCountAggregate {
     id!: number;
 
     @Field(() => Int, {nullable:false})
-    license_type_name!: number;
+    name!: number;
 
     @Field(() => Int, {nullable:false})
     download_count!: number;

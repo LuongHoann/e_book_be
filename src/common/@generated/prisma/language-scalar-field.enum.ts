@@ -2,8 +2,8 @@ import { registerEnumType } from '@nestjs/graphql';
 
 export enum LanguageScalarFieldEnum {
     id = "id",
-    language_name = "language_name",
-    language_code = "language_code"
+    name = "name",
+    code = "code"
 }
 
 

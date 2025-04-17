@@ -11,7 +11,7 @@ export class License_typeMinAggregate {
     id?: string;
 
     @Field(() => String, {nullable:true})
-    license_type_name?: string;
+    name?: string;
 
     @Field(() => Int, {nullable:true})
     download_count?: number;

@@ -28,7 +28,7 @@ export class license_typeWhereInput {
     id?: UuidFilter;
 
     @Field(() => StringFilter, {nullable:true})
-    license_type_name?: StringFilter;
+    name?: StringFilter;
 
     @Field(() => IntFilter, {nullable:true})
     download_count?: IntFilter;

@@ -19,7 +19,7 @@ export class FindFirstlanguageArgs {
     orderBy?: Array<languageOrderByWithRelationInput>;
 
     @Field(() => languageWhereUniqueInput, {nullable:true})
-    cursor?: Prisma.AtLeast<languageWhereUniqueInput, 'id' | 'language_code'>;
+    cursor?: Prisma.AtLeast<languageWhereUniqueInput, 'id' | 'code'>;
 
     @Field(() => Int, {nullable:true})
     take?: number;

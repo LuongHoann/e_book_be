@@ -45,17 +45,19 @@ model book {
 }
 
 model category {
-  name                                           String          @id @db.VarChar(20)
-  category_book_category_book_categoryTocategory category_book[] @relation("category_book_categoryTocategory")
+  id            Int             @id @default(autoincrement())
+  name          String          @unique(map: "category_unique") @db.VarChar(25)
+  description   String
+  category_book category_book[]
 }
 
 model category_book {
-  category                                  String   @db.VarChar(20)
-  book_id                                   String   @db.Uuid
-  book                                      book     @relation(fields: [book_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
-  category_category_book_categoryTocategory category @relation("category_book_categoryTocategory", fields: [category], references: [name], onDelete: NoAction, onUpdate: NoAction)
+  category_id Int      @default(autoincrement())
+  book_id     String   @db.Uuid
+  book        book     @relation(fields: [book_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  category    category @relation(fields: [category_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
 
-  @@id([category, book_id])
+  @@id([category_id, book_id])
 }
 
 model comment {
@@ -89,8 +91,8 @@ model favourite {
 
 model language {
   id            Int             @id @default(autoincrement())
-  language_name String          @db.VarChar(50)
-  language_code String          @unique(map: "unique_language_code") @db.VarChar(5)
+  name          String          @db.VarChar(50)
+  code          String          @unique(map: "unique_language_code") @db.VarChar(5)
   language_book language_book[]
 }
 
@@ -124,13 +126,13 @@ model license_ownership {
 }
 
 model license_type {
-  id                String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
-  license_type_name String
-  download_count    Int
-  price             Decimal   @db.Decimal(10, 2)
-  status            Boolean
-  expiration_date   DateTime? @db.Date
-  license           license[]
+  id              String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  name            String
+  download_count  Int
+  price           Decimal   @db.Decimal(10, 2)
+  status          Boolean
+  expiration_date DateTime? @db.Date
+  license         license[]
 }
 
 model news {

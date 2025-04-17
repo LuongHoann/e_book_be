@@ -31,7 +31,9 @@ type area {
 }
 
 type Category {
-  name: ID!
+  id: ID!
+  name: String!
+  description: String
 }
 
 type CategoryBook {
@@ -54,13 +56,13 @@ type Favourite {
 
 type Language {
   id: ID!
-  language_name: String!
-  language_code: String!
+  name: String!
+  code: String!
 }
 
 type LicenseType {
   id: ID!
-  license_name_type: String!
+  name: String!
   download_count: Int!
   status: String!
   expiration_date: String!
@@ -138,7 +140,7 @@ type Review {
 type Book {
   id: ID!
   book_title: String!
-  published_at: Int!
+  published_at: String!
   author: String!
   isbn: String
   page_number: Int!
@@ -167,13 +169,14 @@ type Query {
   findAllBooks: res!
   findBook(id: String!): res!
   discountCodes: res!
-  languages: res!
+  Languages: res!
   licenseTypes: res!
   news: res!
   newsDetail(id: Int!): res!
   roles: res!
   shoppingCartOfUser(user_id: String!): res!
   transactionHistory: [TransactionHistory!]!
+  Categories: res!
   users: res!
   user(id: String!): res!
 }
@@ -215,6 +218,9 @@ type Mutation {
   removeShoppingCart(deleteShoppingCartInput: DeleteShoppingCartInput!): res!
   removeAllShoppingCart(user_id: String!): res!
   createTransactionHistory(createTransactionHistoryInput: CreateTransactionHistoryInput!): TransactionHistory!
+  createCategory(createCategoryInput: CreateCategoryInput!): res!
+  updateCategory(updateCategoryInput: UpdateCategoryInput!, id: ID!): res!
+  removeCategory(id: ID!): res!
   createUser(createUserInput: CreateUserInput!): res!
   updateUser(updateUserInput: UpdateUserInput!): res!
   removeUser(id: String!): res!
@@ -241,7 +247,7 @@ input CreateBookInput {
   isbn: String
   page_number: Int!
   price: Float!
-  published_at: Int!
+  published_at: String!
   status: String!
   licenseType: ID!
   languages: [ID!]!
@@ -291,13 +297,13 @@ input UpdateDiscountCodeInput {
 }
 
 input CreateLanguageInput {
-  language_name: String!
-  language_code: String!
+  name: String!
+  code: String!
 }
 
 input UpdateLanguageInput {
-  language_name: String
-  language_code: String
+  name: String
+  code: String
   id: Int!
 }
 
@@ -317,7 +323,7 @@ input UpdateLicenseOwnershipInput {
 }
 
 input CreateLicenseTypeInput {
-  license_type_name: String
+  name: String
   download_count: Int!
   price: Float!
   status: Boolean!
@@ -325,7 +331,7 @@ input CreateLicenseTypeInput {
 }
 
 input UpdateLicenseTypeInput {
-  license_type_name: String
+  name: String
   download_count: Int
   price: Float
   status: Boolean
@@ -393,6 +399,17 @@ input DeleteShoppingCartInput {
 input CreateTransactionHistoryInput {
   book_id: ID!
   user_id: ID!
+}
+
+input CreateCategoryInput {
+  name: String!
+  description: String
+}
+
+input UpdateCategoryInput {
+  name: String
+  description: String
+  id: ID!
 }
 
 input CreateUserInput {

@@ -19,6 +19,8 @@ export class DmsService {
     private cloudfrontDomain?: string;
     private keyPairId?: string;
     private privateKey: string;
+    private s3AccessKey?: string;
+    private s3SercretAccessKey?: string
 
     constructor(private readonly configService: ConfigService) {
         const s3Region = this.configService.get('S3_REGION');
@@ -26,8 +28,10 @@ export class DmsService {
         this.cloudfrontDomain = this.configService.get('CLOUDFRONT_DOMAIN'); 
         this.keyPairId = this.configService.get('CLOUDFRONT_KEY_PAIR_ID');
         // const privateKeyPath = this.configService.get('CLOUDFRONT_PRIVATE_KEY_PATH');
+        this.s3AccessKey = this.configService.get('S3_ACCESS_KEY');
+        this.s3SercretAccessKey = this.configService.get('S3_SECRET_ACCESS_KEY')
 
-        if (!s3Region || !this.bucketName || !this.cloudfrontDomain || !this.keyPairId  /*|| !privateKeyPath */ ) {
+        if (!s3Region || !this.bucketName || !this.cloudfrontDomain || !this.keyPairId  || !this.s3AccessKey/*|| !privateKeyPath */ ) {
             throw new Error('Missing AWS S3 or CloudFront config');
         }
 
@@ -35,8 +39,8 @@ export class DmsService {
         this.client = new S3Client({
             region: s3Region,
             credentials: {
-                accessKeyId: this.configService.get('S3_ACCESS_KEY') || '',
-                secretAccessKey: this.configService.get('S3_SECRET_ACCESS_KEY') || '',
+                accessKeyId: this.s3AccessKey ,
+                secretAccessKey: this.s3SercretAccessKey || "",
             },
         });
     }

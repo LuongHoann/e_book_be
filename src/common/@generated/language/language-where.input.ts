@@ -20,10 +20,10 @@ export class languageWhereInput {
     id?: IntFilter;
 
     @Field(() => StringFilter, {nullable:true})
-    language_name?: StringFilter;
+    name?: StringFilter;
 
     @Field(() => StringFilter, {nullable:true})
-    language_code?: StringFilter;
+    code?: StringFilter;
 
     @Field(() => Language_bookListRelationFilter, {nullable:true})
     language_book?: Language_bookListRelationFilter;

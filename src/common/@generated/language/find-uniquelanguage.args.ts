@@ -9,5 +9,5 @@ export class FindUniquelanguageArgs {
 
     @Field(() => languageWhereUniqueInput, {nullable:false})
     @Type(() => languageWhereUniqueInput)
-    where!: Prisma.AtLeast<languageWhereUniqueInput, 'id' | 'language_code'>;
+    where!: Prisma.AtLeast<languageWhereUniqueInput, 'id' | 'code'>;
 }

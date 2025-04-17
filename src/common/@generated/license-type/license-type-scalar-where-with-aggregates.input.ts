@@ -27,7 +27,7 @@ export class license_typeScalarWhereWithAggregatesInput {
     id?: UuidWithAggregatesFilter;
 
     @Field(() => StringWithAggregatesFilter, {nullable:true})
-    license_type_name?: StringWithAggregatesFilter;
+    name?: StringWithAggregatesFilter;
 
     @Field(() => IntWithAggregatesFilter, {nullable:true})
     download_count?: IntWithAggregatesFilter;

@@ -1,6 +1,6 @@
 import { Field } from '@nestjs/graphql';
 import { InputType } from '@nestjs/graphql';
-import { StringFilter } from '../prisma/string-filter.input';
+import { IntFilter } from '../prisma/int-filter.input';
 import { UuidFilter } from '../prisma/uuid-filter.input';
 import { BookScalarRelationFilter } from '../prisma/book-scalar-relation-filter.input';
 import { CategoryScalarRelationFilter } from '../prisma/category-scalar-relation-filter.input';
@@ -17,8 +17,8 @@ export class category_bookWhereInput {
     @Field(() => [category_bookWhereInput], {nullable:true})
     NOT?: Array<category_bookWhereInput>;
 
-    @Field(() => StringFilter, {nullable:true})
-    category?: StringFilter;
+    @Field(() => IntFilter, {nullable:true})
+    category_id?: IntFilter;
 
     @Field(() => UuidFilter, {nullable:true})
     book_id?: UuidFilter;
@@ -27,5 +27,5 @@ export class category_bookWhereInput {
     book?: BookScalarRelationFilter;
 
     @Field(() => CategoryScalarRelationFilter, {nullable:true})
-    category_category_book_categoryTocategory?: CategoryScalarRelationFilter;
+    category?: CategoryScalarRelationFilter;
 }

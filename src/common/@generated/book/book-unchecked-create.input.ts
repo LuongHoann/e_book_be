@@ -43,8 +43,8 @@ export class bookUncheckedCreateInput {
     @Field(() => String, {nullable:false})
     book_key!: string;
 
-    @Field(() => Int, {nullable:false})
-    published_at!: number;
+    @Field(() => Date, {nullable:false})
+    published_at!: Date | string;
 
     @Field(() => String, {nullable:true})
     description?: string;

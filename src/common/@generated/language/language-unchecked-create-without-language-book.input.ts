@@ -9,8 +9,8 @@ export class languageUncheckedCreateWithoutLanguage_bookInput {
     id?: number;
 
     @Field(() => String, {nullable:false})
-    language_name!: string;
+    name!: string;
 
     @Field(() => String, {nullable:false})
-    language_code!: string;
+    code!: string;
 }

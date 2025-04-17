@@ -19,5 +19,5 @@ export class languageCreateNestedOneWithoutLanguage_bookInput {
 
     @Field(() => languageWhereUniqueInput, {nullable:true})
     @Type(() => languageWhereUniqueInput)
-    connect?: Prisma.AtLeast<languageWhereUniqueInput, 'id' | 'language_code'>;
+    connect?: Prisma.AtLeast<languageWhereUniqueInput, 'id' | 'code'>;
 }

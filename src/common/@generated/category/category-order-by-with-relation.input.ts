@@ -7,8 +7,14 @@ import { category_bookOrderByRelationAggregateInput } from '../category-book/cat
 export class categoryOrderByWithRelationInput {
 
     @Field(() => SortOrder, {nullable:true})
+    id?: `${SortOrder}`;
+
+    @Field(() => SortOrder, {nullable:true})
     name?: `${SortOrder}`;
 
+    @Field(() => SortOrder, {nullable:true})
+    description?: `${SortOrder}`;
+
     @Field(() => category_bookOrderByRelationAggregateInput, {nullable:true})
-    category_book_category_book_categoryTocategory?: category_bookOrderByRelationAggregateInput;
+    category_book?: category_bookOrderByRelationAggregateInput;
 }

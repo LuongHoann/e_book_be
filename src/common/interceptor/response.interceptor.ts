@@ -35,6 +35,7 @@ export class ResponseInterceptor<T> implements NestInterceptor<T, ResponseFormat
 
     return next.handle().pipe(
       map((res: any) => {
+        console.log(ctxType)
         if (ctxType === 'http') {
           return this.buildHttpResponse(res, context);
         } else if (ctxType === 'graphql') {
@@ -45,13 +46,10 @@ export class ResponseInterceptor<T> implements NestInterceptor<T, ResponseFormat
       }),
   )}
 
-  private buildGraphqlResponse(res: any , context: ExecutionContext){
-    const gqlCtx = GqlExecutionContext.create(context);
-    const response = gqlCtx.getContext()?.res
-    // const mess = translate(this.i18n,response?.)
-
-
+  private buildGraphqlResponse(res: any, context: ExecutionContext) {
+    return res.data
   }
+
 
   private buildHttpResponse(res: any, context: ExecutionContext): ResponseFormat<T> {
     const httpCtx = context.switchToHttp();

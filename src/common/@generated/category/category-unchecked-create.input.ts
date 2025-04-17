@@ -1,13 +1,20 @@
 import { Field } from '@nestjs/graphql';
 import { InputType } from '@nestjs/graphql';
-import { category_bookUncheckedCreateNestedManyWithoutCategory_category_book_categoryTocategoryInput } from '../category-book/category-book-unchecked-create-nested-many-without-category-category-book-category-tocategory.input';
+import { Int } from '@nestjs/graphql';
+import { category_bookUncheckedCreateNestedManyWithoutCategoryInput } from '../category-book/category-book-unchecked-create-nested-many-without-category.input';
 
 @InputType()
 export class categoryUncheckedCreateInput {
 
+    @Field(() => Int, {nullable:true})
+    id?: number;
+
     @Field(() => String, {nullable:false})
     name!: string;
 
-    @Field(() => category_bookUncheckedCreateNestedManyWithoutCategory_category_book_categoryTocategoryInput, {nullable:true})
-    category_book_category_book_categoryTocategory?: category_bookUncheckedCreateNestedManyWithoutCategory_category_book_categoryTocategoryInput;
+    @Field(() => String, {nullable:false})
+    description!: string;
+
+    @Field(() => category_bookUncheckedCreateNestedManyWithoutCategoryInput, {nullable:true})
+    category_book?: category_bookUncheckedCreateNestedManyWithoutCategoryInput;
 }

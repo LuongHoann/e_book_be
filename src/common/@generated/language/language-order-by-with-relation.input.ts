@@ -10,10 +10,10 @@ export class languageOrderByWithRelationInput {
     id?: `${SortOrder}`;
 
     @Field(() => SortOrder, {nullable:true})
-    language_name?: `${SortOrder}`;
+    name?: `${SortOrder}`;
 
     @Field(() => SortOrder, {nullable:true})
-    language_code?: `${SortOrder}`;
+    code?: `${SortOrder}`;
 
     @Field(() => language_bookOrderByRelationAggregateInput, {nullable:true})
     language_book?: language_bookOrderByRelationAggregateInput;

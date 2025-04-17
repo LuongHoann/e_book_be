@@ -45,7 +45,7 @@ export class BookService {
           //  create data for relation of book and category table 
           category_book: { 
               createMany: { 
-                data: input.categories.map(id =>({category: id}))
+                data: input.categories.map(id =>({category_id: id}))
               }
           },
           // 

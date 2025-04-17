@@ -32,19 +32,19 @@ export class category_bookUpdateManyWithoutBookNestedInput {
 
     @Field(() => [category_bookWhereUniqueInput], {nullable:true})
     @Type(() => category_bookWhereUniqueInput)
-    set?: Array<Prisma.AtLeast<category_bookWhereUniqueInput, 'category_book_id'>>;
+    set?: Array<Prisma.AtLeast<category_bookWhereUniqueInput, 'category_id_book_id'>>;
 
     @Field(() => [category_bookWhereUniqueInput], {nullable:true})
     @Type(() => category_bookWhereUniqueInput)
-    disconnect?: Array<Prisma.AtLeast<category_bookWhereUniqueInput, 'category_book_id'>>;
+    disconnect?: Array<Prisma.AtLeast<category_bookWhereUniqueInput, 'category_id_book_id'>>;
 
     @Field(() => [category_bookWhereUniqueInput], {nullable:true})
     @Type(() => category_bookWhereUniqueInput)
-    delete?: Array<Prisma.AtLeast<category_bookWhereUniqueInput, 'category_book_id'>>;
+    delete?: Array<Prisma.AtLeast<category_bookWhereUniqueInput, 'category_id_book_id'>>;
 
     @Field(() => [category_bookWhereUniqueInput], {nullable:true})
     @Type(() => category_bookWhereUniqueInput)
-    connect?: Array<Prisma.AtLeast<category_bookWhereUniqueInput, 'category_book_id'>>;
+    connect?: Array<Prisma.AtLeast<category_bookWhereUniqueInput, 'category_id_book_id'>>;
 
     @Field(() => [category_bookUpdateWithWhereUniqueWithoutBookInput], {nullable:true})
     @Type(() => category_bookUpdateWithWhereUniqueWithoutBookInput)

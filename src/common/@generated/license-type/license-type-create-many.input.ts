@@ -14,7 +14,7 @@ export class license_typeCreateManyInput {
     id?: string;
 
     @Field(() => String, {nullable:false})
-    license_type_name!: string;
+    name!: string;
 
     @Field(() => Int, {nullable:false})
     download_count!: number;

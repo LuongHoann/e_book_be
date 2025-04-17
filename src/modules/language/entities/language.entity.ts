@@ -1,4 +1,3 @@
-import { Book } from '@/modules/book/entities/book.entity';
 import { ObjectType, Field, ID } from '@nestjs/graphql';
 
 @ObjectType()
@@ -7,9 +6,9 @@ export class Language {
   id: number;
 
   @Field(()=> String , {nullable: false})
-  language_name: string;
+  name: string;
 
   @Field(()=> String , {nullable: false})
-  language_code: string
+  code: string
 
 }

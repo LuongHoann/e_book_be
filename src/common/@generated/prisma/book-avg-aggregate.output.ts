@@ -10,7 +10,4 @@ export class BookAvgAggregate {
 
     @Field(() => Float, {nullable:true})
     views?: number;
-
-    @Field(() => Float, {nullable:true})
-    published_at?: number;
 }

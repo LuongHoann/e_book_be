@@ -2,7 +2,7 @@ import { registerEnumType } from '@nestjs/graphql';
 
 export enum License_typeScalarFieldEnum {
     id = "id",
-    license_type_name = "license_type_name",
+    name = "name",
     download_count = "download_count",
     price = "price",
     status = "status",

@@ -6,7 +6,7 @@ import { Int } from '@nestjs/graphql';
 export class Category_bookCountAggregate {
 
     @Field(() => Int, {nullable:false})
-    category!: number;
+    category_id!: number;
 
     @Field(() => Int, {nullable:false})
     book_id!: number;

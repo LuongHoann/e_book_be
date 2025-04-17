@@ -8,10 +8,16 @@ import { CategoryCount } from '../prisma/category-count.output';
 export class category {
 
     @Field(() => ID, {nullable:false})
+    id!: number;
+
+    @Field(() => String, {nullable:false})
     name!: string;
 
+    @Field(() => String, {nullable:false})
+    description!: string;
+
     @Field(() => [category_book], {nullable:true})
-    category_book_category_book_categoryTocategory?: Array<category_book>;
+    category_book?: Array<category_book>;
 
     @Field(() => CategoryCount, {nullable:false})
     _count?: CategoryCount;

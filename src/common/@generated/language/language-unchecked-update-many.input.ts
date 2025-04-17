@@ -10,8 +10,8 @@ export class languageUncheckedUpdateManyInput {
     id?: IntFieldUpdateOperationsInput;
 
     @Field(() => StringFieldUpdateOperationsInput, {nullable:true})
-    language_name?: StringFieldUpdateOperationsInput;
+    name?: StringFieldUpdateOperationsInput;
 
     @Field(() => StringFieldUpdateOperationsInput, {nullable:true})
-    language_code?: StringFieldUpdateOperationsInput;
+    code?: StringFieldUpdateOperationsInput;
 }

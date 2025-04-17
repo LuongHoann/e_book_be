@@ -14,10 +14,10 @@ export class languageOrderByWithAggregationInput {
     id?: `${SortOrder}`;
 
     @Field(() => SortOrder, {nullable:true})
-    language_name?: `${SortOrder}`;
+    name?: `${SortOrder}`;
 
     @Field(() => SortOrder, {nullable:true})
-    language_code?: `${SortOrder}`;
+    code?: `${SortOrder}`;
 
     @Field(() => languageCountOrderByAggregateInput, {nullable:true})
     _count?: languageCountOrderByAggregateInput;

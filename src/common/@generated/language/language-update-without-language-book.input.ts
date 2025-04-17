@@ -6,8 +6,8 @@ import { StringFieldUpdateOperationsInput } from '../prisma/string-field-update-
 export class languageUpdateWithoutLanguage_bookInput {
 
     @Field(() => StringFieldUpdateOperationsInput, {nullable:true})
-    language_name?: StringFieldUpdateOperationsInput;
+    name?: StringFieldUpdateOperationsInput;
 
     @Field(() => StringFieldUpdateOperationsInput, {nullable:true})
-    language_code?: StringFieldUpdateOperationsInput;
+    code?: StringFieldUpdateOperationsInput;
 }
