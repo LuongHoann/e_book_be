@@ -177,6 +177,7 @@ type Query {
   shoppingCartOfUser(user_id: String!): res!
   transactionHistory: [TransactionHistory!]!
   Categories: res!
+  CategoriesWithBookQuantity: res!
   users: res!
   user(id: String!): res!
 }
@@ -246,17 +247,15 @@ input CreateBookInput {
   description: String
   isbn: String
   page_number: Int!
-  price: Float!
   published_at: String!
   status: String!
   licenseType: ID!
   languages: [ID!]!
-  areas: [ID!]!
   categories: [ID!]!
   book_key: String!
   banner_key: String
   views: Int! = 0
-  discount_code: [ID!]!
+  discount_code: [ID!]
 }
 
 input UpdateBookInput {

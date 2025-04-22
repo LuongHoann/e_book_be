@@ -19,6 +19,11 @@ export class CategoryResolver {
     return await this.categoryService.findAll();   
   }
 
+  @Query(() =>  ResponseAPI<Category>, { name: 'CategoriesWithBookQuantity' })
+  async findAllWithBookQuantity() {
+    return await this.categoryService.findAllWithBookQuantity();   
+  }
+
   @Mutation (()=> ResponseAPI<Category>)
   updateCategory(@Args('updateCategoryInput') @Args('id' , { type: () => ID }) updateCategoryInput: UpdateCategoryInput , id : string) {{
     return this.categoryService.update(updateCategoryInput);

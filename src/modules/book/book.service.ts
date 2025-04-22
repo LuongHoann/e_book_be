@@ -39,19 +39,19 @@ export class BookService {
           //  create data for relation of book and discount table 
           book_discount: { 
               createMany: {
-               data: input.discount_code.map(id => ({discount_id: id}))
+               data: input.discount_code.map(id => ({discount_id: Number(id)}))
               } 
           },
           //  create data for relation of book and category table 
           category_book: { 
               createMany: { 
-                data: input.categories.map(id =>({category_id: id}))
+                data: input.categories.map(id =>({category_id: Number(id)}))
               }
           },
           // 
           language_book: { 
             createMany: { 
-              data:input.languages.map((id)=> ({language_id: id}))
+              data:input.languages.map((id)=> ({language_id: Number(id)}))
             }
           },
         }
@@ -62,6 +62,7 @@ export class BookService {
         HttpStatus.OK,
       );
     } catch (err) {
+      console.log(err);
       return  buildResponse(this.i18n, 'index.book.createFailed', HttpStatus.INTERNAL_SERVER_ERROR)
     }
   }

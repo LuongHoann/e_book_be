@@ -38,10 +38,10 @@ export class CreateBookInput {
   @Min(1)
   page_number: number;
 
-  @Field(() => Float, { nullable: false })
-  @IsNumber()
-  @Min(0)
-  price: number;
+  // @Field(() => Float, { nullable: false })
+  // @IsNumber()
+  // @Min(0)
+  // price: number;
 
   @Field(() => String, { nullable: false }) 
   @IsDateString() 
@@ -68,11 +68,6 @@ export class CreateBookInput {
   @Field(() => [ID], { nullable: false })
   @IsArray()
   @IsNotEmpty({ each: true })
-  areas: string[];
-
-  @Field(() => [ID], { nullable: false })
-  @IsArray()
-  @IsNotEmpty({ each: true })
   categories: number[];
 
   @Field(() => String, { nullable: false })
@@ -88,7 +83,7 @@ export class CreateBookInput {
   @IsOptional()
   views: number
 
-  @Field(() => [ID], { nullable: false })
+  @Field(() => [ID], { nullable: true })
   @IsNotEmpty()
   discount_code: number[];
 }

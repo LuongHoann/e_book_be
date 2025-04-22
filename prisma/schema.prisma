@@ -31,7 +31,7 @@ model book {
   book_key            String                @db.VarChar(100)
   published_at        DateTime              @db.Timestamptz(6)
   description         String?
-  status              String                @db.VarChar(8)
+  status              String                @db.VarChar(10)
   book_discount       book_discount[]
   category_book       category_book[]
   comment             comment[]

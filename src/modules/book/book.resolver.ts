@@ -12,8 +12,6 @@ import { FileInterceptor } from '@nestjs/platform-express';
 export class BookResolver {
   constructor(private readonly bookService: BookService ) {}
 
-  @HttpCode(HttpStatus.CREATED)
-  @UseInterceptors(FileInterceptor('file'))
   @Mutation(()=> ResponseAPI<Book>)
   createBook( @Args('createBookInput') createBookInput: CreateBookInput ) {
     return this.bookService.create(createBookInput);

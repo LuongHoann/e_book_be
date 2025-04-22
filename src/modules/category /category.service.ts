@@ -5,7 +5,6 @@ import { I18nService } from 'nestjs-i18n';
 import { buildResponse } from '@/utils/customResponse';
 import { CategoryValidators } from './category.validators';
 import { UpdateCategoryInput } from './dto/update-category.input';
-import { parse } from 'path';
 
 @Injectable()
 export class CategoryService {
@@ -36,6 +35,14 @@ export class CategoryService {
   }
 }
 
+async findAllWithBookQuantity() {
+  try {
+     const data = await this.prisma.category.findMany({select: {id: true , name: true , description: true , _count: {select: {category_book: true}}}})
+     return buildResponse(this.i18n , 'index.general.success' ,HttpStatus.OK , {items: data})
+  } catch (error) {
+      return buildResponse(this.i18n , 'index.general.failed' , HttpStatus.INTERNAL_SERVER_ERROR)
+  }
+}
 async update( updateCategoryInput: UpdateCategoryInput) {
   const {id , ...updateCategoryData} = updateCategoryInput
   try {
