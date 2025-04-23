@@ -1,4 +1,3 @@
-import { Type } from 'class-transformer';
 import { Injectable, InternalServerErrorException } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import {
@@ -6,9 +5,6 @@ import {
     PutObjectCommand,
     DeleteObjectCommand,
 } from '@aws-sdk/client-s3';
-import { v4 as uuidv4 } from 'uuid';
-import slugify from 'slugify';
-import * as fs from 'fs';
 import { getSignedUrl } from 'aws-cloudfront-sign';
 import { getFileHash } from '@/utils/hashFileName';
 

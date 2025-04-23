@@ -19,7 +19,7 @@ import { FileInterceptor } from '@nestjs/platform-express';
 import { DmsService } from './dms.service';
 import { Public } from '@/common/decorators/is-public/is-public.decorator';
 
-const MAX_FILE_SIZE = 10 * 1024 * 1024; // 10MB
+const MAX_FILE_SIZE = 5*10 * 1024 * 1024; // 50MB
 @Controller('dms')
 export class DmsController {
     constructor(private readonly dmsService: DmsService) { }
@@ -33,7 +33,7 @@ export class DmsController {
                 validators: [
                     // new FileTypeValidator({ fileType: 'application/pdf' , 'image/*' }),
                     new MaxFileSizeValidator({
-                        maxSize: MAX_FILE_SIZE , // 10MB
+                        maxSize: MAX_FILE_SIZE , 
                         message: 'File is too large. Max file size is 10MB',
                     }),
                 ],
