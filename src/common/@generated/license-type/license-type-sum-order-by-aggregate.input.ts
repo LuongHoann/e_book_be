@@ -10,4 +10,7 @@ export class license_typeSumOrderByAggregateInput {
 
     @Field(() => SortOrder, {nullable:true})
     price?: `${SortOrder}`;
+
+    @Field(() => SortOrder, {nullable:true})
+    duration?: `${SortOrder}`;
 }

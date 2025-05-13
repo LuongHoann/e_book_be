@@ -27,6 +27,6 @@ export class license_typeUncheckedCreateWithoutLicenseInput {
     @Field(() => Boolean, {nullable:false})
     status!: boolean;
 
-    @Field(() => Date, {nullable:true})
-    expiration_date?: Date | string;
+    @Field(() => Int, {nullable:true})
+    duration?: number;
 }

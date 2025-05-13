@@ -11,7 +11,7 @@ export class licenseCreateWithoutLicense_ownershipInput {
     id?: string;
 
     @Field(() => String, {nullable:true})
-    license_name?: string;
+    name?: string;
 
     @Field(() => bookCreateNestedOneWithoutLicenseInput, {nullable:true})
     book?: bookCreateNestedOneWithoutLicenseInput;

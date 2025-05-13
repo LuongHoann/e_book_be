@@ -12,9 +12,12 @@ export class LanguageValidators {
     return result 
   }
 
-  async isLanguageExist(id : number) {
+
+
+  async isLanguageExist(id : string) {
+    console.log(id)
     const result = await this.prisma.language.findUnique({
-      where: { id: id },
+      where: { id: parseInt(id) },
     });
     return result 
   }

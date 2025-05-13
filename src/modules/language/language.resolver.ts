@@ -1,5 +1,5 @@
 import { ResponseAPI } from '@/types/http.entity';
-import { Resolver, Query, Mutation, Args, Int } from '@nestjs/graphql';
+import { Resolver, Query, Mutation, Args, ID } from '@nestjs/graphql';
 import { LanguageService } from './language.service';
 import { Language } from './entities/language.entity';
 import { CreateLanguageInput } from './dto/create-language.input';
@@ -14,18 +14,18 @@ export class LanguageResolver {
     return this.languageService.create(createLanguageInput);
   }
 
-  @Query(() => ResponseAPI<Language>, { name: 'Languages' })
+  @Query(() => ResponseAPI<Language>, { name: 'findAllLanguages' })
   findAll() {
     return this.languageService.findAll();
   }
 
   @Mutation(() => ResponseAPI<Language>)
   updateLanguage(@Args('updateLanguageInput') updateLanguageInput: UpdateLanguageInput) {
-    return this.languageService.update(updateLanguageInput.id, updateLanguageInput);
+    return this.languageService.update(updateLanguageInput);
   }
 
   @Mutation(() => ResponseAPI<Language>)
-  removeLanguage(@Args('id', { type: () => Int }) id: number) {
+  removeLanguage(@Args('id', { type: () => ID }) id: string) {
     return this.languageService.remove(id);
   }
 }

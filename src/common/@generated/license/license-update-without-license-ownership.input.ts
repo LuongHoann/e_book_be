@@ -13,7 +13,7 @@ export class licenseUpdateWithoutLicense_ownershipInput {
     id?: StringFieldUpdateOperationsInput;
 
     @Field(() => NullableStringFieldUpdateOperationsInput, {nullable:true})
-    license_name?: NullableStringFieldUpdateOperationsInput;
+    name?: NullableStringFieldUpdateOperationsInput;
 
     @Field(() => bookUpdateOneWithoutLicenseNestedInput, {nullable:true})
     book?: bookUpdateOneWithoutLicenseNestedInput;

@@ -125,6 +125,7 @@ import { CategoryModule } from './modules/category /category.module';
     ReadingHistoryModule,
     LanguageModule,
     CategoryModule,
+    LicenseTypeModule,
     // jwt modules
     AuthModule,
     // s3 modules

@@ -12,4 +12,7 @@ export class License_typeAvgAggregate {
 
     @Field(() => GraphQLDecimal, {nullable:true})
     price?: Decimal;
+
+    @Field(() => Float, {nullable:true})
+    duration?: number;
 }

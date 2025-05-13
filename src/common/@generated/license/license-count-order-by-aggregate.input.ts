@@ -9,7 +9,7 @@ export class licenseCountOrderByAggregateInput {
     id?: `${SortOrder}`;
 
     @Field(() => SortOrder, {nullable:true})
-    license_name?: `${SortOrder}`;
+    name?: `${SortOrder}`;
 
     @Field(() => SortOrder, {nullable:true})
     book_id?: `${SortOrder}`;

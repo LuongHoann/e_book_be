@@ -16,6 +16,9 @@ export class languageUncheckedUpdateInput {
     @Field(() => StringFieldUpdateOperationsInput, {nullable:true})
     code?: StringFieldUpdateOperationsInput;
 
+    @Field(() => StringFieldUpdateOperationsInput, {nullable:true})
+    native_name?: StringFieldUpdateOperationsInput;
+
     @Field(() => language_bookUncheckedUpdateManyWithoutLanguageNestedInput, {nullable:true})
     language_book?: language_bookUncheckedUpdateManyWithoutLanguageNestedInput;
 }

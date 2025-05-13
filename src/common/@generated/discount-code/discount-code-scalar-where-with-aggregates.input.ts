@@ -25,14 +25,14 @@ export class discount_codeScalarWhereWithAggregatesInput {
     id?: IntWithAggregatesFilter;
 
     @Field(() => StringNullableWithAggregatesFilter, {nullable:true})
-    discount_code_name?: StringNullableWithAggregatesFilter;
+    name?: StringNullableWithAggregatesFilter;
 
     @Field(() => DecimalNullableWithAggregatesFilter, {nullable:true})
     @Type(() => DecimalNullableWithAggregatesFilter)
-    discount_value?: DecimalNullableWithAggregatesFilter;
+    value?: DecimalNullableWithAggregatesFilter;
 
     @Field(() => IntNullableWithAggregatesFilter, {nullable:true})
-    discount_value_percent?: IntNullableWithAggregatesFilter;
+    value_percent?: IntNullableWithAggregatesFilter;
 
     @Field(() => StringNullableWithAggregatesFilter, {nullable:true})
     area_code?: StringNullableWithAggregatesFilter;

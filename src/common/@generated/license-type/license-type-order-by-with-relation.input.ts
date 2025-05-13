@@ -24,7 +24,7 @@ export class license_typeOrderByWithRelationInput {
     status?: `${SortOrder}`;
 
     @Field(() => SortOrderInput, {nullable:true})
-    expiration_date?: SortOrderInput;
+    duration?: SortOrderInput;
 
     @Field(() => licenseOrderByRelationAggregateInput, {nullable:true})
     @Type(() => licenseOrderByRelationAggregateInput)

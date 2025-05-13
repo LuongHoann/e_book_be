@@ -16,14 +16,14 @@ export class discount_codeOrderByWithAggregationInput {
     id?: `${SortOrder}`;
 
     @Field(() => SortOrderInput, {nullable:true})
-    discount_code_name?: SortOrderInput;
+    name?: SortOrderInput;
 
     @Field(() => SortOrderInput, {nullable:true})
     @Type(() => SortOrderInput)
-    discount_value?: SortOrderInput;
+    value?: SortOrderInput;
 
     @Field(() => SortOrderInput, {nullable:true})
-    discount_value_percent?: SortOrderInput;
+    value_percent?: SortOrderInput;
 
     @Field(() => SortOrderInput, {nullable:true})
     area_code?: SortOrderInput;

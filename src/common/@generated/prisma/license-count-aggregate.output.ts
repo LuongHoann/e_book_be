@@ -9,7 +9,7 @@ export class LicenseCountAggregate {
     id!: number;
 
     @Field(() => Int, {nullable:false})
-    license_name!: number;
+    name!: number;
 
     @Field(() => Int, {nullable:false})
     book_id!: number;

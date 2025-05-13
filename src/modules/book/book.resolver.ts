@@ -1,4 +1,4 @@
-import { Resolver, Query, Mutation, Args } from '@nestjs/graphql';
+import { Resolver, Query, Mutation, Args, ID } from '@nestjs/graphql';
 import { BookService } from './book.service';
 import { CreateBookInput } from './dto/create-book.input';
 import { UpdateBookInput } from './dto/update-book.input';
@@ -18,12 +18,12 @@ export class BookResolver {
   }
 
   @Query(()=> ResponseAPI<Book>, {name: 'findAllBooks'})
-   findAll() {
-    return this.bookService.findAll();
+   findAll(@Args('status', {type: ()=> String , nullable: true }) status: string) {
+    return this.bookService.findAll(status);
   }
 
-  @Query(()=> ResponseAPI<Book>, {name: 'findBook'})
-  findOne(@Args('id') id: string) {
+  @Query(()=> ResponseAPI<Book>, {name: 'findBookById'})
+  findOne(@Args('id' ,{ type: () => ID}) id: string) {
     return this.bookService.findOne(id);
   }
 
@@ -35,7 +35,7 @@ export class BookResolver {
 
   @HttpCode(HttpStatus.NO_CONTENT)
   @Mutation(() => ResponseAPI<Book>)
-  removeBook(@Args('id') id: string) {
+  removeBook(@Args('id', { type: () => ID }) id: string) {
     return this.bookService.remove(id);
   }
 }

@@ -1,4 +1,4 @@
-import { Resolver, Query, Mutation, Args, Int } from '@nestjs/graphql';
+import { Resolver, Query, Mutation, Args, Int, ID } from '@nestjs/graphql';
 import { LicenseTypeService } from './license-type.service';
 import { LicenseType } from './entities/license-type.entity';
 import { CreateLicenseTypeInput } from './dto/create-license-type.input';
@@ -14,7 +14,7 @@ export class LicenseTypeResolver {
     return this.licenseTypeService.create(createLicenseTypeInput);
   }
 
-  @Query(() => ResponseAPI<LicenseType>, { name: 'licenseTypes' })
+  @Query(() => ResponseAPI<LicenseType>, { name: 'LicenseTypes' })
   findAll() {
     return this.licenseTypeService.findAll();
   }
@@ -25,7 +25,7 @@ export class LicenseTypeResolver {
   }
 
   @Mutation(() => ResponseAPI<LicenseType>)
-  removeLicenseType(@Args('id', { type: () => Int }) id: string) {
+  removeLicenseType(@Args('id', { type: () => ID }) id: string) {
     return this.licenseTypeService.remove(id);
   }
 }

@@ -14,14 +14,14 @@ export class discount_codeUncheckedUpdateInput {
     id?: IntFieldUpdateOperationsInput;
 
     @Field(() => NullableStringFieldUpdateOperationsInput, {nullable:true})
-    discount_code_name?: NullableStringFieldUpdateOperationsInput;
+    name?: NullableStringFieldUpdateOperationsInput;
 
     @Field(() => NullableDecimalFieldUpdateOperationsInput, {nullable:true})
     @Type(() => NullableDecimalFieldUpdateOperationsInput)
-    discount_value?: NullableDecimalFieldUpdateOperationsInput;
+    value?: NullableDecimalFieldUpdateOperationsInput;
 
     @Field(() => NullableIntFieldUpdateOperationsInput, {nullable:true})
-    discount_value_percent?: NullableIntFieldUpdateOperationsInput;
+    value_percent?: NullableIntFieldUpdateOperationsInput;
 
     @Field(() => NullableStringFieldUpdateOperationsInput, {nullable:true})
     area_code?: NullableStringFieldUpdateOperationsInput;

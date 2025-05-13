@@ -13,4 +13,7 @@ export class languageUncheckedCreateWithoutLanguage_bookInput {
 
     @Field(() => String, {nullable:false})
     code!: string;
+
+    @Field(() => String, {nullable:false})
+    native_name!: string;
 }

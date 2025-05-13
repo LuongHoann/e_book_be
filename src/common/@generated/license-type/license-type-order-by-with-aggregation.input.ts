@@ -28,7 +28,7 @@ export class license_typeOrderByWithAggregationInput {
     status?: `${SortOrder}`;
 
     @Field(() => SortOrderInput, {nullable:true})
-    expiration_date?: SortOrderInput;
+    duration?: SortOrderInput;
 
     @Field(() => license_typeCountOrderByAggregateInput, {nullable:true})
     @Type(() => license_typeCountOrderByAggregateInput)

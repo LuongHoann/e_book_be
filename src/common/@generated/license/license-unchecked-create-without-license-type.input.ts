@@ -9,7 +9,7 @@ export class licenseUncheckedCreateWithoutLicense_typeInput {
     id?: string;
 
     @Field(() => String, {nullable:true})
-    license_name?: string;
+    name?: string;
 
     @Field(() => String, {nullable:true})
     book_id?: string;

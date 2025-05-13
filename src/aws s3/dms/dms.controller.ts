@@ -51,12 +51,12 @@ export class DmsController {
     @Public()
     @Get(':type/:key')
     async getFileUrl(@Param('key') key: string , @Param('type') type: fileType) {
-        return this.dmsService.getCloudFrontUrl(key , type);
+        return this.dmsService.getCloudFrontUrl(key);
     }
 
     @Get('/signed-url/:key')
-    async getSingedUrl(@Param('key') key: string,  @Param('type') type: fileType) {
-        return this.dmsService.getSignedCloudFrontUrl(key , type);
+    async getSingedUrl(@Param('key') key: string) {
+        return this.dmsService.getSignedCloudFrontUrl(key );
     }
 
     @Delete(':key')

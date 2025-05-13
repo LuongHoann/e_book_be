@@ -11,7 +11,7 @@ export class licenseUncheckedUpdateInput {
     id?: StringFieldUpdateOperationsInput;
 
     @Field(() => NullableStringFieldUpdateOperationsInput, {nullable:true})
-    license_name?: NullableStringFieldUpdateOperationsInput;
+    name?: NullableStringFieldUpdateOperationsInput;
 
     @Field(() => NullableStringFieldUpdateOperationsInput, {nullable:true})
     book_id?: NullableStringFieldUpdateOperationsInput;

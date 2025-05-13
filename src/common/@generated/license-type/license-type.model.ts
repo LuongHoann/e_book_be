@@ -25,8 +25,8 @@ export class license_type {
     @Field(() => Boolean, {nullable:false})
     status!: boolean;
 
-    @Field(() => Date, {nullable:true})
-    expiration_date!: Date | null;
+    @Field(() => Int, {nullable:true})
+    duration!: number | null;
 
     @Field(() => [license], {nullable:true})
     license?: Array<license>;

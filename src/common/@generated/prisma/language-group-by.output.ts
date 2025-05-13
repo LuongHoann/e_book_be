@@ -19,6 +19,9 @@ export class LanguageGroupBy {
     @Field(() => String, {nullable:false})
     code!: string;
 
+    @Field(() => String, {nullable:false})
+    native_name!: string;
+
     @Field(() => LanguageCountAggregate, {nullable:true})
     _count?: LanguageCountAggregate;
 

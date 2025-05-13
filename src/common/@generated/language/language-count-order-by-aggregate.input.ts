@@ -13,4 +13,7 @@ export class languageCountOrderByAggregateInput {
 
     @Field(() => SortOrder, {nullable:true})
     code?: `${SortOrder}`;
+
+    @Field(() => SortOrder, {nullable:true})
+    native_name?: `${SortOrder}`;
 }

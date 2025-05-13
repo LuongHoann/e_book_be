@@ -13,7 +13,7 @@ export class license {
     id!: string;
 
     @Field(() => String, {nullable:true})
-    license_name!: string | null;
+    name!: string | null;
 
     @Field(() => String, {nullable:true})
     book_id!: string | null;

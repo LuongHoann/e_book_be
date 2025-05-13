@@ -6,7 +6,7 @@ export enum License_typeScalarFieldEnum {
     download_count = "download_count",
     price = "price",
     status = "status",
-    expiration_date = "expiration_date"
+    duration = "duration"
 }
 
 

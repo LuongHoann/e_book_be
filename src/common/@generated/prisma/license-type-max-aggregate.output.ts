@@ -22,6 +22,6 @@ export class License_typeMaxAggregate {
     @Field(() => Boolean, {nullable:true})
     status?: boolean;
 
-    @Field(() => Date, {nullable:true})
-    expiration_date?: Date | string;
+    @Field(() => Int, {nullable:true})
+    duration?: number;
 }

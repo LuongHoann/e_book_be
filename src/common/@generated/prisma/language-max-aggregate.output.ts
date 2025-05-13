@@ -13,4 +13,7 @@ export class LanguageMaxAggregate {
 
     @Field(() => String, {nullable:true})
     code?: string;
+
+    @Field(() => String, {nullable:true})
+    native_name?: string;
 }

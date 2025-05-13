@@ -13,7 +13,7 @@ export class licenseUpdateWithoutBookInput {
     id?: StringFieldUpdateOperationsInput;
 
     @Field(() => NullableStringFieldUpdateOperationsInput, {nullable:true})
-    license_name?: NullableStringFieldUpdateOperationsInput;
+    name?: NullableStringFieldUpdateOperationsInput;
 
     @Field(() => license_typeUpdateOneWithoutLicenseNestedInput, {nullable:true})
     @Type(() => license_typeUpdateOneWithoutLicenseNestedInput)

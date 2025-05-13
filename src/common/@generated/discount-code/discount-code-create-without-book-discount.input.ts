@@ -12,15 +12,15 @@ import { areaCreateNestedOneWithoutDiscount_codeInput } from '../area/area-creat
 export class discount_codeCreateWithoutBook_discountInput {
 
     @Field(() => String, {nullable:true})
-    discount_code_name?: string;
+    name?: string;
 
     @Field(() => GraphQLDecimal, {nullable:true})
     @Type(() => Object)
     @Transform(transformToDecimal)
-    discount_value?: Decimal;
+    value?: Decimal;
 
     @Field(() => Int, {nullable:true})
-    discount_value_percent?: number;
+    value_percent?: number;
 
     @Field(() => areaCreateNestedOneWithoutDiscount_codeInput, {nullable:true})
     @Type(() => areaCreateNestedOneWithoutDiscount_codeInput)

@@ -20,7 +20,7 @@ export class licenseScalarWhereWithAggregatesInput {
     id?: UuidWithAggregatesFilter;
 
     @Field(() => StringNullableWithAggregatesFilter, {nullable:true})
-    license_name?: StringNullableWithAggregatesFilter;
+    name?: StringNullableWithAggregatesFilter;
 
     @Field(() => UuidNullableWithAggregatesFilter, {nullable:true})
     book_id?: UuidNullableWithAggregatesFilter;

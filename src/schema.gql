@@ -58,6 +58,7 @@ type Language {
   id: ID!
   name: String!
   code: String!
+  native_name: String
 }
 
 type LicenseType {
@@ -65,7 +66,8 @@ type LicenseType {
   name: String!
   download_count: Int!
   status: String!
-  expiration_date: String!
+  duration: Int!
+  price: Float!
 }
 
 type License {
@@ -166,11 +168,11 @@ type Permission {
 
 type Query {
   findAllAreas: res!
-  findAllBooks: res!
-  findBook(id: String!): res!
+  findAllBooks(status: String): res!
+  findBookById(id: ID!): res!
   discountCodes: res!
-  Languages: res!
-  licenseTypes: res!
+  findAllLanguages: res!
+  LicenseTypes: res!
   news: res!
   newsDetail(id: Int!): res!
   roles: res!
@@ -188,7 +190,7 @@ type Mutation {
   removeArea(where: String!): res!
   createBook(createBookInput: CreateBookInput!): res!
   updateBook(updateBookInput: UpdateBookInput!): res!
-  removeBook(id: String!): res!
+  removeBook(id: ID!): res!
   createComment(createCommentInput: CreateCommentInput!): res!
   updateComment(updateCommentInput: UpdateCommentInput!): res!
   removeComment(deleteCommentInput: DeleteCommentInput!): res!
@@ -197,13 +199,13 @@ type Mutation {
   removeDiscountCode(id: Int!): res!
   createLanguage(createLanguageInput: CreateLanguageInput!): res!
   updateLanguage(updateLanguageInput: UpdateLanguageInput!): res!
-  removeLanguage(id: Int!): res!
+  removeLanguage(id: ID!): res!
   createLicenseOwnership(createLicenseOwnershipInput: CreateLicenseOwnershipInput!): res!
   updateLicenseOwnership(updateLicenseOwnershipInput: UpdateLicenseOwnershipInput!): res!
   removeLicenseOwnership(id: Int!): res!
   createLicenseType(createLicenseTypeInput: CreateLicenseTypeInput!): res!
   updateLicenseType(updateLicenseTypeInput: UpdateLicenseTypeInput!): res!
-  removeLicenseType(id: Int!): res!
+  removeLicenseType(id: ID!): res!
   createNews(createNewsInput: CreateNewsInput!): res!
   updateNews(updateNewsInput: UpdateNewsInput!): res!
   removeNews(id: Int!): res!
@@ -281,16 +283,16 @@ input DeleteCommentInput {
 }
 
 input CreateDiscountCodeInput {
-  discount_code_name: String!
-  discount_value: Float!
-  discount_value_percent: Int!
+  name: String!
+  value: Float!
+  value_percent: Int!
   area_name: String!
 }
 
 input UpdateDiscountCodeInput {
-  discount_code_name: String
-  discount_value: Float
-  discount_value_percent: Int
+  name: String
+  value: Float
+  value_percent: Int
   area_name: String
   id: Int!
 }
@@ -298,12 +300,14 @@ input UpdateDiscountCodeInput {
 input CreateLanguageInput {
   name: String!
   code: String!
+  native_name: String!
 }
 
 input UpdateLanguageInput {
   name: String
   code: String
-  id: Int!
+  native_name: String
+  id: ID!
 }
 
 input CreateLicenseOwnershipInput {
@@ -322,11 +326,11 @@ input UpdateLicenseOwnershipInput {
 }
 
 input CreateLicenseTypeInput {
-  name: String
+  name: String!
   download_count: Int!
   price: Float!
   status: Boolean!
-  expiration_date: String!
+  duration: Int!
 }
 
 input UpdateLicenseTypeInput {
@@ -334,7 +338,7 @@ input UpdateLicenseTypeInput {
   download_count: Int
   price: Float
   status: Boolean
-  expiration_date: String
+  duration: Int
   id: ID!
 }
 

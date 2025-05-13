@@ -1,11 +1,9 @@
 
-import { ObjectType, Field, Int, ID } from '@nestjs/graphql';
-import { IsUUID } from 'class-validator';
+import { ObjectType, Field, Int, ID, Float } from '@nestjs/graphql';
 
 @ObjectType()
 export class LicenseType {
   @Field(()=>ID)
-  @IsUUID()
   id: string
 
   @Field(()=>String)
@@ -17,6 +15,9 @@ export class LicenseType {
   @Field(()=> String)
   status: string
 
-  @Field(()=> String)
-  expiration_date: string
+  @Field(()=> Int)
+  duration: number
+
+  @Field(()=>Float)
+  price: number
 }

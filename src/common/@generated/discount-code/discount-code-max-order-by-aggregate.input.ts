@@ -9,13 +9,13 @@ export class discount_codeMaxOrderByAggregateInput {
     id?: `${SortOrder}`;
 
     @Field(() => SortOrder, {nullable:true})
-    discount_code_name?: `${SortOrder}`;
+    name?: `${SortOrder}`;
 
     @Field(() => SortOrder, {nullable:true})
-    discount_value?: `${SortOrder}`;
+    value?: `${SortOrder}`;
 
     @Field(() => SortOrder, {nullable:true})
-    discount_value_percent?: `${SortOrder}`;
+    value_percent?: `${SortOrder}`;
 
     @Field(() => SortOrder, {nullable:true})
     area_code?: `${SortOrder}`;

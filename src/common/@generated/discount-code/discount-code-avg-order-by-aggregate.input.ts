@@ -9,8 +9,8 @@ export class discount_codeAvgOrderByAggregateInput {
     id?: `${SortOrder}`;
 
     @Field(() => SortOrder, {nullable:true})
-    discount_value?: `${SortOrder}`;
+    value?: `${SortOrder}`;
 
     @Field(() => SortOrder, {nullable:true})
-    discount_value_percent?: `${SortOrder}`;
+    value_percent?: `${SortOrder}`;
 }

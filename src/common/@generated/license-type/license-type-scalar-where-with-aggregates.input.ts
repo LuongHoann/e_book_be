@@ -6,7 +6,7 @@ import { StringWithAggregatesFilter } from '../prisma/string-with-aggregates-fil
 import { IntWithAggregatesFilter } from '../prisma/int-with-aggregates-filter.input';
 import { DecimalWithAggregatesFilter } from '../prisma/decimal-with-aggregates-filter.input';
 import { BoolWithAggregatesFilter } from '../prisma/bool-with-aggregates-filter.input';
-import { DateTimeNullableWithAggregatesFilter } from '../prisma/date-time-nullable-with-aggregates-filter.input';
+import { IntNullableWithAggregatesFilter } from '../prisma/int-nullable-with-aggregates-filter.input';
 
 @InputType()
 export class license_typeScalarWhereWithAggregatesInput {
@@ -39,6 +39,6 @@ export class license_typeScalarWhereWithAggregatesInput {
     @Field(() => BoolWithAggregatesFilter, {nullable:true})
     status?: BoolWithAggregatesFilter;
 
-    @Field(() => DateTimeNullableWithAggregatesFilter, {nullable:true})
-    expiration_date?: DateTimeNullableWithAggregatesFilter;
+    @Field(() => IntNullableWithAggregatesFilter, {nullable:true})
+    duration?: IntNullableWithAggregatesFilter;
 }

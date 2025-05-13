@@ -12,6 +12,9 @@ export class languageUpdateInput {
     @Field(() => StringFieldUpdateOperationsInput, {nullable:true})
     code?: StringFieldUpdateOperationsInput;
 
+    @Field(() => StringFieldUpdateOperationsInput, {nullable:true})
+    native_name?: StringFieldUpdateOperationsInput;
+
     @Field(() => language_bookUpdateManyWithoutLanguageNestedInput, {nullable:true})
     language_book?: language_bookUpdateManyWithoutLanguageNestedInput;
 }

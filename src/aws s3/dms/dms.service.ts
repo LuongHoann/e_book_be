@@ -63,8 +63,7 @@ export class DmsService {
                 ACL: isPublic ? 'public-read' : 'private',
             });
 
-            let res = await this.client.send(command);
-            console.log("res",res)
+            await this.client.send(command);
             return {
                 key,
                 isPublic,
@@ -74,16 +73,16 @@ export class DmsService {
         }
     }
 
-    getCloudFrontUrl(key: string , type : fileType) {
-        return `${this.cloudfrontDomain}/${type}/${key}`;
+    getCloudFrontUrl(key: string ) {
+        return `${this.cloudfrontDomain}/${key}`;
     }
 
-    getSignedCloudFrontUrl(key: string, type: any,expiresInSeconds = 60 * 60 * 24) {
+    getSignedCloudFrontUrl(key: string,expiresInSeconds = 60 * 60 * 24) {
         const expires = Math.floor(Date.now() / 1000) + expiresInSeconds;
         if(!this.keyPairId){ 
           throw new InternalServerErrorException()
         }
-        return getSignedUrl(`${this.cloudfrontDomain}/${type}/${key}`, {
+        return getSignedUrl(`${this.cloudfrontDomain}/${key}`, {
             keypairId: this.keyPairId,
             privateKeyString: this.privateKey,
             expireTime: expires,

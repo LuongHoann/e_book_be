@@ -11,6 +11,9 @@ export class languageCreateInput {
     @Field(() => String, {nullable:false})
     code!: string;
 
+    @Field(() => String, {nullable:false})
+    native_name!: string;
+
     @Field(() => language_bookCreateNestedManyWithoutLanguageInput, {nullable:true})
     language_book?: language_bookCreateNestedManyWithoutLanguageInput;
 }

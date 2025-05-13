@@ -6,7 +6,7 @@ import { StringFilter } from '../prisma/string-filter.input';
 import { IntFilter } from '../prisma/int-filter.input';
 import { DecimalFilter } from '../prisma/decimal-filter.input';
 import { BoolFilter } from '../prisma/bool-filter.input';
-import { DateTimeNullableFilter } from '../prisma/date-time-nullable-filter.input';
+import { IntNullableFilter } from '../prisma/int-nullable-filter.input';
 import { LicenseListRelationFilter } from '../prisma/license-list-relation-filter.input';
 
 @InputType()
@@ -40,8 +40,8 @@ export class license_typeWhereInput {
     @Field(() => BoolFilter, {nullable:true})
     status?: BoolFilter;
 
-    @Field(() => DateTimeNullableFilter, {nullable:true})
-    expiration_date?: DateTimeNullableFilter;
+    @Field(() => IntNullableFilter, {nullable:true})
+    duration?: IntNullableFilter;
 
     @Field(() => LicenseListRelationFilter, {nullable:true})
     @Type(() => LicenseListRelationFilter)

@@ -10,7 +10,7 @@ export class licenseCreateWithoutLicense_typeInput {
     id?: string;
 
     @Field(() => String, {nullable:true})
-    license_name?: string;
+    name?: string;
 
     @Field(() => bookCreateNestedOneWithoutLicenseInput, {nullable:true})
     book?: bookCreateNestedOneWithoutLicenseInput;

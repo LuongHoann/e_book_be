@@ -21,7 +21,7 @@ export class License_typeCountAggregate {
     status!: number;
 
     @Field(() => Int, {nullable:false})
-    expiration_date!: number;
+    duration!: number;
 
     @Field(() => Int, {nullable:false})
     _all!: number;

@@ -5,7 +5,7 @@ import { IntFieldUpdateOperationsInput } from '../prisma/int-field-update-operat
 import { DecimalFieldUpdateOperationsInput } from '../prisma/decimal-field-update-operations.input';
 import { Type } from 'class-transformer';
 import { BoolFieldUpdateOperationsInput } from '../prisma/bool-field-update-operations.input';
-import { NullableDateTimeFieldUpdateOperationsInput } from '../prisma/nullable-date-time-field-update-operations.input';
+import { NullableIntFieldUpdateOperationsInput } from '../prisma/nullable-int-field-update-operations.input';
 
 @InputType()
 export class license_typeUpdateManyMutationInput {
@@ -26,6 +26,6 @@ export class license_typeUpdateManyMutationInput {
     @Field(() => BoolFieldUpdateOperationsInput, {nullable:true})
     status?: BoolFieldUpdateOperationsInput;
 
-    @Field(() => NullableDateTimeFieldUpdateOperationsInput, {nullable:true})
-    expiration_date?: NullableDateTimeFieldUpdateOperationsInput;
+    @Field(() => NullableIntFieldUpdateOperationsInput, {nullable:true})
+    duration?: NullableIntFieldUpdateOperationsInput;
 }

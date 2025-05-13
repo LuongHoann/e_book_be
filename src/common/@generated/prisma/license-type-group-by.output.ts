@@ -27,8 +27,8 @@ export class License_typeGroupBy {
     @Field(() => Boolean, {nullable:false})
     status!: boolean;
 
-    @Field(() => Date, {nullable:true})
-    expiration_date?: Date | string;
+    @Field(() => Int, {nullable:true})
+    duration?: number;
 
     @Field(() => License_typeCountAggregate, {nullable:true})
     _count?: License_typeCountAggregate;

@@ -12,4 +12,7 @@ export class License_typeSumAggregate {
 
     @Field(() => GraphQLDecimal, {nullable:true})
     price?: Decimal;
+
+    @Field(() => Int, {nullable:true})
+    duration?: number;
 }

@@ -23,7 +23,7 @@ export class licenseWhereUniqueInput {
     NOT?: Array<licenseWhereInput>;
 
     @Field(() => StringNullableFilter, {nullable:true})
-    license_name?: StringNullableFilter;
+    name?: StringNullableFilter;
 
     @Field(() => UuidNullableFilter, {nullable:true})
     book_id?: UuidNullableFilter;

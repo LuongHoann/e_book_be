@@ -2,10 +2,10 @@ import { InputType, Int, Field, Float } from '@nestjs/graphql';
 
 @InputType()
 export class CreateLicenseTypeInput {
-  @Field(() => String, { nullable: true})
+  @Field(() => String, { nullable: false})
   name: string
 
-  @Field(()=> Int)
+  @Field(()=> Int, { nullable: false})
   download_count: number
 
   @Field(()=>Float)
@@ -14,7 +14,7 @@ export class CreateLicenseTypeInput {
   @Field(()=>Boolean)
   status: boolean
 
-  @Field(()=> String , { nullable: false})
-  expiration_date: string
+  @Field(()=> Int , { nullable: false})
+  duration: number
 
 }

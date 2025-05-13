@@ -15,13 +15,13 @@ export class discount_code {
     id!: number;
 
     @Field(() => String, {nullable:true})
-    discount_code_name!: string | null;
+    name!: string | null;
 
     @Field(() => GraphQLDecimal, {nullable:true})
-    discount_value!: Decimal | null;
+    value!: Decimal | null;
 
     @Field(() => Int, {nullable:true})
-    discount_value_percent!: number | null;
+    value_percent!: number | null;
 
     @Field(() => String, {nullable:true})
     area_code!: string | null;

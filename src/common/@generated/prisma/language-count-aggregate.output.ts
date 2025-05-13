@@ -15,5 +15,8 @@ export class LanguageCountAggregate {
     code!: number;
 
     @Field(() => Int, {nullable:false})
+    native_name!: number;
+
+    @Field(() => Int, {nullable:false})
     _all!: number;
 }

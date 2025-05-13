@@ -25,6 +25,9 @@ export class languageWhereInput {
     @Field(() => StringFilter, {nullable:true})
     code?: StringFilter;
 
+    @Field(() => StringFilter, {nullable:true})
+    native_name?: StringFilter;
+
     @Field(() => Language_bookListRelationFilter, {nullable:true})
     language_book?: Language_bookListRelationFilter;
 }

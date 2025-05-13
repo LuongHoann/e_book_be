@@ -10,4 +10,7 @@ export class languageUpdateManyMutationInput {
 
     @Field(() => StringFieldUpdateOperationsInput, {nullable:true})
     code?: StringFieldUpdateOperationsInput;
+
+    @Field(() => StringFieldUpdateOperationsInput, {nullable:true})
+    native_name?: StringFieldUpdateOperationsInput;
 }

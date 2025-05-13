@@ -29,7 +29,7 @@ model book {
   created_at          DateTime?             @default(now()) @db.Timestamptz(6)
   banner_key          String?               @db.VarChar(100)
   book_key            String                @db.VarChar(100)
-  published_at        DateTime              @db.Timestamptz(6)
+  published_at        DateTime              @db.Timestamp(6)
   description         String?
   status              String                @db.VarChar(10)
   book_discount       book_discount[]
@@ -54,8 +54,8 @@ model category {
 model category_book {
   category_id Int      @default(autoincrement())
   book_id     String   @db.Uuid
-  book        book     @relation(fields: [book_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
-  category    category @relation(fields: [category_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  book        book     @relation(fields: [book_id], references: [id], onDelete: Cascade)
+  category    category @relation(fields: [category_id], references: [id], onDelete: Cascade)
 
   @@id([category_id, book_id])
 }
@@ -71,13 +71,13 @@ model comment {
 }
 
 model discount_code {
-  id                     Int             @id @default(autoincrement())
-  discount_code_name     String?         @db.VarChar(20)
-  discount_value         Decimal?        @db.Decimal(5, 2)
-  discount_value_percent Int?
-  area_code              String?         @db.VarChar(3)
-  book_discount          book_discount[]
-  area                   area?           @relation(fields: [area_code], references: [code], onDelete: NoAction, onUpdate: NoAction)
+  id            Int             @id @default(autoincrement())
+  name          String?         @db.VarChar(20)
+  value         Decimal?        @db.Decimal(5, 2)
+  value_percent Int?
+  area_code     String?         @db.VarChar(3)
+  book_discount book_discount[]
+  area          area?           @relation(fields: [area_code], references: [code], onDelete: NoAction, onUpdate: NoAction)
 }
 
 model favourite {
@@ -93,25 +93,26 @@ model language {
   id            Int             @id @default(autoincrement())
   name          String          @db.VarChar(50)
   code          String          @unique(map: "unique_language_code") @db.VarChar(5)
+  native_name   String          @db.VarChar(50)
   language_book language_book[]
 }
 
 model language_book {
   language_id Int
   book_id     String   @db.Uuid
-  book        book     @relation(fields: [book_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
-  language    language @relation(fields: [language_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  book        book     @relation(fields: [book_id], references: [id], onDelete: Cascade)
+  language    language @relation(fields: [language_id], references: [id], onDelete: Cascade)
 
   @@id([language_id, book_id])
 }
 
 model license {
   id                String              @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
-  license_name      String?             @db.VarChar(20)
+  name              String?             @db.VarChar(20)
   book_id           String?             @db.Uuid
   license_type_id   String?             @db.Uuid
-  book              book?               @relation(fields: [book_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
-  license_type      license_type?       @relation(fields: [license_type_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  book              book?               @relation(fields: [book_id], references: [id], onDelete: Cascade)
+  license_type      license_type?       @relation(fields: [license_type_id], references: [id], onDelete: Cascade)
   license_ownership license_ownership[]
 }
 
@@ -126,13 +127,13 @@ model license_ownership {
 }
 
 model license_type {
-  id              String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
-  name            String
-  download_count  Int
-  price           Decimal   @db.Decimal(10, 2)
-  status          Boolean
-  expiration_date DateTime? @db.Date
-  license         license[]
+  id             String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  name           String
+  download_count Int
+  price          Decimal   @db.Decimal(10, 2)
+  status         Boolean
+  duration       Int?
+  license        license[]
 }
 
 model news {

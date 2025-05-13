@@ -19,7 +19,11 @@ export class LicenseTypeService {
 
  async findAll() {
   try { 
-    const data =  await this.prisma.license_type.findMany()
+    const data =  await this.prisma.license_type.findMany({
+      orderBy: {
+        price: 'asc',
+      },
+    })
     return buildResponse(this.i18n, 'index.general.success' , HttpStatus.OK , {items: data})
   } catch (err){ 
     return buildResponse(this.i18n,'index.general.failed', HttpStatus.INTERNAL_SERVER_ERROR)

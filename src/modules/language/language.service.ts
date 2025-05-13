@@ -29,8 +29,26 @@ export class LanguageService {
   }
 
  async findAll() {
-    const data = await this.prisma.language.findMany();
-    const isEmpty = data.length === 0;
+    const rawData = await this.prisma.language.findMany({
+      select: {
+        id: true,
+        name: true,
+        code: true,
+        native_name: true,
+        _count: { 
+          select: { language_book: true },
+        }
+      }
+    });
+
+    const data = rawData.map((item) => {
+      const { _count, ...rest } = item;
+        return { 
+          ...rest,
+          quantity:_count.language_book,
+        }      
+    })
+    const isEmpty = rawData.length === 0;
     const statusCode = isEmpty ? HttpStatus.NOT_FOUND : HttpStatus.OK;
     const messageCode = isEmpty
       ? 'index.general.notFound'
@@ -42,8 +60,9 @@ export class LanguageService {
     return buildResponse(this.i18n, messageCode, statusCode, {items: data});
   }
 
- async update(id: number, updateLanguageInput: UpdateLanguageInput) {
-    const isLangauageExist = await this.validator.isLanguageExist(id)
+ async update( updateLanguageInput: UpdateLanguageInput) {
+    const {id , ...data} = updateLanguageInput;
+    const isLangauageExist = await this.validator.isLanguageExist(id);
     if(!isLangauageExist){
       return buildResponse(
         this.i18n,
@@ -53,8 +72,8 @@ export class LanguageService {
     }
     try {
       await this.prisma.language.update({
-        data:updateLanguageInput,
-        where: {id : id}
+        data:data,
+        where: {id : parseInt(id)}
       })
       return buildResponse(this.i18n ,'index.language.updateSuccess',HttpStatus.OK )
     } catch (error) {
@@ -66,7 +85,7 @@ export class LanguageService {
     }
   }
 
-  async remove(id: number) {
+  async remove(id: string) {
     const isLangauageExist = await this.validator.isLanguageExist(id);
     if (!isLangauageExist) {
       return buildResponse(
@@ -76,7 +95,7 @@ export class LanguageService {
       );
     }
     try {
-      await this.prisma.language.delete({ where: {id: id } });
+      await this.prisma.language.delete({ where: {id: parseInt(id) } });
       return buildResponse(this.i18n, 'index.discount_code.deleteSuccess', HttpStatus.OK);
     } catch (error) {
       return buildResponse(

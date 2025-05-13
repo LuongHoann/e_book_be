@@ -27,14 +27,14 @@ export class discount_codeWhereInput {
     id?: IntFilter;
 
     @Field(() => StringNullableFilter, {nullable:true})
-    discount_code_name?: StringNullableFilter;
+    name?: StringNullableFilter;
 
     @Field(() => DecimalNullableFilter, {nullable:true})
     @Type(() => DecimalNullableFilter)
-    discount_value?: DecimalNullableFilter;
+    value?: DecimalNullableFilter;
 
     @Field(() => IntNullableFilter, {nullable:true})
-    discount_value_percent?: IntNullableFilter;
+    value_percent?: IntNullableFilter;
 
     @Field(() => StringNullableFilter, {nullable:true})
     area_code?: StringNullableFilter;

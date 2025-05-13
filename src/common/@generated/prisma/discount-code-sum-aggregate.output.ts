@@ -11,8 +11,8 @@ export class Discount_codeSumAggregate {
     id?: number;
 
     @Field(() => GraphQLDecimal, {nullable:true})
-    discount_value?: Decimal;
+    value?: Decimal;
 
     @Field(() => Int, {nullable:true})
-    discount_value_percent?: number;
+    value_percent?: number;
 }

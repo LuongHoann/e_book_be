@@ -28,8 +28,8 @@ export class license_typeUncheckedCreateInput {
     @Field(() => Boolean, {nullable:false})
     status!: boolean;
 
-    @Field(() => Date, {nullable:true})
-    expiration_date?: Date | string;
+    @Field(() => Int, {nullable:true})
+    duration?: number;
 
     @Field(() => licenseUncheckedCreateNestedManyWithoutLicense_typeInput, {nullable:true})
     @Type(() => licenseUncheckedCreateNestedManyWithoutLicense_typeInput)
